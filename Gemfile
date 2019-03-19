@@ -46,6 +46,16 @@ group :development do
   gem 'spring'
 end
 
+# setup Cucumber, RSpec, Guard support
+group :test do
+  gem 'rspec-rails'
+  gem 'guard-rspec'
+  gem 'simplecov', :require => false
+  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails-training-wheels' # basic imperative step defs
+  gem 'database_cleaner' # required by Cucumber
+  gem 'metric_fu'        # collect code metrics
+end
 
 # make sure the following gems are in your production group:
 group :production do
