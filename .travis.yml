@@ -38,7 +38,7 @@ script:
 
 after_script:
 # combine coverage from all suites, and upload to CodeClimate
-- ./cc-test-reporter sum-coverage coverage/codeclimate.*.json | ./cc-test-reporter upload-coverage
+- ./cc-test-reporter sum-coverage coverage/codeclimate.rspec.json coverage/codeclimate.cucumber.json | ./cc-test-reporter upload-coverage
 - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 # just in case, be paranoid and remove sensitive config info file
 - rm -f config/application.yml
