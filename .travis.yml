@@ -31,10 +31,10 @@ script:
 # insert here any other steps needed (load other sample data, etc) before starting tests
 # run RSpec tests, and capture coverage
 - bundle exec rspec
-- ./cc-test-reporter format-coverage --output coverage/codeclimate.$SUITE.json
+- ./cc-test-reporter format-coverage --output coverage/codeclimate.rspec.json
 # run Cucumber scenarios, and capture coverage. --strict means undefined steps result in a failure.
 - bundle exec cucumber --strict
-- ./cc-test-reporter format-coverage --output coverage/codeclimate.$SUITE.json
+- ./cc-test-reporter format-coverage --output coverage/codeclimate.cucumber.json
 
 after_script:
 # combine coverage from all suites, and upload to CodeClimate
