@@ -1,0 +1,32 @@
+%h2 Edit dietary restrictions and preferences here
+
+= form_tag index_path do
+
+  = label_tag(:age, 'Age')
+  = text_field(:age, 'age')
+
+  = label_tag(:gender, 'Gender')
+  = text_field(:gender, 'gender')
+
+  = label_tag(:weight, 'Weight')
+  = text_field(:weight, 'weight')
+
+  = label_tag(:height, 'Height')
+  = text_field(:height, 'height')
+
+  = label_tag(:exercise, 'Exercise Level')
+  = text_field(:exercise, 'exercise')
+
+  = label_tag(:goal, 'Goal')
+  = text_field(:goal, 'goal')
+
+  = label_tag(:budget, 'Weekly Grocery Budget')
+  = text_field(:budget, 'budget')
+
+  = label_tag(:time, 'Time available to cook per day')
+  = text_field(:time, 'time')
+
+  = label_tag(:cuisine, 'Cuisine Preferences')
+  = text_field(:cuisine, 'cuisine')
+
+  = submit_tag 'Save Changes'
