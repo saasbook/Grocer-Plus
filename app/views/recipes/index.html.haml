@@ -2,3 +2,5 @@
 
 = form_tag edit_path do
 	= submit_tag 'Edit Preferences'
+
+= link_to "Log Out", destroy_user_session_path, method: :delete 
