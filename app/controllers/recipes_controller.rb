@@ -10,6 +10,11 @@ class RecipesController < ApplicationController
 	    @budget = :budget
 	    @time = :time
 	    @cuisine = :cuisine
+	    if @gender == 'Male'
+		    @targetCals = 10*@weight + 6.25*@height - 5*@age + 5
+		else
+			@targetCals = 10*@weight + 6.25*@height - 5*@age - 161
+		end
     end
 
     # def edit
