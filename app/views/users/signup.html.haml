@@ -3,7 +3,7 @@
 = form_tag show_path do
 
   = label_tag(:age, 'Age')
-  = text_field(:age, 'age')
+  = number_field_tag(:age, 'age')
 
   = label_tag(:gender, 'Gender')
   = radio_button_tag(:gender, 'Male')
@@ -12,10 +12,10 @@
   = label_tag(:gender, 'Female')
 
   = label_tag(:weight, 'Weight')
-  = text_field(:weight, 'weight')
+  = number_field_tag(:weight, 'weight')
 
   = label_tag(:height, 'Height')
-  = text_field(:height, 'height')
+  = number_field_tag(:height, 'height')
 
   = label_tag(:exercise, 'Exercise Level')
   = select_tag(:exercise, options_for_select(["Light", "Moderate", "Heavy"]))
@@ -24,10 +24,10 @@
   = select_tag(:goal, options_for_select(["Gain", "Maintain", "Lose"]))
 
   = label_tag(:budget, 'Weekly Grocery Budget')
-  = text_field(:budget, 'budget')
+  = number_field_tag(:budget, 'budget')
 
   = label_tag(:time, 'Time available to cook per day')
-  = text_field(:time, 'time')
+  = number_field_tag(:time, 'time')
 
   = label_tag(:cuisine, 'Cuisine Preferences')
   = text_field(:cuisine, 'cuisine')
