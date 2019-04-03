@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190331235524) do
+ActiveRecord::Schema.define(version: 20190403010304) do
 
   create_table "recipes", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 20190331235524) do
     t.datetime "remember_created_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "age"
+    t.string   "gender"
+    t.integer  "weight"
+    t.integer  "height"
+    t.string   "exercise"
+    t.string   "goal"
+    t.integer  "budget"
+    t.integer  "time"
+    t.string   "cuisine"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

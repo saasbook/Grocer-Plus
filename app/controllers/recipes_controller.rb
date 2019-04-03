@@ -1,15 +1,6 @@
 class RecipesController < ApplicationController
 	def index
 	  	# user will be able to see all recipes for them 
-	    @age = :age
-	    @gender = :gender
-	    @weight = :weight
-	    @height = :height
-	    @exercise = :exercise
-	    @goal = :goal
-	    @budget = :budget
-	    @time = :time
-	    @cuisine = :cuisine
     end
 
     # def edit
