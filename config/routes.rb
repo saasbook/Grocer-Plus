@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   get '' => 'pages#home'
-  get '/signup' => 'recipes#signup'
-  get '/index' => 'recipes#index'
-  post '/index' => 'recipes#index'
-  post '/edit' => 'recipes#edit'
+  get '/edit' => 'users#edit'
+  post '/edit' => 'users#update'
+  get '/show' => 'users#show'
 
 
 
