@@ -6,14 +6,14 @@ class UsersController < ApplicationController
 
 	def show
 		@age = current_user.age
-	    @gender = :gender
-	    @weight = :weight
-	    @height = :height
-	    @exercise = :exercise
-	    @goal = :goal
-	    @budget = :budget
-	    @time = :time
-	    @cuisine = :cuisine
+	    @gender = current_user.gender
+	    @weight = current_user.weight
+	    @height = current_user.height
+	    @exercise = current_user.exercise
+	    @goal = current_user.goal
+	    @budget = current_user.budget
+	    @time = current_user.time
+	    @cuisine = current_user.cuisine
 	    if @gender == 'Male'
 		    @calories = 10*@weight + 6.25*@height - 5*@age + 5
 		else
@@ -25,11 +25,11 @@ class UsersController < ApplicationController
 
 	def update
 		#save form data for user
-		current_user.age = params[:age]["age"].to_i
-		current_user.weight = params[:weight]["weight"].to_i
-		current_user.height = params[:height]["height"].to_i
-		current_user.budget = params[:budget]["budget"].to_i
-		current_user.time = params[:time]["time"].to_i
+		current_user.age = params[:age].to_i
+		current_user.weight = params[:weight].to_i
+		current_user.height = params[:height].to_i
+		current_user.budget = params[:budget].to_i
+		current_user.time = params[:time].to_i
 		current_user.gender = params[:gender]
 		current_user.exercise = params[:exercise]
 		current_user.cuisine = params[:cuisine]["cuisine"]
