@@ -1,7 +1,6 @@
-%h2 Recipes
+%h2.text-center Recipes
+%p.text-center Your calories are #{@calories}
 
 = link_to 'Edit Preferences', edit_path
 
 = link_to "Log Out", destroy_user_session_path, method: :delete 
-
-Your calories are #{@calories}
