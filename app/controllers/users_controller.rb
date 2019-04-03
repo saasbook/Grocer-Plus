@@ -14,7 +14,13 @@ class UsersController < ApplicationController
 	    @budget = :budget
 	    @time = :time
 	    @cuisine = :cuisine
-	    @calories = 1 
+	    if @gender == 'Male'
+		    @calories = 10*@weight + 6.25*@height - 5*@age + 5
+		else
+			@calories = 10*@weight + 6.25*@height - 5*@age - 161
+		end
+		#These calculations require kg and cm.  Will need to add
+		#units to the form in the future.
 	end
 
 	def update
