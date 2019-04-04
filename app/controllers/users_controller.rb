@@ -19,6 +19,27 @@ class UsersController < ApplicationController
 		else
 			@calories = 10*@weight + 6.25*@height - 5*@age - 161
 		end
+		if @exercise == 'Light'
+			@calories *= 1.375
+		elsif @exercise == 'Moderate'
+			@calories *= 1.55
+		else
+			@calories *= 1.725
+		end
+		#If you are sedentary and do not exercise, multiply your 
+		#BMR by 1.2. If you exercise lightly one to three times 
+		#per week, multiply by 1.375. If you exercise three to 
+		#five days per week, multiply by 1.55. For exercise six 
+		#or seven days per week, multiply by 1.725; if you exercise 
+		#seven days a week and also have a physically demanding job, 
+		#multiply by 1.9.
+
+		if @goal == 'Gain'
+			@calories += 500
+		elsif @goal == 'Lose'
+			@calories -= 500
+		end
+			
 		#These calculations require kg and cm.  Will need to add
 		#units to the form in the future.
 	end
