@@ -14,17 +14,23 @@ class UsersController < ApplicationController
 	    @budget = :budget
 	    @time = :time
 	    @cuisine = :cuisine
-	    if @gender == 'Male'
-		    @calories = 10*@weight + 6.25*@height - 5*@age + 5
+	    @calories = calc_calories(@gender, @weight, @height, @age, @exercise, @goal)
+	end
+
+	def calc_calories(gender, weight, height, age, exercise, goal)
+		#These calculations require kg and cm.  Will need to add
+		#units to the form in the future.
+	    if gender == 'Male'
+		    calories = 10*weight + 6.25*height - 5*age + 5
 		else
-			@calories = 10*@weight + 6.25*@height - 5*@age - 161
+			calories = 10*weight + 6.25*height - 5*age - 161
 		end
-		if @exercise == 'Light'
-			@calories *= 1.375
-		elsif @exercise == 'Moderate'
-			@calories *= 1.55
+		if exercise == 'Light'
+			calories *= 1.375
+		elsif exercise == 'Moderate'
+			calories *= 1.55
 		else
-			@calories *= 1.725
+			calories *= 1.725
 		end
 		#If you are sedentary and do not exercise, multiply your 
 		#BMR by 1.2. If you exercise lightly one to three times 
@@ -34,14 +40,12 @@ class UsersController < ApplicationController
 		#seven days a week and also have a physically demanding job, 
 		#multiply by 1.9.
 
-		if @goal == 'Gain'
-			@calories += 500
-		elsif @goal == 'Lose'
-			@calories -= 500
+		if goal == 'Gain'
+			calories += 500
+		elsif goal == 'Lose'
+			calories -= 500
 		end
-			
-		#These calculations require kg and cm.  Will need to add
-		#units to the form in the future.
+		return calories
 	end
 
 	def update
