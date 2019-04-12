@@ -6,14 +6,14 @@ class UsersController < ApplicationController
 
 	def show
 		@age = current_user.age
-	    @gender = :gender
-	    @weight = :weight
-	    @height = :height
-	    @exercise = :exercise
-	    @goal = :goal
-	    @budget = :budget
-	    @time = :time
-	    @cuisine = :cuisine
+	    @gender = current_user.gender
+	    @weight = current_user.weight
+	    @height = current_user.height
+	    @exercise = current_user.exercise
+	    @goal = current_user.goal
+	    @budget = current_user.budget
+	    @time = current_user.time
+	    @cuisine = current_user.cuisine
 	    @calories = calc_calories(@gender, @weight, @height, @age, @exercise, @goal)
 	end
 
