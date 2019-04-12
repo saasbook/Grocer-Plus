@@ -59,6 +59,8 @@ group :test do
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels' # basic imperative step defs
   gem 'database_cleaner' # required by Cucumber
+  gem 'factory_girl_rails'
+  gem "webmock"
   gem 'metric_fu'        # collect code metrics
 end
 
