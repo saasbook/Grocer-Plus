@@ -17,9 +17,11 @@ class UsersController < ApplicationController
 	    @calories = calc_calories(@gender, @weight, @height, @age, @exercise, @goal)
 	end
 
-	def calc_calories(gender, weight, height, age, exercise, goal)
+	def self.calc_calories(gender, weight, height, age, exercise, goal)
 		#These calculations require kg and cm.  Will need to add
 		#units to the form in the future.
+		#Formula found here:
+		#https://www.calculator.net/calorie-calculator.html
 	    if gender == 'Male'
 		    calories = 10*weight + 6.25*height - 5*age + 5
 		else
@@ -39,6 +41,7 @@ class UsersController < ApplicationController
 		#or seven days per week, multiply by 1.725; if you exercise 
 		#seven days a week and also have a physically demanding job, 
 		#multiply by 1.9.
+		#https://www.livestrong.com/article/526442-the-activity-factor-for-calculating-calories-burned/
 
 		if goal == 'Gain'
 			calories += 500
