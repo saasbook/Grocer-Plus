@@ -1,15 +1,70 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/omidafshar/Documents/CS169/Grocer-Plus/spec/hi_spec.rb": [
+      "/Users/babajoon/nowtmp/Grocer-Plus/spec/hi_spec.rb": [
         1,
         1,
         1,
+        0,
+        null,
+        null,
+        null,
+        null,
         1,
+        1,
+        0,
+        null,
+        null,
+        null,
+        1,
+        1,
+        0,
+        null,
+        null,
+        null,
+        1,
+        1,
+        0,
+        null,
+        null,
+        null,
+        1,
+        1,
+        0,
+        null,
+        null,
+        null,
+        1,
+        1,
+        0,
+        null,
+        null,
+        null,
+        1,
+        1,
+        0,
+        null,
+        null,
+        null,
+        1,
+        1,
+        0,
+        null,
+        null,
+        null,
+        1,
+        1,
+        0,
+        null,
+        null,
+        null,
+        1,
+        1,
+        0,
         null,
         null
       ],
-      "/Users/omidafshar/Documents/CS169/Grocer-Plus/spec/rails_helper.rb": [
+      "/Users/babajoon/nowtmp/Grocer-Plus/spec/rails_helper.rb": [
         null,
         1,
         1,
@@ -70,16 +125,18 @@
         1,
         null,
         null,
+        1,
+        2,
         null
       ],
-      "/Users/omidafshar/Documents/CS169/Grocer-Plus/config/environment.rb": [
+      "/Users/babajoon/nowtmp/Grocer-Plus/config/environment.rb": [
         null,
         1,
         null,
         null,
         1
       ],
-      "/Users/omidafshar/Documents/CS169/Grocer-Plus/config/application.rb": [
+      "/Users/babajoon/nowtmp/Grocer-Plus/config/application.rb": [
         1,
         null,
         1,
@@ -116,12 +173,12 @@
         null,
         null
       ],
-      "/Users/omidafshar/Documents/CS169/Grocer-Plus/config/boot.rb": [
+      "/Users/babajoon/nowtmp/Grocer-Plus/config/boot.rb": [
         1,
         null,
         1
       ],
-      "/Users/omidafshar/Documents/CS169/Grocer-Plus/config/environments/test.rb": [
+      "/Users/babajoon/nowtmp/Grocer-Plus/config/environments/test.rb": [
         1,
         null,
         null,
@@ -165,7 +222,7 @@
         null,
         null
       ],
-      "/Users/omidafshar/Documents/CS169/Grocer-Plus/config/initializers/assets.rb": [
+      "/Users/babajoon/nowtmp/Grocer-Plus/config/initializers/assets.rb": [
         null,
         null,
         null,
@@ -178,7 +235,7 @@
         null,
         null
       ],
-      "/Users/omidafshar/Documents/CS169/Grocer-Plus/config/initializers/backtrace_silencers.rb": [
+      "/Users/babajoon/nowtmp/Grocer-Plus/config/initializers/backtrace_silencers.rb": [
         null,
         null,
         null,
@@ -187,12 +244,12 @@
         null,
         null
       ],
-      "/Users/omidafshar/Documents/CS169/Grocer-Plus/config/initializers/cookies_serializer.rb": [
+      "/Users/babajoon/nowtmp/Grocer-Plus/config/initializers/cookies_serializer.rb": [
         null,
         null,
         1
       ],
-      "/Users/omidafshar/Documents/CS169/Grocer-Plus/config/initializers/devise.rb": [
+      "/Users/babajoon/nowtmp/Grocer-Plus/config/initializers/devise.rb": [
         null,
         null,
         null,
@@ -493,54 +550,54 @@
         null,
         null
       ],
-      "/Users/omidafshar/Documents/CS169/Grocer-Plus/config/initializers/filter_parameter_logging.rb": [
-        null,
-        null,
-        null,
-        1
-      ],
-      "/Users/omidafshar/Documents/CS169/Grocer-Plus/config/initializers/inflections.rb": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ],
-      "/Users/omidafshar/Documents/CS169/Grocer-Plus/config/initializers/mime_types.rb": [
-        null,
-        null,
-        null,
-        null
-      ],
-      "/Users/omidafshar/Documents/CS169/Grocer-Plus/config/initializers/session_store.rb": [
-        null,
-        null,
-        1
-      ],
-      "/Users/omidafshar/Documents/CS169/Grocer-Plus/config/initializers/to_time_preserves_timezone.rb": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
+      "/Users/babajoon/nowtmp/Grocer-Plus/config/initializers/filter_parameter_logging.rb": [
         null,
         null,
         null,
         1
       ],
-      "/Users/omidafshar/Documents/CS169/Grocer-Plus/config/initializers/wrap_parameters.rb": [
+      "/Users/babajoon/nowtmp/Grocer-Plus/config/initializers/inflections.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/babajoon/nowtmp/Grocer-Plus/config/initializers/mime_types.rb": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/babajoon/nowtmp/Grocer-Plus/config/initializers/session_store.rb": [
+        null,
+        null,
+        1
+      ],
+      "/Users/babajoon/nowtmp/Grocer-Plus/config/initializers/to_time_preserves_timezone.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1
+      ],
+      "/Users/babajoon/nowtmp/Grocer-Plus/config/initializers/wrap_parameters.rb": [
         null,
         null,
         null,
@@ -556,7 +613,20 @@
         null,
         null
       ],
-      "/Users/omidafshar/Documents/CS169/Grocer-Plus/config/routes.rb": [
+      "/Users/babajoon/nowtmp/Grocer-Plus/spec/factories.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/babajoon/nowtmp/Grocer-Plus/config/routes.rb": [
         1,
         1,
         1,
@@ -572,7 +642,7 @@
         null,
         null
       ],
-      "/Users/omidafshar/Documents/CS169/Grocer-Plus/app/models/user.rb": [
+      "/Users/babajoon/nowtmp/Grocer-Plus/app/models/user.rb": [
         1,
         null,
         null,
@@ -580,23 +650,117 @@
         null,
         null
       ],
-      "/Users/omidafshar/Documents/CS169/Grocer-Plus/app/helpers/application_helper.rb": [
+      "/Users/babajoon/nowtmp/Grocer-Plus/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Users/omidafshar/Documents/CS169/Grocer-Plus/app/helpers/pages_helper.rb": [
+      "/Users/babajoon/nowtmp/Grocer-Plus/app/helpers/pages_helper.rb": [
         1,
         null
       ],
-      "/Users/omidafshar/Documents/CS169/Grocer-Plus/app/helpers/recipes_helper.rb": [
+      "/Users/babajoon/nowtmp/Grocer-Plus/app/helpers/recipes_helper.rb": [
         1,
         null
       ],
-      "/Users/omidafshar/Documents/CS169/Grocer-Plus/app/helpers/users_helper.rb": [
+      "/Users/babajoon/nowtmp/Grocer-Plus/app/helpers/users_helper.rb": [
         1,
+        null
+      ],
+      "/Users/babajoon/nowtmp/Grocer-Plus/spec/support/factory_girl.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/babajoon/nowtmp/Grocer-Plus/app/controllers/users_controller.rb": [
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        0,
+        0,
+        null,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null,
+        1,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null
+      ],
+      "/Users/babajoon/nowtmp/Grocer-Plus/app/controllers/application_controller.rb": [
+        1,
+        null,
+        null,
+        1,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
         null
       ]
     },
-    "timestamp": 1554320330
+    "timestamp": 1555104670
   }
 }
