@@ -9,9 +9,9 @@ Background:
 	Given I am logged in with email "john.apple@gmail.com" and password "hello1"
   	And I am on the edit preferences page
 
-Scenario: Input all data and preferences
+#Scenario: Input all data and preferences
 
 
 
 
-Scenario: Press Edit with missing fields
+#Scenario: Press Edit with missing fields 
