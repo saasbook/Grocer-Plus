@@ -53,11 +53,11 @@ class UsersController < ApplicationController
 
 	def update
 		#save form data for user
-		current_user.age = params[:age]["age"].to_i
-		current_user.weight = params[:weight]["weight"].to_i
-		current_user.height = params[:height]["height"].to_i
-		current_user.budget = params[:budget]["budget"].to_i
-		current_user.time = params[:time]["time"].to_i
+		current_user.age = params[:age].to_i
+		current_user.weight = params[:weight].to_i
+		current_user.height = params[:height].to_i
+		current_user.budget = params[:budget].to_i
+		current_user.time = params[:time].to_i
 		current_user.gender = params[:gender]
 		current_user.exercise = params[:exercise]
 		current_user.cuisine = params[:cuisine]["cuisine"]
