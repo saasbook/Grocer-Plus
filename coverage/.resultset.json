@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/babajoon/nowtmp/Grocer-Plus/spec/recipe_spec.rb": [
+      "/Users/nehakompella/Grocer-Plus/spec/recipe_spec.rb": [
         1,
         1,
         1,
@@ -33,7 +33,7 @@
         null,
         null
       ],
-      "/Users/babajoon/nowtmp/Grocer-Plus/spec/rails_helper.rb": [
+      "/Users/nehakompella/Grocer-Plus/spec/rails_helper.rb": [
         null,
         1,
         1,
@@ -98,14 +98,14 @@
         2,
         null
       ],
-      "/Users/babajoon/nowtmp/Grocer-Plus/config/environment.rb": [
+      "/Users/nehakompella/Grocer-Plus/config/environment.rb": [
         null,
         1,
         null,
         null,
         1
       ],
-      "/Users/babajoon/nowtmp/Grocer-Plus/config/application.rb": [
+      "/Users/nehakompella/Grocer-Plus/config/application.rb": [
         1,
         null,
         1,
@@ -142,12 +142,12 @@
         null,
         null
       ],
-      "/Users/babajoon/nowtmp/Grocer-Plus/config/boot.rb": [
+      "/Users/nehakompella/Grocer-Plus/config/boot.rb": [
         1,
         null,
         1
       ],
-      "/Users/babajoon/nowtmp/Grocer-Plus/config/environments/test.rb": [
+      "/Users/nehakompella/Grocer-Plus/config/environments/test.rb": [
         1,
         null,
         null,
@@ -191,7 +191,7 @@
         null,
         null
       ],
-      "/Users/babajoon/nowtmp/Grocer-Plus/config/initializers/assets.rb": [
+      "/Users/nehakompella/Grocer-Plus/config/initializers/assets.rb": [
         null,
         null,
         null,
@@ -204,7 +204,7 @@
         null,
         null
       ],
-      "/Users/babajoon/nowtmp/Grocer-Plus/config/initializers/backtrace_silencers.rb": [
+      "/Users/nehakompella/Grocer-Plus/config/initializers/backtrace_silencers.rb": [
         null,
         null,
         null,
@@ -213,12 +213,12 @@
         null,
         null
       ],
-      "/Users/babajoon/nowtmp/Grocer-Plus/config/initializers/cookies_serializer.rb": [
+      "/Users/nehakompella/Grocer-Plus/config/initializers/cookies_serializer.rb": [
         null,
         null,
         1
       ],
-      "/Users/babajoon/nowtmp/Grocer-Plus/config/initializers/devise.rb": [
+      "/Users/nehakompella/Grocer-Plus/config/initializers/devise.rb": [
         null,
         null,
         null,
@@ -519,54 +519,54 @@
         null,
         null
       ],
-      "/Users/babajoon/nowtmp/Grocer-Plus/config/initializers/filter_parameter_logging.rb": [
-        null,
-        null,
-        null,
-        1
-      ],
-      "/Users/babajoon/nowtmp/Grocer-Plus/config/initializers/inflections.rb": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ],
-      "/Users/babajoon/nowtmp/Grocer-Plus/config/initializers/mime_types.rb": [
-        null,
-        null,
-        null,
-        null
-      ],
-      "/Users/babajoon/nowtmp/Grocer-Plus/config/initializers/session_store.rb": [
-        null,
-        null,
-        1
-      ],
-      "/Users/babajoon/nowtmp/Grocer-Plus/config/initializers/to_time_preserves_timezone.rb": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
+      "/Users/nehakompella/Grocer-Plus/config/initializers/filter_parameter_logging.rb": [
         null,
         null,
         null,
         1
       ],
-      "/Users/babajoon/nowtmp/Grocer-Plus/config/initializers/wrap_parameters.rb": [
+      "/Users/nehakompella/Grocer-Plus/config/initializers/inflections.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/nehakompella/Grocer-Plus/config/initializers/mime_types.rb": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/nehakompella/Grocer-Plus/config/initializers/session_store.rb": [
+        null,
+        null,
+        1
+      ],
+      "/Users/nehakompella/Grocer-Plus/config/initializers/to_time_preserves_timezone.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1
+      ],
+      "/Users/nehakompella/Grocer-Plus/config/initializers/wrap_parameters.rb": [
         null,
         null,
         null,
@@ -582,7 +582,7 @@
         null,
         null
       ],
-      "/Users/babajoon/nowtmp/Grocer-Plus/spec/factories.rb": [
+      "/Users/nehakompella/Grocer-Plus/spec/factories.rb": [
         1,
         1,
         1,
@@ -595,7 +595,7 @@
         null,
         null
       ],
-      "/Users/babajoon/nowtmp/Grocer-Plus/config/routes.rb": [
+      "/Users/nehakompella/Grocer-Plus/config/routes.rb": [
         1,
         1,
         1,
@@ -611,7 +611,7 @@
         null,
         null
       ],
-      "/Users/babajoon/nowtmp/Grocer-Plus/app/models/user.rb": [
+      "/Users/nehakompella/Grocer-Plus/app/models/user.rb": [
         1,
         null,
         null,
@@ -619,36 +619,36 @@
         null,
         null
       ],
-      "/Users/babajoon/nowtmp/Grocer-Plus/app/helpers/application_helper.rb": [
+      "/Users/nehakompella/Grocer-Plus/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Users/babajoon/nowtmp/Grocer-Plus/app/helpers/pages_helper.rb": [
+      "/Users/nehakompella/Grocer-Plus/app/helpers/pages_helper.rb": [
         1,
         null
       ],
-      "/Users/babajoon/nowtmp/Grocer-Plus/app/helpers/recipes_helper.rb": [
+      "/Users/nehakompella/Grocer-Plus/app/helpers/recipes_helper.rb": [
         1,
         null
       ],
-      "/Users/babajoon/nowtmp/Grocer-Plus/app/helpers/users_helper.rb": [
+      "/Users/nehakompella/Grocer-Plus/app/helpers/users_helper.rb": [
         1,
         null
       ],
-      "/Users/babajoon/nowtmp/Grocer-Plus/spec/support/factory_girl.rb": [
+      "/Users/nehakompella/Grocer-Plus/spec/support/factory_girl.rb": [
         1,
         1,
         null
       ],
-      "/Users/babajoon/nowtmp/Grocer-Plus/spec/userscontroller_spec.rb": [
+      "/Users/nehakompella/Grocer-Plus/spec/userscontroller_spec.rb": [
         1,
         null,
         1,
-        1,
-        1,
-        1,
-        1,
-        1,
+        null,
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         null,
@@ -689,7 +689,7 @@
         null,
         null
       ],
-      "/Users/babajoon/nowtmp/Grocer-Plus/app/controllers/users_controller.rb": [
+      "/Users/nehakompella/Grocer-Plus/app/controllers/users_controller.rb": [
         1,
         null,
         null,
@@ -697,17 +697,131 @@
         null,
         null,
         1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        0,
+        null,
+        null,
+        0,
+        null,
+        null,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
         null,
         null,
         1,
@@ -715,14 +829,14 @@
         null,
         null,
         null,
-        10,
+        9,
         8,
         null,
+        1,
+        null,
+        9,
+        7,
         2,
-        null,
-        10,
-        8,
-        2,
         1,
         null,
         1,
@@ -736,12 +850,12 @@
         null,
         null,
         null,
-        10,
-        1,
         9,
         1,
+        8,
+        1,
         null,
-        10,
+        9,
         null,
         null,
         1,
@@ -759,7 +873,7 @@
         null,
         null
       ],
-      "/Users/babajoon/nowtmp/Grocer-Plus/app/controllers/application_controller.rb": [
+      "/Users/nehakompella/Grocer-Plus/app/controllers/application_controller.rb": [
         1,
         null,
         null,
@@ -779,7 +893,7 @@
         null,
         null
       ],
-      "/Users/babajoon/nowtmp/Grocer-Plus/app/models/recipe.rb": [
+      "/Users/nehakompella/Grocer-Plus/app/models/recipe.rb": [
         1,
         1,
         3,
@@ -789,6 +903,6 @@
         null
       ]
     },
-    "timestamp": 1555106097
+    "timestamp": 1555118254
   }
 }
