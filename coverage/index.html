@@ -5,7 +5,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <script src='./assets/0.10.2/application.js' type='text/javascript'></script>    
     <link href='./assets/0.10.2/application.css' media='screen, projection, print' rel='stylesheet' type='text/css'>
-    <link rel="shortcut icon" type="image/png" href="./assets/0.10.2/favicon_green.png" />
+    <link rel="shortcut icon" type="image/png" href="./assets/0.10.2/favicon_red.png" />
     <link rel="icon" type="image/png" href="./assets/0.10.2/favicon.png" />
   </head>
   
@@ -473,14 +473,14 @@
 </div>
 
       
-        <div class="source_table" id="0cc2c3268456e192a686e5fd19267748d20401cf">
+        <div class="source_table" id="deeb7b06341dfc431d83a1e91f0914e873617699">
   <div class="header">
     <h3>app/controllers/users_controller.rb</h3>
-    <h4><span class="red">73.68 %</span> covered</h4>
+    <h4><span class="red">27.42 %</span> covered</h4>
     <div>
-      <b>38</b> relevant lines. 
-      <span class="green"><b>28</b> lines covered</span> and
-      <span class="red"><b>10</b> lines missed.</span>
+      <b>62</b> relevant lines. 
+      <span class="green"><b>17</b> lines covered</span> and
+      <span class="red"><b>45</b> lines missed.</span>
     </div>
   </div>
   
@@ -529,76 +529,76 @@
           <code class="ruby">	def show</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="8">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="8">
+          
           
           <code class="ruby">		@age = current_user.age</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="9">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="9">
+          
           
           <code class="ruby">	    @gender = current_user.gender</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="10">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="10">
+          
           
           <code class="ruby">	    @weight = current_user.weight</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="11">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="11">
+          
           
           <code class="ruby">	    @height = current_user.height</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="12">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="12">
+          
           
           <code class="ruby">	    @exercise = current_user.exercise</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="13">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="13">
+          
           
           <code class="ruby">	    @goal = current_user.goal</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="14">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="14">
+          
           
           <code class="ruby">	    @budget = current_user.budget</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="15">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="15">
+          
           
           <code class="ruby">	    @time = current_user.time</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="16">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="16">
+          
           
           <code class="ruby">	    @cuisine = current_user.cuisine</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="17">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="17">
+          
           
           <code class="ruby">		@calories = self.class.calc_calories(@gender, @weight, @height, @age, @exercise, @goal)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="18">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="18">
           
-          <code class="ruby">		Recipe.find_in_api(@calories, @budget, @time)</code>
+          
+          <code class="ruby">		</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="19">
           
           
-          <code class="ruby">	end</code>
+          <code class="ruby">		# @all_recipes = Recipe.find_in_api</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="20">
@@ -607,31 +607,722 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="21">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="21">
           
-          <code class="ruby">	def self.calc_calories(gender, weight, height, age, exercise, goal)</code>
+          
+          <code class="ruby">		@all_recipes = {&#39;items&#39; =&gt; </code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="22">
           
           
-          <code class="ruby">		#These calculations require kg and cm.  Will need to add</code>
+          <code class="ruby">				[</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="23">
           
           
-          <code class="ruby">		#units to the form in the future.</code>
+          <code class="ruby">				{&#39;day&#39; =&gt; 1,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="24">
           
           
-          <code class="ruby">		#Formula found here:</code>
+          <code class="ruby">			 	&#39;slot&#39; =&gt; 1,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="25">
+          
+          
+          <code class="ruby">			 	&#39;id&#39; =&gt; 123456,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="26">
+          
+          
+          <code class="ruby">			 	&#39;title&#39; =&gt; &quot;Eggs Benedict&quot;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="27">
+          
+          
+          <code class="ruby">			 	&#39;calories&#39; =&gt; 200,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="28">
+          
+          
+          <code class="ruby">			 	&#39;readyminutes&#39; =&gt; 45,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="29">
+          
+          
+          <code class="ruby">				 &#39;price&#39; =&gt; 2</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="30">
+          
+          
+          <code class="ruby">				 },	</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="31">
+          
+          
+          <code class="ruby">				{&#39;day&#39; =&gt; 1,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="32">
+          
+          
+          <code class="ruby">			 	&#39;slot&#39; =&gt; 2,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="33">
+          
+          
+          <code class="ruby">			 	&#39;id&#39; =&gt; 123456,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="34">
+          
+          
+          <code class="ruby">			 	&#39;title&#39; =&gt; &quot;Sweet &amp; Sour Soup&quot;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="35">
+          
+          
+          <code class="ruby">			 	&#39;calories&#39; =&gt; 340,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="36">
+          
+          
+          <code class="ruby">			 	&#39;readyminutes&#39; =&gt; 50,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="37">
+          
+          
+          <code class="ruby">				&#39;price&#39; =&gt; 3</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="38">
+          
+          
+          <code class="ruby">				},	</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="39">
+          
+          
+          <code class="ruby">				 {&#39;day&#39;=&gt; 1,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="40">
+          
+          
+          <code class="ruby">				 &#39;slot&#39; =&gt; 3,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="41">
+          
+          
+          <code class="ruby">				 &#39;id&#39; =&gt; 123456,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="42">
+          
+          
+          <code class="ruby">				 &#39;title&#39; =&gt; &quot;Mushroom Risotto&quot;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="43">
+          
+          
+          <code class="ruby">				 &#39;calories&#39; =&gt; 200,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="44">
+          
+          
+          <code class="ruby">				 &#39;readyminutes&#39; =&gt; 75,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="45">
+          
+          
+          <code class="ruby">				 &#39;price&#39; =&gt; 8	</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="46">
+          
+          
+          <code class="ruby">				 },</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="47">
+          
+          
+          <code class="ruby">				 {&#39;day&#39;=&gt; 2,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="48">
+          
+          
+          <code class="ruby">				 &#39;slot&#39; =&gt; 1,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="49">
+          
+          
+          <code class="ruby">				 &#39;id&#39; =&gt; 123456,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="50">
+          
+          
+          <code class="ruby">				 &#39;title&#39; =&gt; &quot;waffles&quot;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="51">
+          
+          
+          <code class="ruby">				 &#39;calories&#39; =&gt; 200,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="52">
+          
+          
+          <code class="ruby">				 &#39;readyminutes&#39; =&gt; 45,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="53">
+          
+          
+          <code class="ruby">				 &#39;price&#39; =&gt; 8	</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="54">
+          
+          
+          <code class="ruby">				 },</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="55">
+          
+          
+          <code class="ruby">				 {&#39;day&#39;=&gt; 2,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="56">
+          
+          
+          <code class="ruby">				 &#39;slot&#39; =&gt; 2,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="57">
+          
+          
+          <code class="ruby">				 &#39;id&#39; =&gt; 123456,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="58">
+          
+          
+          <code class="ruby">				 &#39;title&#39; =&gt; &quot;salad&quot;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="59">
+          
+          
+          <code class="ruby">				 &#39;calories&#39; =&gt; 200,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="60">
+          
+          
+          <code class="ruby">				 &#39;readyminutes&#39; =&gt; 45,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="61">
+          
+          
+          <code class="ruby">				 &#39;price&#39; =&gt; 8	</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="62">
+          
+          
+          <code class="ruby">				 },</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="63">
+          
+          
+          <code class="ruby">				 {&#39;day&#39;=&gt; 2,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="64">
+          
+          
+          <code class="ruby">				 &#39;slot&#39; =&gt; 3,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="65">
+          
+          
+          <code class="ruby">				 &#39;id&#39; =&gt; 123456,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="66">
+          
+          
+          <code class="ruby">				 &#39;title&#39; =&gt; &quot;burrito&quot;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="67">
+          
+          
+          <code class="ruby">				 &#39;calories&#39; =&gt; 200,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="68">
+          
+          
+          <code class="ruby">				 &#39;readyminutes&#39; =&gt; 45,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="69">
+          
+          
+          <code class="ruby">				 &#39;price&#39; =&gt; 8	</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="70">
+          
+          
+          <code class="ruby">				 },</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="71">
+          
+          
+          <code class="ruby">				 {&#39;day&#39;=&gt; 3,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="72">
+          
+          
+          <code class="ruby">				 &#39;slot&#39; =&gt; 1,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="73">
+          
+          
+          <code class="ruby">				 &#39;id&#39; =&gt; 123456,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="74">
+          
+          
+          <code class="ruby">				 &#39;title&#39; =&gt; &quot;grapes&quot;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="75">
+          
+          
+          <code class="ruby">				 &#39;calories&#39; =&gt; 200,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="76">
+          
+          
+          <code class="ruby">				 &#39;readyminutes&#39; =&gt; 45,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="77">
+          
+          
+          <code class="ruby">				 &#39;price&#39; =&gt; 8</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="78">
+          
+          
+          <code class="ruby">				 },</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="79">
+          
+          
+          <code class="ruby">				 {&#39;day&#39;=&gt; 3,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="80">
+          
+          
+          <code class="ruby">				 &#39;slot&#39; =&gt; 2,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="81">
+          
+          
+          <code class="ruby">				 &#39;id&#39; =&gt; 123456,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="82">
+          
+          
+          <code class="ruby">				 &#39;title&#39; =&gt; &quot;cherries&quot;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="83">
+          
+          
+          <code class="ruby">				 &#39;calories&#39; =&gt; 200,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="84">
+          
+          
+          <code class="ruby">				 &#39;readyminutes&#39; =&gt; 45,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="85">
+          
+          
+          <code class="ruby">				 &#39;price&#39; =&gt; 8	</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="86">
+          
+          
+          <code class="ruby">				 },</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="87">
+          
+          
+          <code class="ruby">				 {&#39;day&#39;=&gt; 3,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="88">
+          
+          
+          <code class="ruby">				 &#39;slot&#39; =&gt; 3,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="89">
+          
+          
+          <code class="ruby">				 &#39;id&#39; =&gt; 123456,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="90">
+          
+          
+          <code class="ruby">				 &#39;title&#39; =&gt; &quot;milk&quot;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="91">
+          
+          
+          <code class="ruby">				 &#39;calories&#39; =&gt; 200,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="92">
+          
+          
+          <code class="ruby">				 &#39;readyminutes&#39; =&gt; 45,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="93">
+          
+          
+          <code class="ruby">				 &#39;price&#39; =&gt; 8	</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="94">
+          
+          
+          <code class="ruby">				 }</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="95">
+          
+          
+          <code class="ruby">			]</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="96">
+          
+          
+          <code class="ruby">		}</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="97">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="98">
+          
+          
+          <code class="ruby">		@daily_recipes = Hash.new()</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="99">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="100">
+          
+          
+          <code class="ruby">		# helper: display days instead of indexes</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="101">
+          
+          
+          <code class="ruby">		days = {1 =&gt; &quot;Monday&quot;, 2 =&gt; &quot;Tuesday&quot;, 3 =&gt; &quot;Wednesday&quot;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="102">
+          
+          
+          <code class="ruby">			4 =&gt; &quot;Thursday&quot;, 5 =&gt; &quot;Friday&quot;, 6 =&gt; &quot;Saturday&quot;, 7 =&gt; &quot;Sunday&quot;}</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="103">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="104">
+          
+          
+          <code class="ruby">		@all_recipes[&#39;items&#39;].each do |recipe|</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="105">
+          
+          
+          <code class="ruby">			if !@daily_recipes.key?(recipe[&#39;slot&#39;])</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="106">
+          
+          
+          <code class="ruby">				@daily_recipes[recipe[&#39;slot&#39;]] = Hash.new</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="107">
+          
+          
+          <code class="ruby">			end</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="108">
+          
+          
+          <code class="ruby">			if !@daily_recipes[recipe[&#39;slot&#39;]].key?(days[recipe[&#39;day&#39;]])</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="109">
+          
+          
+          <code class="ruby">				@daily_recipes[recipe[&#39;slot&#39;]][days[recipe[&#39;day&#39;]]] = Hash.new</code>
+        </li>
+      
+        <div class="source_table" id="0cc2c3268456e192a686e5fd19267748d20401cf">
+  <div class="header">
+    <h3>app/controllers/users_controller.rb</h3>
+    <h4><span class="red">73.68 %</span> covered</h4>
+    <div>
+      <b>38</b> relevant lines. 
+      <span class="green"><b>28</b> lines covered</span> and
+      <span class="red"><b>10</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="never" data-hits="" data-linenumber="111">
+          
+          
+          <code class="ruby">		end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="112">
+          
+          
+          <code class="ruby">		end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="113">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="114">
+          
+          
+          <code class="ruby">		@day = &quot;Monday&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="115">
+          
+          
+          <code class="ruby">		# return recipes for Monday (eventually second index will be replaced with day variable)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="116">
+          
+          
+          <code class="ruby">		@breakHash = @daily_recipes[1][@day]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="117">
+          
+          
+          <code class="ruby">		@breakTitle = @breakHash[&quot;title&quot;]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="118">
+          
+          
+          <code class="ruby">		@breakCals = @breakHash[&quot;calories&quot;]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="119">
+          
+          
+          <code class="ruby">		@breakTime = @breakHash[&quot;readyminutes&quot;]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="120">
+          
+          
+          <code class="ruby">		@breakPrice = @breakHash[&quot;price&quot;]</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="121">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="122">
+          
+          
+          <code class="ruby">		@lunchHash = @daily_recipes[2][@day]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="123">
+          
+          
+          <code class="ruby">		@lunchTitle = @lunchHash[&quot;title&quot;]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="124">
+          
+          
+          <code class="ruby">		@lunchCals = @lunchHash[&quot;calories&quot;]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="125">
+          
+          
+          <code class="ruby">		@lunchTime = @lunchHash[&quot;readyminutes&quot;]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="126">
+          
+          
+          <code class="ruby">		@lunchPrice = @lunchHash[&quot;price&quot;]</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="127">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="128">
+          
+          
+          <code class="ruby">		@dinHash = @daily_recipes[3][@day]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="129">
+          
+          <code class="ruby">		Recipe.find_in_api(@calories, @budget, @time)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="130">
+          
+          
+          <code class="ruby">		@dinCals = @dinHash[&quot;calories&quot;]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="131">
+          
+          
+          <code class="ruby">		@dinTime = @dinHash[&quot;readyminutes&quot;]</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="132">
+          
+          
+          <code class="ruby">		@dinPrice = @dinHash[&quot;price&quot;]</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="133">
+          
+          
+          <code class="ruby">	end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="134">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="135">
+          <span class="hits">1</span>
+          
+          <code class="ruby">	def self.calc_calories(gender, weight, height, age, exercise, goal)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="136">
+          
+          
+          <code class="ruby">		#These calculations require kg and cm.  Will need to add</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="137">
+          
+          
+          <code class="ruby">		#units to the form in the future.</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="138">
+          
+          
+          <code class="ruby">		#Formula found here:</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="139">
           
           
           <code class="ruby">		#https://www.calculator.net/calorie-calculator.html</code>
@@ -643,13 +1334,13 @@
           <code class="ruby">	    if gender == &#39;Male&#39;</code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="27">
+        <li class="covered" data-hits="8" data-linenumber="141">
           <span class="hits">8</span>
           
           <code class="ruby">		    calories = 10*weight + 6.25*height - 5*age + 5</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="28">
+        <li class="never" data-hits="" data-linenumber="142">
           
           
           <code class="ruby">		else</code>
@@ -661,7 +1352,7 @@
           <code class="ruby">			calories = 10*weight + 6.25*height - 5*age - 161</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="30">
+        <li class="never" data-hits="" data-linenumber="144">
           
           
           <code class="ruby">		end</code>
@@ -679,85 +1370,85 @@
           <code class="ruby">			calories *= 1.375</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="33">
+        <li class="covered" data-hits="2" data-linenumber="147">
           <span class="hits">2</span>
           
           <code class="ruby">		elsif exercise == &#39;Moderate&#39;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="34">
+        <li class="covered" data-hits="1" data-linenumber="148">
           <span class="hits">1</span>
           
           <code class="ruby">			calories *= 1.55</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="35">
+        <li class="never" data-hits="" data-linenumber="149">
           
           
           <code class="ruby">		else</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="36">
+        <li class="covered" data-hits="1" data-linenumber="150">
           <span class="hits">1</span>
           
           <code class="ruby">			calories *= 1.725</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="37">
+        <li class="never" data-hits="" data-linenumber="151">
           
           
           <code class="ruby">		end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="38">
+        <li class="never" data-hits="" data-linenumber="152">
           
           
           <code class="ruby">		#If you are sedentary and do not exercise, multiply your </code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="39">
+        <li class="never" data-hits="" data-linenumber="153">
           
           
           <code class="ruby">		#BMR by 1.2. If you exercise lightly one to three times </code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="40">
+        <li class="never" data-hits="" data-linenumber="154">
           
           
           <code class="ruby">		#per week, multiply by 1.375. If you exercise three to </code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="41">
+        <li class="never" data-hits="" data-linenumber="155">
           
           
           <code class="ruby">		#five days per week, multiply by 1.55. For exercise six </code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="42">
+        <li class="never" data-hits="" data-linenumber="156">
           
           
           <code class="ruby">		#or seven days per week, multiply by 1.725; if you exercise </code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="43">
+        <li class="never" data-hits="" data-linenumber="157">
           
           
           <code class="ruby">		#seven days a week and also have a physically demanding job, </code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="44">
+        <li class="never" data-hits="" data-linenumber="158">
           
           
           <code class="ruby">		#multiply by 1.9.</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="45">
+        <li class="never" data-hits="" data-linenumber="159">
           
           
           <code class="ruby">		#https://www.livestrong.com/article/526442-the-activity-factor-for-calculating-calories-burned/</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="46">
+        <li class="never" data-hits="" data-linenumber="160">
           
           
           <code class="ruby"></code>
@@ -769,7 +1460,7 @@
           <code class="ruby">		if goal == &#39;Gain&#39;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="48">
+        <li class="covered" data-hits="1" data-linenumber="162">
           <span class="hits">1</span>
           
           <code class="ruby">			calories += 500</code>
@@ -781,13 +1472,13 @@
           <code class="ruby">		elsif goal == &#39;Lose&#39;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="50">
+        <li class="covered" data-hits="1" data-linenumber="164">
           <span class="hits">1</span>
           
           <code class="ruby">			calories -= 500</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="51">
+        <li class="never" data-hits="" data-linenumber="165">
           
           
           <code class="ruby">		end</code>
@@ -799,97 +1490,97 @@
           <code class="ruby">		return calories</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="53">
+        <li class="never" data-hits="" data-linenumber="167">
           
           
           <code class="ruby">	end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="54">
+        <li class="never" data-hits="" data-linenumber="168">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="55">
+        <li class="covered" data-hits="1" data-linenumber="169">
           <span class="hits">1</span>
           
           <code class="ruby">	def update</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="56">
+        <li class="never" data-hits="" data-linenumber="170">
           
           
           <code class="ruby">		#save form data for user</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="57">
+        <li class="missed" data-hits="0" data-linenumber="171">
           
           
           <code class="ruby">		current_user.age = params[:age].to_i</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="58">
+        <li class="missed" data-hits="0" data-linenumber="172">
           
           
           <code class="ruby">		current_user.weight = params[:weight].to_i</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="59">
+        <li class="missed" data-hits="0" data-linenumber="173">
           
           
           <code class="ruby">		current_user.height = params[:height].to_i</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="60">
+        <li class="missed" data-hits="0" data-linenumber="174">
           
           
           <code class="ruby">		current_user.budget = params[:budget].to_i</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="61">
+        <li class="missed" data-hits="0" data-linenumber="175">
           
           
           <code class="ruby">		current_user.time = params[:time].to_i</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="62">
+        <li class="missed" data-hits="0" data-linenumber="176">
           
           
           <code class="ruby">		current_user.gender = params[:gender]</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="63">
+        <li class="missed" data-hits="0" data-linenumber="177">
           
           
           <code class="ruby">		current_user.exercise = params[:exercise]</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="64">
+        <li class="missed" data-hits="0" data-linenumber="178">
           
           
           <code class="ruby">		current_user.cuisine = params[:cuisine][&quot;cuisine&quot;]</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="65">
+        <li class="missed" data-hits="0" data-linenumber="179">
           
           
           <code class="ruby">		current_user.save!</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="66">
+        <li class="missed" data-hits="0" data-linenumber="180">
           
           
           <code class="ruby">		redirect_to show_path</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="67">
+        <li class="never" data-hits="" data-linenumber="181">
           
           
           <code class="ruby">	end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="68">
+        <li class="never" data-hits="" data-linenumber="182">
           
           
           <code class="ruby">end</code>
@@ -1779,7 +2470,7 @@
   </pre>
 </div>
 
-      
+
         <div class="source_table" id="05014e5e243f1708715cbd555bd9055b8aea1554">
   <div class="header">
     <h3>config/initializers/assets.rb</h3>
@@ -1864,7 +2555,7 @@
   </pre>
 </div>
 
-      
+
         <div class="source_table" id="724022a5d6df787bc4195c588da671eca13a57a1">
   <div class="header">
     <h3>config/initializers/backtrace_silencers.rb</h3>
@@ -4194,8 +4885,6 @@
     </ol>
   </pre>
 </div>
-
-      
         <div class="source_table" id="9654707db51594960851c24ce522688e92a300bb">
   <div class="header">
     <h3>config/routes.rb</h3>
@@ -4804,7 +5493,7 @@
   </pre>
 </div>
 
-      
+
         <div class="source_table" id="1eb01d5a4235e99ce204aa98ebb54d5292f11e54">
   <div class="header">
     <h3>spec/recipe_spec.rb</h3>
@@ -5085,32 +5774,32 @@
           <code class="ruby">describe UsersController, :type =&gt; :controller do</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="4">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="4">
           
-          <code class="ruby">    it &quot;calls the model method that performs spoonacular search&quot; do</code>
+          
+          <code class="ruby">    #it &quot;calls the model method that performs spoonacular search&quot; do</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="5">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="5">
           
-          <code class="ruby">        user = create(:user)</code>
+          
+          <code class="ruby">    #    user = create(:user)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="6">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="6">
+          
           
           <code class="ruby">        allow(controller).to receive(:current_user).and_return(user)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="7">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="7">
+          
           
           <code class="ruby">        allow(UsersController).to receive(:calc_calories).and_return(2000)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="8">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="8">
+          
           
           <code class="ruby">        expect(Recipe).to receive(:find_in_api).with(2000, 100, 30)</code>
         </li>
@@ -5124,7 +5813,7 @@
         <li class="never" data-hits="" data-linenumber="10">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">    #end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="11">

@@ -15,7 +15,122 @@ class UsersController < ApplicationController
 	    @time = current_user.time
 	    @cuisine = current_user.cuisine
 		@calories = self.class.calc_calories(@gender, @weight, @height, @age, @exercise, @goal)
-		Recipe.find_in_api(@calories, @budget, @time)
+
+		# @all_recipes = Recipe.find_in_api(@calories, @budget, @time)
+		
+
+		@all_recipes = {'items' => 
+				[
+				{'day' => 1,
+			 	'slot' => 1,
+			 	'id' => 123456,
+			 	'title' => "Eggs Benedict",
+			 	'calories' => 200,
+			 	'readyminutes' => 45,
+				 'price' => 2
+				 },	
+				{'day' => 1,
+			 	'slot' => 2,
+			 	'id' => 123456,
+			 	'title' => "Sweet & Sour Soup",
+			 	'calories' => 340,
+			 	'readyminutes' => 50,
+				'price' => 3
+				},	
+				 {'day'=> 1,
+				 'slot' => 3,
+				 'id' => 123456,
+				 'title' => "Mushroom Risotto",
+				 'calories' => 200,
+				 'readyminutes' => 75,
+				 'price' => 8	
+				 },
+				 {'day'=> 2,
+				 'slot' => 1,
+				 'id' => 123456,
+				 'title' => "waffles",
+				 'calories' => 200,
+				 'readyminutes' => 45,
+				 'price' => 8	
+				 },
+				 {'day'=> 2,
+				 'slot' => 2,
+				 'id' => 123456,
+				 'title' => "salad",
+				 'calories' => 200,
+				 'readyminutes' => 45,
+				 'price' => 8	
+				 },
+				 {'day'=> 2,
+				 'slot' => 3,
+				 'id' => 123456,
+				 'title' => "burrito",
+				 'calories' => 200,
+				 'readyminutes' => 45,
+				 'price' => 8	
+				 },
+				 {'day'=> 3,
+				 'slot' => 1,
+				 'id' => 123456,
+				 'title' => "grapes",
+				 'calories' => 200,
+				 'readyminutes' => 45,
+				 'price' => 8
+				 },
+				 {'day'=> 3,
+				 'slot' => 2,
+				 'id' => 123456,
+				 'title' => "cherries",
+				 'calories' => 200,
+				 'readyminutes' => 45,
+				 'price' => 8	
+				 },
+				 {'day'=> 3,
+				 'slot' => 3,
+				 'id' => 123456,
+				 'title' => "milk",
+				 'calories' => 200,
+				 'readyminutes' => 45,
+				 'price' => 8	
+				 }
+			]
+		}
+
+		@daily_recipes = Hash.new()
+
+		# helper: display days instead of indexes
+		days = {1 => "Monday", 2 => "Tuesday", 3 => "Wednesday",
+			4 => "Thursday", 5 => "Friday", 6 => "Saturday", 7 => "Sunday"}
+
+		@all_recipes['items'].each do |recipe|
+			if !@daily_recipes.key?(recipe['slot'])
+				@daily_recipes[recipe['slot']] = Hash.new
+			end
+			if !@daily_recipes[recipe['slot']].key?(days[recipe['day']])
+				@daily_recipes[recipe['slot']][days[recipe['day']]] = Hash.new
+			@daily_recipes[recipe['slot']][days[recipe['day']]] = recipe
+		end
+		end
+
+		@day = "Monday"
+		# return recipes for Monday (eventually second index will be replaced with day variable)
+		@breakHash = @daily_recipes[1][@day]
+		@breakTitle = @breakHash["title"]
+		@breakCals = @breakHash["calories"]
+		@breakTime = @breakHash["readyminutes"]
+		@breakPrice = @breakHash["price"]
+
+		@lunchHash = @daily_recipes[2][@day]
+		@lunchTitle = @lunchHash["title"]
+		@lunchCals = @lunchHash["calories"]
+		@lunchTime = @lunchHash["readyminutes"]
+		@lunchPrice = @lunchHash["price"]
+
+		@dinHash = @daily_recipes[3][@day]
+		@dinTitle = @dinHash["title"]
+		@dinCals = @dinHash["calories"]
+		@dinTime = @dinHash["readyminutes"]
+		@dinPrice = @dinHash["price"]
 	end
 
 	def self.calc_calories(gender, weight, height, age, exercise, goal)
