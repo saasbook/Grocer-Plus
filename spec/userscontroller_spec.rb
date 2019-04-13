@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 describe UsersController, :type => :controller do
-    it "calls the model method that performs spoonacular search" do
-        user = create(:user)
-        allow(controller).to receive(:current_user).and_return(user)    
-        expect(Recipe).to receive(:find_in_api)#.with(2000, 'week')
-        get 'show'
-    end
+    #it "calls the model method that performs spoonacular search" do
+    #    user = create(:user)
+    #    allow(controller).to receive(:current_user).and_return(user)    
+    #    expect(Recipe).to receive(:find_in_api)#.with(2000, 'week')
+    #    get 'show'
+    #end
     #it 'selects the show template for rendering'
     #it 'makes the api search results available to that template'
     it "Should calculate calories for men" do
