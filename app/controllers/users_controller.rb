@@ -15,8 +15,9 @@ class UsersController < ApplicationController
 	    @time = current_user.time
 	    @cuisine = current_user.cuisine
 		@calories = self.class.calc_calories(@gender, @weight, @height, @age, @exercise, @goal)
+
+		# @all_recipes = Recipe.find_in_api(@calories, @budget, @time)
 		
-		# @all_recipes = Recipe.find_in_api
 
 		@all_recipes = {'items' => 
 				[

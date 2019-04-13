@@ -6,6 +6,10 @@ FactoryGirl.define do
         weight 1
         exercise "Light"
         age 12
-
+        gender "male"
+        goal "gain"
+        budget 100
+        time 30
+        cuisine "spicy"
     end
 end
