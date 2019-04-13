@@ -3,8 +3,9 @@ require 'rails_helper'
 describe UsersController, :type => :controller do
     it "calls the model method that performs spoonacular search" do
         user = create(:user)
-        allow(controller).to receive(:current_user).and_return(user)    
-        expect(Recipe).to receive(:find_in_api)#.with(2000, 'week')
+        allow(controller).to receive(:current_user).and_return(user)
+        allow(UsersController).to receive(:calc_calories).and_return(2000)
+        expect(Recipe).to receive(:find_in_api).with(2000, 100, 30)
         get 'show'
     end
     #it 'selects the show template for rendering'
