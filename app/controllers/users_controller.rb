@@ -14,10 +14,7 @@ class UsersController < ApplicationController
 	    @budget = current_user.budget
 	    @time = current_user.time
 	    @cuisine = current_user.cuisine
-		@calories = self.class.calc_calories(@gender, @weight, @height, @age, @exercise, @goal)
-
-		# @all_recipes = Recipe.find_in_api(@calories, @budget, @time)
-		
+		@calories = self.class.calc_calories(@gender, @weight, @height, @age, @exercise, @goal).round(0)
 
 		@all_recipes = {'items' => 
 				[
@@ -95,6 +92,7 @@ class UsersController < ApplicationController
 				 }
 			]
 		}
+		@all_recipes = Recipe.find_in_api(@calories, @budget, @time)
 
 		@daily_recipes = Hash.new()
 
@@ -118,19 +116,19 @@ class UsersController < ApplicationController
 		@breakTitle = @breakHash["title"]
 		@breakCals = @breakHash["calories"]
 		@breakTime = @breakHash["readyminutes"]
-		@breakPrice = @breakHash["price"]
+		@breakPrice = (@breakHash["price"] / 100).round(2)
 
 		@lunchHash = @daily_recipes[2][@day]
 		@lunchTitle = @lunchHash["title"]
 		@lunchCals = @lunchHash["calories"]
 		@lunchTime = @lunchHash["readyminutes"]
-		@lunchPrice = @lunchHash["price"]
+		@lunchPrice = (@lunchHash["price"] / 100).round(2)
 
 		@dinHash = @daily_recipes[3][@day]
 		@dinTitle = @dinHash["title"]
 		@dinCals = @dinHash["calories"]
 		@dinTime = @dinHash["readyminutes"]
-		@dinPrice = @dinHash["price"]
+		@dinPrice = (@dinHash["price"] / 100).round(2)
 	end
 
 	def self.calc_calories(gender, weight, height, age, exercise, goal)
