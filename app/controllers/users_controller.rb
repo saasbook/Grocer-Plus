@@ -14,9 +14,7 @@ class UsersController < ApplicationController
 	    @budget = current_user.budget
 	    @time = current_user.time
 	    @cuisine = current_user.cuisine
-		@calories = self.class.calc_calories(@gender, @weight, @height, @age, @exercise, @goal)
-		
-		# @all_recipes = Recipe.find_in_api
+		@calories = self.class.calc_calories(@gender, @weight, @height, @age, @exercise, @goal).round(0)
 
 		@all_recipes = {'items' => 
 				[
@@ -25,7 +23,7 @@ class UsersController < ApplicationController
 			 	'id' => 123456,
 			 	'title' => "Eggs Benedict",
 			 	'calories' => 200,
-			 	'readyminutes' => 45,
+			 	'readyInMinutes' => 45,
 				 'price' => 2
 				 },	
 				{'day' => 1,
@@ -33,7 +31,7 @@ class UsersController < ApplicationController
 			 	'id' => 123456,
 			 	'title' => "Sweet & Sour Soup",
 			 	'calories' => 340,
-			 	'readyminutes' => 50,
+			 	'readyInMinutes' => 50,
 				'price' => 3
 				},	
 				 {'day'=> 1,
@@ -41,7 +39,7 @@ class UsersController < ApplicationController
 				 'id' => 123456,
 				 'title' => "Mushroom Risotto",
 				 'calories' => 200,
-				 'readyminutes' => 75,
+				 'readyInMinutes' => 75,
 				 'price' => 8	
 				 },
 				 {'day'=> 2,
@@ -49,7 +47,7 @@ class UsersController < ApplicationController
 				 'id' => 123456,
 				 'title' => "waffles",
 				 'calories' => 200,
-				 'readyminutes' => 45,
+				 'readyInMinutes' => 45,
 				 'price' => 8	
 				 },
 				 {'day'=> 2,
@@ -57,7 +55,7 @@ class UsersController < ApplicationController
 				 'id' => 123456,
 				 'title' => "salad",
 				 'calories' => 200,
-				 'readyminutes' => 45,
+				 'readyInMinutes' => 45,
 				 'price' => 8	
 				 },
 				 {'day'=> 2,
@@ -65,7 +63,7 @@ class UsersController < ApplicationController
 				 'id' => 123456,
 				 'title' => "burrito",
 				 'calories' => 200,
-				 'readyminutes' => 45,
+				 'readyInMinutes' => 45,
 				 'price' => 8	
 				 },
 				 {'day'=> 3,
@@ -73,7 +71,7 @@ class UsersController < ApplicationController
 				 'id' => 123456,
 				 'title' => "grapes",
 				 'calories' => 200,
-				 'readyminutes' => 45,
+				 'readyInMinutes' => 45,
 				 'price' => 8
 				 },
 				 {'day'=> 3,
@@ -81,7 +79,7 @@ class UsersController < ApplicationController
 				 'id' => 123456,
 				 'title' => "cherries",
 				 'calories' => 200,
-				 'readyminutes' => 45,
+				 'readyInMinutes' => 45,
 				 'price' => 8	
 				 },
 				 {'day'=> 3,
@@ -89,11 +87,12 @@ class UsersController < ApplicationController
 				 'id' => 123456,
 				 'title' => "milk",
 				 'calories' => 200,
-				 'readyminutes' => 45,
+				 'readyInMinutes' => 45,
 				 'price' => 8	
 				 }
 			]
 		}
+		@all_recipes = Recipe.find_in_api(@calories, @budget, @time)
 
 		@daily_recipes = Hash.new()
 
@@ -116,20 +115,20 @@ class UsersController < ApplicationController
 		@breakHash = @daily_recipes[1][@day]
 		@breakTitle = @breakHash["title"]
 		@breakCals = @breakHash["calories"]
-		@breakTime = @breakHash["readyminutes"]
-		@breakPrice = @breakHash["price"]
+		@breakTime = @breakHash["readyInMinutes"]
+		@breakPrice = (@breakHash["price"] / 100).round(2)
 
 		@lunchHash = @daily_recipes[2][@day]
 		@lunchTitle = @lunchHash["title"]
 		@lunchCals = @lunchHash["calories"]
-		@lunchTime = @lunchHash["readyminutes"]
-		@lunchPrice = @lunchHash["price"]
+		@lunchTime = @lunchHash["readyInMinutes"]
+		@lunchPrice = (@lunchHash["price"] / 100).round(2)
 
 		@dinHash = @daily_recipes[3][@day]
 		@dinTitle = @dinHash["title"]
 		@dinCals = @dinHash["calories"]
-		@dinTime = @dinHash["readyminutes"]
-		@dinPrice = @dinHash["price"]
+		@dinTime = @dinHash["readyInMinutes"]
+		@dinPrice = (@dinHash["price"] / 100).round(2)
 	end
 
 	def self.calc_calories(gender, weight, height, age, exercise, goal)
