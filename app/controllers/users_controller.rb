@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 			 	'id' => 123456,
 			 	'title' => "Eggs Benedict",
 			 	'calories' => 200,
-			 	'readyminutes' => 45,
+			 	'readyInMinutes' => 45,
 				 'price' => 2
 				 },	
 				{'day' => 1,
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 			 	'id' => 123456,
 			 	'title' => "Sweet & Sour Soup",
 			 	'calories' => 340,
-			 	'readyminutes' => 50,
+			 	'readyInMinutes' => 50,
 				'price' => 3
 				},	
 				 {'day'=> 1,
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
 				 'id' => 123456,
 				 'title' => "Mushroom Risotto",
 				 'calories' => 200,
-				 'readyminutes' => 75,
+				 'readyInMinutes' => 75,
 				 'price' => 8	
 				 },
 				 {'day'=> 2,
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
 				 'id' => 123456,
 				 'title' => "waffles",
 				 'calories' => 200,
-				 'readyminutes' => 45,
+				 'readyInMinutes' => 45,
 				 'price' => 8	
 				 },
 				 {'day'=> 2,
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
 				 'id' => 123456,
 				 'title' => "salad",
 				 'calories' => 200,
-				 'readyminutes' => 45,
+				 'readyInMinutes' => 45,
 				 'price' => 8	
 				 },
 				 {'day'=> 2,
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
 				 'id' => 123456,
 				 'title' => "burrito",
 				 'calories' => 200,
-				 'readyminutes' => 45,
+				 'readyInMinutes' => 45,
 				 'price' => 8	
 				 },
 				 {'day'=> 3,
@@ -71,7 +71,7 @@ class UsersController < ApplicationController
 				 'id' => 123456,
 				 'title' => "grapes",
 				 'calories' => 200,
-				 'readyminutes' => 45,
+				 'readyInMinutes' => 45,
 				 'price' => 8
 				 },
 				 {'day'=> 3,
@@ -79,7 +79,7 @@ class UsersController < ApplicationController
 				 'id' => 123456,
 				 'title' => "cherries",
 				 'calories' => 200,
-				 'readyminutes' => 45,
+				 'readyInMinutes' => 45,
 				 'price' => 8	
 				 },
 				 {'day'=> 3,
@@ -87,7 +87,7 @@ class UsersController < ApplicationController
 				 'id' => 123456,
 				 'title' => "milk",
 				 'calories' => 200,
-				 'readyminutes' => 45,
+				 'readyInMinutes' => 45,
 				 'price' => 8	
 				 }
 			]
@@ -115,19 +115,19 @@ class UsersController < ApplicationController
 		@breakHash = @daily_recipes[1][@day]
 		@breakTitle = @breakHash["title"]
 		@breakCals = @breakHash["calories"]
-		@breakTime = @breakHash["readyminutes"]
+		@breakTime = @breakHash["readyInMinutes"]
 		@breakPrice = (@breakHash["price"] / 100).round(2)
 
 		@lunchHash = @daily_recipes[2][@day]
 		@lunchTitle = @lunchHash["title"]
 		@lunchCals = @lunchHash["calories"]
-		@lunchTime = @lunchHash["readyminutes"]
+		@lunchTime = @lunchHash["readyInMinutes"]
 		@lunchPrice = (@lunchHash["price"] / 100).round(2)
 
 		@dinHash = @daily_recipes[3][@day]
 		@dinTitle = @dinHash["title"]
 		@dinCals = @dinHash["calories"]
-		@dinTime = @dinHash["readyminutes"]
+		@dinTime = @dinHash["readyInMinutes"]
 		@dinPrice = (@dinHash["price"] / 100).round(2)
 	end
 
