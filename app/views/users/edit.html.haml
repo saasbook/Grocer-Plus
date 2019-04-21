@@ -3,7 +3,7 @@
 = form_tag edit_path, :class => '' do
 
   = label_tag(:age, 'Age')
-  = number_field_tag :age, 'age', class: ""
+  = number_field_tag :age, 'age', min: 1, required: true
 
   = label_tag :gender, 'Gender'
   = radio_button_tag :gender, 'Male', class: "form-check input"
@@ -12,10 +12,10 @@
   = label_tag :gender, 'Female'
 
   = label_tag(:weight, 'Weight')
-  = number_field_tag(:weight, 'weight')
+  = number_field_tag(:weight, 'weight', min: 1, required: true)
 
   = label_tag(:height, 'Height')
-  = number_field_tag(:height, 'height')
+  = number_field_tag(:height, 'height', min: 1, required: true)
 
   = label_tag(:exercise, 'Exercise Level')
   = select_tag(:exercise, options_for_select(["Light", "Moderate", "Heavy"]))
@@ -24,10 +24,10 @@
   = select_tag(:goal, options_for_select(["Gain", "Maintain", "Lose"]))
 
   = label_tag(:budget, 'Weekly Grocery Budget')
-  = number_field_tag(:budget, 'budget')
+  = number_field_tag(:budget, 'budget', min: 1, required: true)
 
   = label_tag(:time, 'Time available to cook per day')
-  = number_field_tag(:time, 'time')
+  = number_field_tag(:time, 'time', min: 1, required: true)
 
   = label_tag(:cuisine, 'Cuisine Preferences')
   = text_field(:cuisine, 'cuisine')
