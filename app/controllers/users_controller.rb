@@ -142,6 +142,7 @@ class UsersController < ApplicationController
 		#units to the form in the future.
 		#Formula found here:
 		#https://www.calculator.net/calorie-calculator.html
+		weight = weight * 0.453592
 	    if gender == 'Male'
 		    calories = 10*weight + 6.25*height - 5*age + 5
 		else
