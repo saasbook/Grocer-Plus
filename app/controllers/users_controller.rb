@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 		@age = current_user.age
 	    @gender = current_user.gender
 	    @weight = current_user.weight
-	    @height = current_user.height
+	    @height = self.class.ft_to_inches(current_user.height)
 	    @exercise = current_user.exercise
 	    @goal = current_user.goal
 	    @budget = current_user.budget
@@ -131,6 +131,12 @@ class UsersController < ApplicationController
 		@dinPrice = (@dinHash["price"] / 100).round(2)
 	end
 
+	def self.ft_to_inches(height)
+		ints = height
+		inches = 12*ints[0].to_i + ints[2].to_i
+		return inches
+	end
+
 	def self.calc_calories(gender, weight, height, age, exercise, goal)
 		#These calculations require kg and cm.  Will need to add
 		#units to the form in the future.
@@ -169,7 +175,7 @@ class UsersController < ApplicationController
 		#save form data for user
 		current_user.age = params[:age].to_i
 		current_user.weight = params[:weight].to_i
-		current_user.height = params[:height].to_i
+		current_user.height = self.class.ft_to_inches(params[:height])
 		current_user.budget = params[:budget].to_i
 		current_user.time = params[:time].to_i
 		current_user.gender = params[:gender]
