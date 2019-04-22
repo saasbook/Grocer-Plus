@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 		@age = current_user.age
 	    @gender = current_user.gender
 	    @weight = current_user.weight
-	    @height = current_user.height
+	    @height = current_user.height * 2.54
 	    @exercise = current_user.exercise
 	    @goal = current_user.goal
 	    @budget = current_user.budget
@@ -16,84 +16,84 @@ class UsersController < ApplicationController
 	    @cuisine = current_user.cuisine
 		@calories = self.class.calc_calories(@gender, @weight, @height, @age, @exercise, @goal).round(0)
 
-		# @all_recipes = {'items' => 
-		# 		[
-		# 		{'day' => 1,
-		# 	 	'slot' => 1,
-		# 	 	'id' => 123456,
-		# 	 	'title' => "Eggs Benedict",
-		# 	 	'calories' => 200,
-		# 	 	'readyInMinutes' => 45,
-		# 		 'price' => 2
-		# 		 },	
-		# 		{'day' => 1,
-		# 	 	'slot' => 2,
-		# 	 	'id' => 123456,
-		# 	 	'title' => "Sweet & Sour Soup",
-		# 	 	'calories' => 340,
-		# 	 	'readyInMinutes' => 50,
-		# 		'price' => 3
-		# 		},	
-		# 		 {'day'=> 1,
-		# 		 'slot' => 3,
-		# 		 'id' => 123456,
-		# 		 'title' => "Mushroom Risotto",
-		# 		 'calories' => 200,
-		# 		 'readyInMinutes' => 75,
-		# 		 'price' => 8	
-		# 		 },
-		# 		 {'day'=> 2,
-		# 		 'slot' => 1,
-		# 		 'id' => 123456,
-		# 		 'title' => "waffles",
-		# 		 'calories' => 200,
-		# 		 'readyInMinutes' => 45,
-		# 		 'price' => 8	
-		# 		 },
-		# 		 {'day'=> 2,
-		# 		 'slot' => 2,
-		# 		 'id' => 123456,
-		# 		 'title' => "salad",
-		# 		 'calories' => 200,
-		# 		 'readyInMinutes' => 45,
-		# 		 'price' => 8	
-		# 		 },
-		# 		 {'day'=> 2,
-		# 		 'slot' => 3,
-		# 		 'id' => 123456,
-		# 		 'title' => "burrito",
-		# 		 'calories' => 200,
-		# 		 'readyInMinutes' => 45,
-		# 		 'price' => 8	
-		# 		 },
-		# 		 {'day'=> 3,
-		# 		 'slot' => 1,
-		# 		 'id' => 123456,
-		# 		 'title' => "grapes",
-		# 		 'calories' => 200,
-		# 		 'readyInMinutes' => 45,
-		# 		 'price' => 8
-		# 		 },
-		# 		 {'day'=> 3,
-		# 		 'slot' => 2,
-		# 		 'id' => 123456,
-		# 		 'title' => "cherries",
-		# 		 'calories' => 200,
-		# 		 'readyInMinutes' => 45,
-		# 		 'price' => 8	
-		# 		 },
-		# 		 {'day'=> 3,
-		# 		 'slot' => 3,
-		# 		 'id' => 123456,
-		# 		 'title' => "milk",
-		# 		 'calories' => 200,
-		# 		 'readyInMinutes' => 45,
-		# 		 'price' => 8	
-		# 		 }
-		# 	]
-		# }
-		
-		@all_recipes = Recipe.find_in_api(@calories, @budget, @time)
+		@all_recipes = {'items' => 
+				[
+				{'day' => 1,
+			 	'slot' => 1,
+			 	'id' => 123456,
+			 	'title' => "Eggs Benedict",
+			 	'calories' => 200,
+			 	'readyInMinutes' => 45,
+				 'price' => 2
+				 },	
+				{'day' => 1,
+			 	'slot' => 2,
+			 	'id' => 123456,
+			 	'title' => "Sweet & Sour Soup",
+			 	'calories' => 340,
+			 	'readyInMinutes' => 50,
+				'price' => 3
+				},	
+				 {'day'=> 1,
+				 'slot' => 3,
+				 'id' => 123456,
+				 'title' => "Mushroom Risotto",
+				 'calories' => 200,
+				 'readyInMinutes' => 75,
+				 'price' => 8	
+				 },
+				 {'day'=> 2,
+				 'slot' => 1,
+				 'id' => 123456,
+				 'title' => "waffles",
+				 'calories' => 200,
+				 'readyInMinutes' => 45,
+				 'price' => 8	
+				 },
+				 {'day'=> 2,
+				 'slot' => 2,
+				 'id' => 123456,
+				 'title' => "salad",
+				 'calories' => 200,
+				 'readyInMinutes' => 45,
+				 'price' => 8	
+				 },
+				 {'day'=> 2,
+				 'slot' => 3,
+				 'id' => 123456,
+				 'title' => "burrito",
+				 'calories' => 200,
+				 'readyInMinutes' => 45,
+				 'price' => 8	
+				 },
+				 {'day'=> 3,
+				 'slot' => 1,
+				 'id' => 123456,
+				 'title' => "grapes",
+				 'calories' => 200,
+				 'readyInMinutes' => 45,
+				 'price' => 8
+				 },
+				 {'day'=> 3,
+				 'slot' => 2,
+				 'id' => 123456,
+				 'title' => "cherries",
+				 'calories' => 200,
+				 'readyInMinutes' => 45,
+				 'price' => 8	
+				 },
+				 {'day'=> 3,
+				 'slot' => 3,
+				 'id' => 123456,
+				 'title' => "milk",
+				 'calories' => 200,
+				 'readyInMinutes' => 45,
+				 'price' => 8	
+				 }
+			]
+		}
+
+		# @all_recipes = Recipe.find_in_api(@calories, @budget, @time)
 
 		@daily_recipes = Hash.new()
 
