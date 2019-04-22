@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 		@age = current_user.age
 	    @gender = current_user.gender
 	    @weight = current_user.weight
-	    @height = self.class.ft_to_inches(current_user.height)
+	    @height = current_user.height
 	    @exercise = current_user.exercise
 	    @goal = current_user.goal
 	    @budget = current_user.budget
@@ -16,82 +16,83 @@ class UsersController < ApplicationController
 	    @cuisine = current_user.cuisine
 		@calories = self.class.calc_calories(@gender, @weight, @height, @age, @exercise, @goal).round(0)
 
-		@all_recipes = {'items' => 
-				[
-				{'day' => 1,
-			 	'slot' => 1,
-			 	'id' => 123456,
-			 	'title' => "Eggs Benedict",
-			 	'calories' => 200,
-			 	'readyInMinutes' => 45,
-				 'price' => 2
-				 },	
-				{'day' => 1,
-			 	'slot' => 2,
-			 	'id' => 123456,
-			 	'title' => "Sweet & Sour Soup",
-			 	'calories' => 340,
-			 	'readyInMinutes' => 50,
-				'price' => 3
-				},	
-				 {'day'=> 1,
-				 'slot' => 3,
-				 'id' => 123456,
-				 'title' => "Mushroom Risotto",
-				 'calories' => 200,
-				 'readyInMinutes' => 75,
-				 'price' => 8	
-				 },
-				 {'day'=> 2,
-				 'slot' => 1,
-				 'id' => 123456,
-				 'title' => "waffles",
-				 'calories' => 200,
-				 'readyInMinutes' => 45,
-				 'price' => 8	
-				 },
-				 {'day'=> 2,
-				 'slot' => 2,
-				 'id' => 123456,
-				 'title' => "salad",
-				 'calories' => 200,
-				 'readyInMinutes' => 45,
-				 'price' => 8	
-				 },
-				 {'day'=> 2,
-				 'slot' => 3,
-				 'id' => 123456,
-				 'title' => "burrito",
-				 'calories' => 200,
-				 'readyInMinutes' => 45,
-				 'price' => 8	
-				 },
-				 {'day'=> 3,
-				 'slot' => 1,
-				 'id' => 123456,
-				 'title' => "grapes",
-				 'calories' => 200,
-				 'readyInMinutes' => 45,
-				 'price' => 8
-				 },
-				 {'day'=> 3,
-				 'slot' => 2,
-				 'id' => 123456,
-				 'title' => "cherries",
-				 'calories' => 200,
-				 'readyInMinutes' => 45,
-				 'price' => 8	
-				 },
-				 {'day'=> 3,
-				 'slot' => 3,
-				 'id' => 123456,
-				 'title' => "milk",
-				 'calories' => 200,
-				 'readyInMinutes' => 45,
-				 'price' => 8	
-				 }
-			]
-		}
+		# @all_recipes = {'items' => 
+		# 		[
+		# 		{'day' => 1,
+		# 	 	'slot' => 1,
+		# 	 	'id' => 123456,
+		# 	 	'title' => "Eggs Benedict",
+		# 	 	'calories' => 200,
+		# 	 	'readyInMinutes' => 45,
+		# 		 'price' => 2
+		# 		 },	
+		# 		{'day' => 1,
+		# 	 	'slot' => 2,
+		# 	 	'id' => 123456,
+		# 	 	'title' => "Sweet & Sour Soup",
+		# 	 	'calories' => 340,
+		# 	 	'readyInMinutes' => 50,
+		# 		'price' => 3
+		# 		},	
+		# 		 {'day'=> 1,
+		# 		 'slot' => 3,
+		# 		 'id' => 123456,
+		# 		 'title' => "Mushroom Risotto",
+		# 		 'calories' => 200,
+		# 		 'readyInMinutes' => 75,
+		# 		 'price' => 8	
+		# 		 },
+		# 		 {'day'=> 2,
+		# 		 'slot' => 1,
+		# 		 'id' => 123456,
+		# 		 'title' => "waffles",
+		# 		 'calories' => 200,
+		# 		 'readyInMinutes' => 45,
+		# 		 'price' => 8	
+		# 		 },
+		# 		 {'day'=> 2,
+		# 		 'slot' => 2,
+		# 		 'id' => 123456,
+		# 		 'title' => "salad",
+		# 		 'calories' => 200,
+		# 		 'readyInMinutes' => 45,
+		# 		 'price' => 8	
+		# 		 },
+		# 		 {'day'=> 2,
+		# 		 'slot' => 3,
+		# 		 'id' => 123456,
+		# 		 'title' => "burrito",
+		# 		 'calories' => 200,
+		# 		 'readyInMinutes' => 45,
+		# 		 'price' => 8	
+		# 		 },
+		# 		 {'day'=> 3,
+		# 		 'slot' => 1,
+		# 		 'id' => 123456,
+		# 		 'title' => "grapes",
+		# 		 'calories' => 200,
+		# 		 'readyInMinutes' => 45,
+		# 		 'price' => 8
+		# 		 },
+		# 		 {'day'=> 3,
+		# 		 'slot' => 2,
+		# 		 'id' => 123456,
+		# 		 'title' => "cherries",
+		# 		 'calories' => 200,
+		# 		 'readyInMinutes' => 45,
+		# 		 'price' => 8	
+		# 		 },
+		# 		 {'day'=> 3,
+		# 		 'slot' => 3,
+		# 		 'id' => 123456,
+		# 		 'title' => "milk",
+		# 		 'calories' => 200,
+		# 		 'readyInMinutes' => 45,
+		# 		 'price' => 8	
+		# 		 }
+		# 	]
+		# }
+		
 		@all_recipes = Recipe.find_in_api(@calories, @budget, @time)
 
 		@daily_recipes = Hash.new()
@@ -129,12 +130,6 @@ class UsersController < ApplicationController
 		@dinCals = @dinHash["calories"]
 		@dinTime = @dinHash["readyInMinutes"]
 		@dinPrice = (@dinHash["price"] / 100).round(2)
-	end
-
-	def self.ft_to_inches(height)
-		ints = height
-		inches = 12*ints[0].to_i + ints[2].to_i
-		return inches
 	end
 
 	def self.calc_calories(gender, weight, height, age, exercise, goal)
@@ -176,7 +171,7 @@ class UsersController < ApplicationController
 		#save form data for user
 		current_user.age = params[:age].to_i
 		current_user.weight = params[:weight].to_i
-		current_user.height = self.class.ft_to_inches(params[:height])
+		current_user.height = params[:height].to_i
 		current_user.budget = params[:budget].to_i
 		current_user.time = params[:time].to_i
 		current_user.gender = params[:gender]
