@@ -3,7 +3,7 @@
 = form_tag edit_path, :class => '' do
 
   = label_tag(:age, 'Age')
-  = number_field_tag :age, 'age', min: 1, required: true
+  = number_field_tag :age, 'age', min: 1, required: true, class: ""
 
   = label_tag :gender, 'Gender'
   = radio_button_tag :gender, 'Male', class: "form-check input"
