@@ -93,22 +93,7 @@ class UsersController < ApplicationController
 			]
 		}
 		@all_recipes = Recipe.find_in_api(@calories, @budget, @time)
-
-		@daily_recipes = Hash.new()
-
-		# helper: display days instead of indexes
-		days = {1 => "Monday", 2 => "Tuesday", 3 => "Wednesday",
-			4 => "Thursday", 5 => "Friday", 6 => "Saturday", 7 => "Sunday"}
-
-		@all_recipes['items'].each do |recipe|
-			if !@daily_recipes.key?(recipe['slot'])
-				@daily_recipes[recipe['slot']] = Hash.new
-			end
-			if !@daily_recipes[recipe['slot']].key?(days[recipe['day']])
-				@daily_recipes[recipe['slot']][days[recipe['day']]] = Hash.new
-			@daily_recipes[recipe['slot']][days[recipe['day']]] = recipe
-		end
-		end
+		@daily_recipes = self.class.do_daily_recipes(@all_recipes)
 
 		@day = "Monday"
 		# return recipes for Monday (eventually second index will be replaced with day variable)
@@ -129,6 +114,25 @@ class UsersController < ApplicationController
 		@dinCals = @dinHash["calories"]
 		@dinTime = @dinHash["readyInMinutes"]
 		@dinPrice = (@dinHash["price"] / 100).round(2)
+	end
+
+	def self.do_daily_recipes(all_recipes)
+		daily_recipes = Hash.new()
+
+		# helper: display days instead of indexes
+		days = {1 => "Monday", 2 => "Tuesday", 3 => "Wednesday",
+			4 => "Thursday", 5 => "Friday", 6 => "Saturday", 7 => "Sunday"}
+
+		all_recipes['items'].each do |recipe|
+			if !daily_recipes.key?(recipe['slot'])
+				daily_recipes[recipe['slot']] = Hash.new
+			end
+			if !daily_recipes[recipe['slot']].key?(days[recipe['day']])
+				daily_recipes[recipe['slot']][days[recipe['day']]] = Hash.new
+				daily_recipes[recipe['slot']][days[recipe['day']]] = recipe
+			end
+		end
+		return daily_recipes
 	end
 
 	def self.calc_calories(gender, weight, height, age, exercise, goal)
