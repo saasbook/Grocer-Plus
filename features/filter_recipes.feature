@@ -42,11 +42,17 @@ Scenario: API call returns 3 dinner recipes
 Scenario: API call returns no breakfast recipes
   When API call returns no breakfast recipes
   Then I should see nothing in breakfast
+  And I should see 3 recipes in lunch
+  And I should see 3 recipes in dinner
 
 Scenario: API call returns no lunch recipes
   When API call returns no lunch recipes
   Then I should see nothing in lunch
+  And I should see 3 recipes in breakfast
+  And I should see 3 recipes in dinner
 
 Scenario: API call returns no dinner recipes
   When API call returns no dinner recipes
   Then I should see nothing in dinner
+  And I should see 3 recipes in breakfast
+  And I should see 3 recipes in lunch
