@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 		@age = current_user.age
 	    @gender = current_user.gender
 	    @weight = current_user.weight
-	    @height = current_user.height
+	    @height = current_user.height * 2.54
 	    @exercise = current_user.exercise
 	    @goal = current_user.goal
 	    @budget = current_user.budget
@@ -92,6 +92,7 @@ class UsersController < ApplicationController
 				 }
 			]
 		}
+
 		@all_recipes = Recipe.find_in_api(@calories, @budget, @time)
 		@daily_recipes = self.class.do_daily_recipes(@all_recipes)
 
@@ -140,6 +141,7 @@ class UsersController < ApplicationController
 		#units to the form in the future.
 		#Formula found here:
 		#https://www.calculator.net/calorie-calculator.html
+		weight = weight * 0.453592
 	    if gender == 'Male'
 		    calories = 10*weight + 6.25*height - 5*age + 5
 		else
