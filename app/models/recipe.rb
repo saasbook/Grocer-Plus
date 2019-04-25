@@ -1,5 +1,8 @@
 require 'net/http'
 class Recipe < ActiveRecord::Base
+
+    has_and_belongs_to_many :users
+
     def self.find_in_api(calories, budget, time)
         base_uri = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
         uri = URI(base_uri + '/recipes/mealplans/generate' + '?timeFrame=week&targetCalories=' + calories.to_s)
