@@ -99,18 +99,21 @@ class UsersController < ApplicationController
 		@day = "Monday"
 		# return recipes for Monday (eventually second index will be replaced with day variable)
 		@breakHash = @daily_recipes[1][@day]
+		@breakImg = @breakHash["image"]
 		@breakTitle = @breakHash["title"]
 		@breakCals = @breakHash["calories"]
 		@breakTime = @breakHash["readyInMinutes"]
 		@breakPrice = (@breakHash["price"] / 100).round(2)
 
 		@lunchHash = @daily_recipes[2][@day]
+		@lunchImg = @lunchHash["image"]
 		@lunchTitle = @lunchHash["title"]
 		@lunchCals = @lunchHash["calories"]
 		@lunchTime = @lunchHash["readyInMinutes"]
 		@lunchPrice = (@lunchHash["price"] / 100).round(2)
 
 		@dinHash = @daily_recipes[3][@day]
+		@dinImg = @dinHash["image"]
 		@dinTitle = @dinHash["title"]
 		@dinCals = @dinHash["calories"]
 		@dinTime = @dinHash["readyInMinutes"]

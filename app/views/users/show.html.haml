@@ -7,17 +7,20 @@
       %h5 Calories: #{@breakCals}
       %h5 Preparation time: #{@breakTime} mins
       %h5 Cost: $#{@breakPrice}
+      %img{:src => @breakImg, :width => "350", :height => "250"}
     %aside.aside.aside-d
       %h3 Lunch - #{@lunchTitle}
       %h5 Calories: #{@lunchCals}
       %h5 Preparation time: #{@lunchTime} mins
       %h5 Cost: $#{@lunchPrice}
+      %img{:src => @lunchImg, :width => "350", :height => "250"}
     %aside.aside.aside-b
       %h3 Dinner - #{@dinTitle}
       %h5 Calories: #{@dinCals}
       %h5 Preparation time: #{@dinTime} mins
       %h5 Cost: $#{@dinPrice}
-    %footer.footer Footer
+      %img{:src => @dinImg, :width => "350", :height => "250"}
+    / %footer.footer Footer
 
 = link_to 'Edit Preferences', edit_path
 
