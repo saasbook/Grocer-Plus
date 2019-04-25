@@ -285,3 +285,15 @@ end
 Then("I should see {string} in dinner") do |string|
 	@daily_recipes.values.should have_content string
 end
+
+Then("I should see {int} recipes in lunch") do |int|
+	@daily_recipes[2].length.should == int
+end
+
+Then("I should see {int} recipes in dinner") do |int|
+	@daily_recipes[3].length.should == int
+end
+
+Then("I should see {int} recipes in breakfast") do |int|
+	@daily_recipes[1].length.should == int
+end
