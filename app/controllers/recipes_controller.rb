@@ -9,4 +9,8 @@ class RecipesController < ApplicationController
     # 	# user will then be redirected to index page
 
     # end
+    def favorite_recipe
+        
+        redirect_to show_path
+    end
 end
