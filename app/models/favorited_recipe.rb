@@ -1,0 +1,2 @@
+class FavoritedRecipe < Recipe
+end

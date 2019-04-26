@@ -184,4 +184,10 @@ class UsersController < ApplicationController
 		current_user.save!
 		redirect_to show_path
 	end
+
+	def favorite_recipe
+		current_user.favorited_recipes.create(:title => params[:title], :calories => params[:calories], :time => params[:time], 
+		:cost => params[:cost])
+		current_user.save!
+	end
 end
