@@ -7,21 +7,21 @@
       %h5 Calories: #{@breakCals}
       %h5 Preparation time: #{@breakTime} mins
       %h5 Cost: $#{@breakPrice}
-      = link_to 'favorite', favorite_recipe_path(:Type => "Breakfast", :Title => @breakTitle, :Calories => @breakCals, :PrepTime => @breakTime, :Cost => @breakPrice)
+      = link_to 'Favorite Breakfast', favorite_recipe_path(:Type => "Breakfast", :Title => @breakTitle, :Calories => @breakCals, :PrepTime => @breakTime, :Cost => @breakPrice)
       
     %aside.aside.aside-d
       %h3 Lunch - #{@lunchTitle}
       %h5 Calories: #{@lunchCals}
       %h5 Preparation time: #{@lunchTime} mins
       %h5 Cost: $#{@lunchPrice}
-      = link_to 'favorite', favorite_recipe_path(:Type => "Lunch", :Title => @lunchTitle, :Calories => @lunchCals, :PrepTime => @lunchTime, :Cost => @lunchPrice)
+      = link_to 'Favorite Lunch', favorite_recipe_path(:Type => "Lunch", :Title => @lunchTitle, :Calories => @lunchCals, :PrepTime => @lunchTime, :Cost => @lunchPrice)
 
     %aside.aside.aside-b
       %h3 Dinner - #{@dinTitle}
       %h5 Calories: #{@dinCals}
       %h5 Preparation time: #{@dinTime} mins
       %h5 Cost: $#{@dinPrice}
-      = link_to 'favorite', favorite_recipe_path(:Type => "Dinner", :Title => @dinTitle, :Calories => @dinCals, :PrepTime => @dinTime, :Cost => @dinPrice)
+      = link_to 'Favorite Dinner', favorite_recipe_path(:Type => "Dinner", :Title => @dinTitle, :Calories => @dinCals, :PrepTime => @dinTime, :Cost => @dinPrice)
     %footer.footer Footer
 
 = link_to 'Edit Preferences', edit_path

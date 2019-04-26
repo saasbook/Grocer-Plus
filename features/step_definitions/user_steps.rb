@@ -5,4 +5,6 @@ Given /I am an existing user with email "(.*)" and password "(.*)" and age "(.*)
 	# sign_in_as user
 end
 
-# And /I am on the Recommended Weekly Meal Plan page/
+And /I favorite a "(.*)" meal/ do |meal_type|
+	click_link ("Favorite " + meal_type)
+end

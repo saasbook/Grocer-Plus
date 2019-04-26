@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post '/edit' => 'users#update'
   get '/show' => 'users#show'
   get '/favorite_recipe' => 'users#favorite_recipe'
+  get '/favorited_recipes' => 'users#favorited_recipes'
 
 
   devise_for :users, :controllers => {:registrations => "registrations"}

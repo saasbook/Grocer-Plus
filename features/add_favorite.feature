@@ -21,5 +21,6 @@ Feature: Add favorite recipes
 
     Scenario: Favorite recipe
         Given I press "Save Changes"
-        Then I should see "favorite"
+        And I favorite a "Breakfast" meal 
+        Then I should see "Favorites"
 
