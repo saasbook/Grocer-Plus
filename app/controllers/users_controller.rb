@@ -186,8 +186,8 @@ class UsersController < ApplicationController
 	end
 
 	def favorite_recipe
-		current_user.favorited_recipes.create(:title => params[:title], :calories => params[:calories], :time => params[:time], 
-		:cost => params[:cost])
+		current_user.recipes.create(:type => "FavoritedRecipe", :title => params[:title], :calories => params[:calories], 
+			:time => params[:time], :cost => params[:cost])
 		current_user.save!
 	end
 end
