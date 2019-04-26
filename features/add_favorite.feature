@@ -6,12 +6,20 @@ Feature: Add favorite recipes
 
     Background:
 
-        Given I am logged in with email "john.apple@gmail.com" and password "hello1"
-        And I am on the show page
+        # Given I am an existing user with email "john.apple@gmail.com" and password "hello1" and age "18" and height "160" and weight "60"
+
+
+        Given I am on the signup page
+        And I fill in "user[email]" with "john.apple@gmail.com"
+        And I fill in "user[password]" with "hello1"
+        And I fill in "user[password_confirmation]" with "hello1"
+        And I press "Sign up"
+        And I fill in "age" with "18"
+        And I fill in "weight" with "50"
+        And I fill in "height" with "160"
+    # And I fill in "user[password_confirmation]" with "hello1"
 
     Scenario: Favorite recipe
+        Given I press "Save Changes"
+        Then I should see "favorite"
 
-        Given that I am on the Recommended Weekly Meal Plan page
-        And I press the Like button on a recipe
-        And I go to my Favorited Meals
-        Then I should see the recipe

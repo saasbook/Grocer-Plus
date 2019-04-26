@@ -178,4 +178,8 @@ class UsersController < ApplicationController
 		current_user.save!
 		redirect_to show_path
 	end
+
+	def favorite_recipe  
+        redirect_to show_path
+    end
 end
