@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get '/edit' => 'users#edit'
   post '/edit' => 'users#update'
   get '/show' => 'users#show'
-
+  get '/favorite_recipe' => 'users#favorite_recipe'
 
 
   devise_for :users, :controllers => {:registrations => "registrations"}
