@@ -34,7 +34,7 @@ class Recipe < ActiveRecord::Base
         }
         return JSON.parse(res.body)
     end
-    def self.find_in_api(calories, budget, time)
+    def self.find_in_api(calories)
         base_uri = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
         uri = URI(base_uri + '/recipes/mealplans/generate' + '?timeFrame=week&targetCalories=' + calories.to_s)
         res_json_hash = Recipe.call_api(uri)
