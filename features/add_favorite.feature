@@ -16,11 +16,13 @@ Feature: Add favorite recipes
         And I press "Sign up"
         And I fill in "age" with "18"
         And I fill in "weight" with "50"
-        And I fill in "height" with "160"
+        And I select "60" from "height"
+    # And I fill in "user[password_confirmation]" with "hello1"
 
     Scenario: Favorite recipe
         Given I press "Save Changes"
-        Then I should see "favorite"
+        And I favorite a "Breakfast" meal
+        Then I should see "Favorites"
 
 
 

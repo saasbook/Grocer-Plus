@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/show' => 'users#show'
   get '/favorite_recipe' => 'users#favorite_recipe'
   get '/my_favorites' => 'users#my_favorites'
+  get '/favorited_recipes' => 'users#favorited_recipes'
 
 
   devise_for :users, :controllers => {:registrations => "registrations"}

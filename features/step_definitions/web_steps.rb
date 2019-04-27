@@ -28,12 +28,6 @@ module WithinHelpers
   def with_scope(locator)
     locator ? within(*selector_for(locator)) { yield } : yield
   end
-  def sign_in_as(user)
-    return if @current_user == user
-    @current_user = user
-    get '/', { 'signed_in_user_id' => (user ? user.to_param : '') }
-  end
-  
 end
 World(WithinHelpers)
 
@@ -48,11 +42,7 @@ When /^(.*) within (.*[^:]):$/ do |step, parent, table_or_string|
 end
 
 Given /^(?:|I )am on (.+)$/ do |page_name|
-  
-  # user = User.find_by_email('john.apple@gmail.com')
-  # sign_in_as user
   visit path_to(page_name)
-  # show_path
 end
 
 When /^(?:|I )go to (.+)$/ do |page_name|
