@@ -181,5 +181,11 @@ class UsersController < ApplicationController
 
 	def favorite_recipe  
         redirect_to show_path
-    end
+	end
+	
+
+	def my_favorites
+		@recipes = current_user.recipes
+	end
+
 end
