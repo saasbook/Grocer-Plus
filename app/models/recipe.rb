@@ -35,9 +35,10 @@ class Recipe < ActiveRecord::Base
         return JSON.parse(res.body)
     end
     def self.find_in_api(calories, budget, time)
-        base_uri = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
-        uri = URI(base_uri + '/recipes/mealplans/generate' + '?timeFrame=week&targetCalories=' + calories.to_s)
+        base_uri = 'https://api.edamam.com/search'
+        uri = URI(base_uri + '?q=chicken' + '&app_id=' + ENV["APP_ID"] + '&app_key=' +  ENV["APP_KEY"] + '&from=0&to=1&calories=' + (calories / 3).to_s + '-' + (calories / 3).to_s + '&health=alcohol-free')
         res_json_hash = Recipe.call_api(uri)
+        byebug
         all_ids = []
         res_json_hash = Recipe.restructure_hash(res_json_hash, all_ids)
         get_recipe_info_params = ''
