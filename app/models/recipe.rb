@@ -59,4 +59,7 @@ class Recipe < ActiveRecord::Base
         return res_json_hash
 
     end
+
+    
+        
 end
