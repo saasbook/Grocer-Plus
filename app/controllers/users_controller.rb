@@ -138,6 +138,7 @@ class UsersController < ApplicationController
 				daily_recipes[recipe['slot']][days[recipe['day']]] = recipe
 			end
 		end
+		byebug
 		return daily_recipes
 	end
 
