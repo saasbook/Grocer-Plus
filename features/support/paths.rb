@@ -24,6 +24,9 @@ module NavigationHelpers
 
   when /^the login page$/ then new_user_session_path
 
+  when /^the show page$/ then show_path
+  
+
   when /^the signup page$/ then new_user_registration_path
 
     else

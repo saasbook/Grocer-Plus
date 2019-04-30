@@ -9,4 +9,5 @@ class RecipesController < ApplicationController
     # 	# user will then be redirected to index page
 
     # end
+    
 end

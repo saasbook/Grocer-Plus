@@ -1,0 +1,54 @@
+%body
+    %h2.text-center My Favorites
+
+    .wrapper
+        %aside.aside.aside-l
+            %header.title Breakfast
+            %table
+                %tbody
+                    %tr
+                        %td Title
+                        %td Calories
+                        %td Time
+                        %td Cost
+                    - @breakfast.each do |recipe|
+                        %tr
+                            %td= recipe.title 
+                            %td= recipe.calories
+                            %td= recipe.time
+                            %td= recipe.cost
+
+        %aside.aside.aside-d
+            %header.title Lunch
+            %table
+                %tbody
+                    %tr
+                        %td Title
+                        %td Calories
+                        %td Time
+                        %td Cost
+                    - @lunch.each do |recipe|
+                        %tr
+                            %td= recipe.title 
+                            %td= recipe.calories
+                            %td= recipe.time
+                            %td= recipe.cost
+
+        %aside.aside.aside-d
+            %header.title Dinner
+            %table
+                %tbody
+                    %tr
+                        %td Title
+                        %td Calories
+                        %td Time
+                        %td Cost
+                    - @dinner.each do |recipe|
+                        %tr
+                            %td= recipe.title 
+                            %td= recipe.calories
+                            %td= recipe.time
+                            %td= recipe.cost
+
+= link_to 'Edit Preferences', edit_path
+= link_to "Log Out", destroy_user_session_path, method: :delete 
