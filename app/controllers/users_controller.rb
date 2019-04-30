@@ -193,7 +193,7 @@ class UsersController < ApplicationController
 	end
 
 	def favorited_recipes
-		# @favorited_recipes = current_user.recipes.where(:type => "FavoritedRecipe")
+		@favorited_recipes = current_user.recipes.where(:type => "FavoritedRecipe")
 		@breakfast = current_user.recipes.where(:type => "FavoritedRecipe", :meal_type => "Breakfast")
 		@lunch = current_user.recipes.where(:type => "FavoritedRecipe", :meal_type => "Lunch")
 		@dinner = current_user.recipes.where(:type => "FavoritedRecipe", :meal_type => "Dinner")
