@@ -3,6 +3,7 @@ describe ".find_in_api" do
   ret = {'items' => 
   [
   {'day' => 1,
+   'value' => '{"id":655340,"imageType":"jpg","title":"Peanut Butter Swirl Banana Bread"}',
    'slot' => 1,
    'id' => 123456,
    'title' => "Eggs Benedict",
@@ -11,6 +12,7 @@ describe ".find_in_api" do
    'price' => 2
    },	
   {'day' => 1,
+  'value' => '{"id":655340,"imageType":"jpg","title":"Peanut Butter Swirl Banana Bread"}',
    'slot' => 2,
    'id' => 123456,
    'title' => "Sweet & Sour Soup",
@@ -19,6 +21,7 @@ describe ".find_in_api" do
   'price' => 3
   },	
    {'day'=> 1,
+   'value' => '{"id":655340,"imageType":"jpg","title":"Peanut Butter Swirl Banana Bread"}',
    'slot' => 3,
    'id' => 123456,
    'title' => "Mushroom Risotto",
@@ -27,6 +30,7 @@ describe ".find_in_api" do
    'price' => 8	
    },
    {'day'=> 2,
+   'value' => '{"id":655340,"imageType":"jpg","title":"Peanut Butter Swirl Banana Bread"}',
    'slot' => 1,
    'id' => 123456,
    'title' => "waffles",
@@ -36,6 +40,7 @@ describe ".find_in_api" do
    },
    {'day'=> 2,
    'slot' => 2,
+   'value' => '{"id":655340,"imageType":"jpg","title":"Peanut Butter Swirl Banana Bread"}',
    'id' => 123456,
    'title' => "salad",
    'calories' => 200,
@@ -44,6 +49,7 @@ describe ".find_in_api" do
    },
    {'day'=> 2,
    'slot' => 3,
+   'value' => '{"id":655340,"imageType":"jpg","title":"Peanut Butter Swirl Banana Bread"}',
    'id' => 123456,
    'title' => "burrito",
    'calories' => 200,
@@ -52,6 +58,7 @@ describe ".find_in_api" do
    },
    {'day'=> 3,
    'slot' => 1,
+   'value' => '{"id":655340,"imageType":"jpg","title":"Peanut Butter Swirl Banana Bread"}',
    'id' => 123456,
    'title' => "grapes",
    'calories' => 200,
@@ -60,6 +67,7 @@ describe ".find_in_api" do
    },
    {'day'=> 3,
    'slot' => 2,
+   'value' => '{"id":655340,"imageType":"jpg","title":"Peanut Butter Swirl Banana Bread"}',
    'id' => 123456,
    'title' => "cherries",
    'calories' => 200,
@@ -68,6 +76,7 @@ describe ".find_in_api" do
    },
    {'day'=> 3,
    'slot' => 3,
+   'value' => '{"id":655340,"imageType":"jpg","title":"Peanut Butter Swirl Banana Bread"}',
    'id' => 123456,
    'title' => "milk",
    'calories' => 200,

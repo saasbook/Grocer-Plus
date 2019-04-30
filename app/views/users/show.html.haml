@@ -1,5 +1,5 @@
 %body
-  %h2.text-center Recommended Weekly Meal Plan
+  %h2.text-center Recommended Daily Meal Plan
   .wrapper
     %header.header Your calories are #{@calories}
     %aside.aside.aside-l
@@ -7,6 +7,7 @@
       %h5 Calories: #{@breakCals}
       %h5 Preparation time: #{@breakTime} mins
       %h5 Cost: $#{@breakPrice}
+      %img{:src => @breakImg, :width => "350", :height => "250"}
       = link_to 'Favorite Breakfast', favorite_recipe_path(:Type => "Breakfast", :Title => @breakTitle, :Calories => @breakCals, :PrepTime => @breakTime, :Cost => @breakPrice)
       
     %aside.aside.aside-d
@@ -14,6 +15,7 @@
       %h5 Calories: #{@lunchCals}
       %h5 Preparation time: #{@lunchTime} mins
       %h5 Cost: $#{@lunchPrice}
+      %img{:src => @lunchImg, :width => "350", :height => "250"}
       = link_to 'Favorite Lunch', favorite_recipe_path(:Type => "Lunch", :Title => @lunchTitle, :Calories => @lunchCals, :PrepTime => @lunchTime, :Cost => @lunchPrice)
 
     %aside.aside.aside-b
@@ -21,6 +23,7 @@
       %h5 Calories: #{@dinCals}
       %h5 Preparation time: #{@dinTime} mins
       %h5 Cost: $#{@dinPrice}
+      %img{:src => @dinImg, :width => "350", :height => "250"}
       = link_to 'Favorite Dinner', favorite_recipe_path(:Type => "Dinner", :Title => @dinTitle, :Calories => @dinCals, :PrepTime => @dinTime, :Cost => @dinPrice)
     %footer.footer Footer
 
