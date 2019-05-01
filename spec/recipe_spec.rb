@@ -138,3 +138,4 @@ end
    #   Announcement.get_announcements.should_not be_empty
     #end
   #end
+  
