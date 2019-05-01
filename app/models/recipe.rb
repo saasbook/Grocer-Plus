@@ -32,6 +32,7 @@ class Recipe < ActiveRecord::Base
         end
         return res
 
+
         
     end
 
