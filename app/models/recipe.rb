@@ -27,7 +27,7 @@ class Recipe < ActiveRecord::Base
             res['items'].append(hash_to_append)
         end
         if not @have_slept
-            sleep(60)
+            #sleep(60)
             @have_slept = true
         end
         return res

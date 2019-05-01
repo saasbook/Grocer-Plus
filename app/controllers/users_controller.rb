@@ -91,7 +91,7 @@ class UsersController < ApplicationController
 		@cuisine = current_user.cuisine
 	end
 
-		@all_recipes = {'items' => 
+	@all_recipes = {'items' => 
 				[
 				{'day' => 1,
 			 	'slot' => 1,
@@ -166,7 +166,10 @@ class UsersController < ApplicationController
 				 'price' => 8	
 				 }
 			]
-		}
+	}
+	def show
+		set_vars_from_curr_user
+		@calories = self.class.calc_calories(@gender, @weight, @height, @age, @exercise, @goal).round(0)
 		@all_recipes = Recipe.find_in_api(@calories, @budget, @time)
 		@daily_recipes = self.class.do_daily_recipes(@all_recipes)
 
@@ -193,6 +196,7 @@ class UsersController < ApplicationController
 		@dinTime = @dinHash["readyInMinutes"]
 		@dinPrice = (@dinHash["price"] / 100).round(2)
 	end
+
 
 	def self.do_daily_recipes(all_recipes)
 		daily_recipes = Hash.new()

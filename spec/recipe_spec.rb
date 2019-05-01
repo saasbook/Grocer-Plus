@@ -123,13 +123,13 @@ describe ".find_in_api" do
   
  # it 'should be a 200 OK' do
   #  byebug
-  #  expect(Recipe.find_in_api(1).code).to eq "200"
+  #  expect(Recipe.find_in_api(1,1,1).code).to eq "200"
   #end
   it 'should return a Hash' do
-    expect(Recipe.find_in_api(1)).to be_an_instance_of(Hash)
+    expect(Recipe.find_in_api(1,1,1)).to be_an_instance_of(Hash)
   end
   it 'should include "is a test" in body' do
-    expect(Recipe.find_in_api(1)).to include('items')
+    expect(Recipe.find_in_api(1,1,1)).to include('items')
   end
 end
   #describe ".get_announcements" do
