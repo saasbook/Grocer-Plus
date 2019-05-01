@@ -6,7 +6,7 @@ Feature: Login to Grocer-Plus
 
 Background:
 
-	Given I am an existing user with email "john.apple@gmail.com" and password "hello1" and age "18" and height "160" and weight "60"
+	Given I am an existing user with email "john.apple@gmail.com" and password "hello1" and age "18" and height "160" and weight "60" and time "60"
   	And I am on the login page
 
 Scenario: Log in with proper credentials
