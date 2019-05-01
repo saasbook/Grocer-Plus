@@ -3,8 +3,83 @@ class UsersController < ApplicationController
 	#def user_params
 	#	params.permit(:age, :weight, :height, :exercise, :goal, :budget, :time, :cuisine, :gender)
 	#end
-
-	def show
+# 	@@all_recipes = {'items' => 
+# 	[
+# 	{'day' => 1,
+# 	 'slot' => 1,
+# 	 'id' => 123456,
+# 	 'title' => "Eggs Benedict",
+# 	 'calories' => 200,
+# 	 'readyInMinutes' => 45,
+# 	 'price' => 2
+# 	 },	
+# 	{'day' => 1,
+# 	 'slot' => 2,
+# 	 'id' => 123456,
+# 	 'title' => "Sweet & Sour Soup",
+# 	 'calories' => 340,
+# 	 'readyInMinutes' => 50,
+# 	'price' => 3
+# 	},	
+# 	 {'day'=> 1,
+# 	 'slot' => 3,
+# 	 'id' => 123456,
+# 	 'title' => "Mushroom Risotto",
+# 	 'calories' => 200,
+# 	 'readyInMinutes' => 75,
+# 	 'price' => 8	
+# 	 },
+# 	 {'day'=> 2,
+# 	 'slot' => 1,
+# 	 'id' => 123456,
+# 	 'title' => "waffles",
+# 	 'calories' => 200,
+# 	 'readyInMinutes' => 45,
+# 	 'price' => 8	
+# 	 },
+# 	 {'day'=> 2,
+# 	 'slot' => 2,
+# 	 'id' => 123456,
+# 	 'title' => "salad",
+# 	 'calories' => 200,
+# 	 'readyInMinutes' => 45,
+# 	 'price' => 8	
+# 	 },
+# 	 {'day'=> 2,
+# 	 'slot' => 3,
+# 	 'id' => 123456,
+# 	 'title' => "burrito",
+# 	 'calories' => 200,
+# 	 'readyInMinutes' => 45,
+# 	 'price' => 8	
+# 	 },
+# 	 {'day'=> 3,
+# 	 'slot' => 1,
+# 	 'id' => 123456,
+# 	 'title' => "grapes",
+# 	 'calories' => 200,
+# 	 'readyInMinutes' => 45,
+# 	 'price' => 8
+# 	 },
+# 	 {'day'=> 3,
+# 	 'slot' => 2,
+# 	 'id' => 123456,
+# 	 'title' => "cherries",
+# 	 'calories' => 200,
+# 	 'readyInMinutes' => 45,
+# 	 'price' => 8	
+# 	 },
+# 	 {'day'=> 3,
+# 	 'slot' => 3,
+# 	 'id' => 123456,
+# 	 'title' => "milk",
+# 	 'calories' => 200,
+# 	 'readyInMinutes' => 45,
+# 	 'price' => 8	
+# 	 }
+# ]
+# }
+	def set_vars_from_curr_user
 		@age = current_user.age
 	    @gender = current_user.gender
 	    @weight = current_user.weight
@@ -13,8 +88,8 @@ class UsersController < ApplicationController
 	    @goal = current_user.goal
 	    @budget = current_user.budget
 	    @time = current_user.time
-	    @cuisine = current_user.cuisine
-		@calories = self.class.calc_calories(@gender, @weight, @height, @age, @exercise, @goal).round(0)
+		@cuisine = current_user.cuisine
+	end
 
 		@all_recipes = {'items' => 
 				[
