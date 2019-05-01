@@ -14,7 +14,9 @@ Scenario: Log in with proper credentials
 	When I fill in "user[email]" with "john.apple@gmail.com"
 	And I fill in "user[password]" with "hello1"
 	And I press "Log in"
+	And I favorite a "Breakfast" meal
 	Then I should see "Log Out"
+    And I should see "Favorites"
 
 
 Scenario: Attempting to log in with improper credentials fails

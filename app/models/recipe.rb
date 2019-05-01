@@ -9,7 +9,6 @@ class Recipe < ActiveRecord::Base
         }
         return JSON.parse(res.body)
     end
-    @have_slept = false
     def self.find_in_api(calories, budget, time)
         base_uri = 'https://api.edamam.com/search'
         meal_types = ['breakfast', 'lunch', 'dinner']
@@ -25,10 +24,6 @@ class Recipe < ActiveRecord::Base
             hash_to_append['slot'] = idx+1
             hash_to_append['day'] = 1
             res['items'].append(hash_to_append)
-        end
-        if not @have_slept
-            sleep(60)
-            @have_slept = true
         end
         return res
 
