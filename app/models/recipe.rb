@@ -1,63 +1,36 @@
 require 'net/http'
 class Recipe < ActiveRecord::Base
     has_and_belongs_to_many :users
-    def self.restructure_hash(res_json_hash, all_ids)
-        #byebug
-        res_json_hash.deep_dup['items'].each_with_index do |elem, idx|
-            elem.each do |k, v|
-                if (k == 'value')
-                    v = JSON.parse(v)
-                    res_json_hash['items'][idx]['id'] = v['id']
-                    res_json_hash['items'][idx]['title'] = v['title']
-                    all_ids.push(v['id'])
-                end
-            end
-        end
-        return res_json_hash
-    end
-    
-    def self.concatenate_params(elem, idx, get_recipe_info_params)
-        if idx == 0
-            return get_recipe_info_params + elem.to_s
-        else
-            return get_recipe_info_params + '%2C' + elem.to_s
-        end
-    end
 
     def self.call_api(uri)
         req = Net::HTTP::Get.new(uri)
-        req["X-RapidAPI-Host"] = "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
-        req["X-RapidAPI-Key"] = ENV["SPOONACULAR_API_KEY"]
-
         res = Net::HTTP.start(uri.hostname, :use_ssl => true) {|http|
             http.request(req)
         }
         return JSON.parse(res.body)
     end
+    @have_slept = false
     def self.find_in_api(calories, budget, time)
         base_uri = 'https://api.edamam.com/search'
-        uri = URI(base_uri + '?q=chicken' + '&app_id=' + ENV["APP_ID"] + '&app_key=' +  ENV["APP_KEY"] + '&from=0&to=1&calories=' + (calories / 3).to_s + '-' + (calories / 3).to_s + '&health=alcohol-free')
-        res_json_hash = Recipe.call_api(uri)
-        byebug
-        all_ids = []
-        res_json_hash = Recipe.restructure_hash(res_json_hash, all_ids)
-        get_recipe_info_params = ''
-        all_ids.each_with_index do |elem, idx|
-            get_recipe_info_params = Recipe.concatenate_params(elem, idx, get_recipe_info_params)
-            # get recipe nutrition
-            get_recipe_nutrition_uri = URI(base_uri + '/recipes/' + elem.to_s + '/nutritionWidget.json')
-            res_recipe_nutrition_json_hash = call_api(get_recipe_nutrition_uri)
-            res_json_hash['items'][idx]['calories'] = res_recipe_nutrition_json_hash['calories'].to_i
+        meal_types = ['breakfast', 'lunch', 'dinner']
+        res = {'items' => []}
+        meal_types.each_with_index do |elem, idx|
+            uri = URI(base_uri + '?q=' + elem + '&app_id=' + ENV["APP_ID"] + '&app_key=' +  ENV["APP_KEY"] + '&from=0&to=1&calories=' + ((calories / 3) - 100).to_s + '-' + ((calories / 3) + 100).to_s + '&time=' + 1.to_s + '-' + (time / 3).to_s)
+            res_json_hash = Recipe.call_api(uri)
+            hash_to_append = res_json_hash['hits'][0]['recipe']
+            hash_to_append['title'] = res_json_hash['hits'][0]['recipe']['label']
+            hash_to_append['calories'] = (res_json_hash['hits'][0]['recipe']['calories'] / res_json_hash['hits'][0]['recipe']['yield']).round(0)
+            hash_to_append['readyInMinutes'] = res_json_hash['hits'][0]['recipe']['totalTime'].round(0)
+            hash_to_append['price'] = 123.00
+            hash_to_append['slot'] = idx+1
+            hash_to_append['day'] = 1
+            res['items'].append(hash_to_append)
         end
-        # get recipe info bulk 
-        get_recipe_info_uri = URI(base_uri + '/recipes/' + 'informationBulk?ids=' + get_recipe_info_params)
-        res_recipe_info_json = Recipe.call_api(get_recipe_info_uri)
-        res_recipe_info_json.each_with_index do |elem, idx|
-            res_json_hash['items'][idx]['readyInMinutes'] = elem['readyInMinutes']
-            res_json_hash['items'][idx]['image'] = elem['image']
-            res_json_hash['items'][idx]['price'] = (elem['pricePerServing'] ? elem['pricePerServing'] : 123456)
+        if not @have_slept
+            sleep(60)
+            @have_slept = true
         end
-        return res_json_hash
+        return res
 
     end
 

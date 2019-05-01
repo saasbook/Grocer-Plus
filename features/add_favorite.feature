@@ -6,7 +6,7 @@ Feature: Add favorite recipes
 
     Background:
 
-        # Given I am an existing user with email "john.apple@gmail.com" and password "hello1" and age "18" and height "160" and weight "60"
+        # Given I am an existing user with email "john.apple@gmail.com" and password "hello1" and age "18" and height "160" and weight "60" and time "60"
 
 
         Given I am on the signup page
@@ -17,6 +17,7 @@ Feature: Add favorite recipes
         And I fill in "age" with "18"
         And I fill in "weight" with "50"
         And I select "60" from "height"
+        And I fill in "Time available to cook per day" with "60"
     # And I fill in "user[password_confirmation]" with "hello1"
 
     Scenario: Favorite recipe

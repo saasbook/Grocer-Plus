@@ -92,7 +92,6 @@ class UsersController < ApplicationController
 				 }
 			]
 		}
-
 		@all_recipes = Recipe.find_in_api(@calories, @budget, @time)
 		@daily_recipes = self.class.do_daily_recipes(@all_recipes)
 
