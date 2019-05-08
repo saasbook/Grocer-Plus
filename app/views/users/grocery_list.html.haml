@@ -10,11 +10,10 @@
                 - @breakfast.each do |recipe|
                     %tr
                         %td= recipe.title 
-                        %table
-                            %tbody
-                                %tr
-                                - recipe.groceries.each do |grocery|
-                                    %td= grocery
+                    - recipe.groceries.each do |grocery|
+                        %tr
+                            %td= grocery.name
+                            %td= "#{grocery.weight_in_grams} grams"
 
     %aside.aside.aside-d
         %header.title Lunch
@@ -23,11 +22,10 @@
                 - @lunch.each do |recipe|
                     %tr
                         %td= recipe.title 
-                        %table
-                            %tbody
-                                %tr
-                                - recipe.groceries.each do |grocery|
-                                    %td= grocery
+                    - recipe.groceries.each do |grocery|
+                        %tr
+                            %td= grocery.name
+                            %td= "#{grocery.weight_in_grams} grams"
 
     %aside.aside.aside-d
         %header.title Dinner
@@ -36,11 +34,10 @@
                 - @dinner.each do |recipe|
                     %tr
                         %td= recipe.title 
-                        %table
-                            %tbody
-                                %tr
-                                - recipe.groceries.each do |grocery|
-                                    %td= grocery
+                    - recipe.groceries.each do |grocery|
+                        %tr
+                            %td= grocery.name
+                            %td= "#{grocery.weight_in_grams} grams"
 
 = link_to 'Edit Preferences', edit_path
 = link_to "Log Out", destroy_user_session_path, method: :delete 

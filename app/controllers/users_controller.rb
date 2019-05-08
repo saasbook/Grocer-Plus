@@ -285,14 +285,14 @@ class UsersController < ApplicationController
 		# current_user.recipes.create(:type => "FavoritedRecipe", :meal_type => params[:Type], :title => params[:Title], 
 		# 	:calories => params[:Calories], :time => params[:PrepTime], :cost => params[:Cost])
 		params[:Groceries].each do |grocery|
-			new_grocery = Grocery.create(:name => grocery["text"], :weight_in_grams => grocery["weight"])
+			new_grocery = Grocery.create(:name => grocery["text"], :weight_in_grams => grocery["weight"].to_f.round(2))
 			new_grocery.recipe = favorited_recipe
 			new_grocery.save!
 		end
 		redirect_to favorited_recipes_path
 	end
 
-	def grocery
+	def grocery_list
 		@favorited_recipes = current_user.recipes.where(:type => "FavoritedRecipe")
 		@breakfast = current_user.recipes.where(:type => "FavoritedRecipe", :meal_type => "Breakfast")
 		@lunch = current_user.recipes.where(:type => "FavoritedRecipe", :meal_type => "Lunch")

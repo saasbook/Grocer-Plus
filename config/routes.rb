@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/favorite_recipe' => 'users#favorite_recipe'
   get '/my_favorites' => 'users#my_favorites'
   get '/favorited_recipes' => 'users#favorited_recipes'
-  get '/grocery' => 'users#grocery'
+  get '/grocery_list' => 'users#grocery_list'
 
   devise_for :users, :controllers => {:registrations => "registrations"}
   # The priority is based upon order of creation: first created -> highest priority.
