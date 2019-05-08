@@ -1,5 +1,5 @@
 %body
-    render 'navbar'
+    = render 'navbar'
     %h2.text-center My Favorites
 
     .wrapper
@@ -50,6 +50,3 @@
                             %td= recipe.calories
                             %td= recipe.time
                             %td= recipe.cost
-
-= link_to 'Edit Preferences', edit_path
-= link_to "Log Out", destroy_user_session_path, method: :delete 

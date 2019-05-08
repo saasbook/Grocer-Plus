@@ -27,9 +27,3 @@
       %img{:src => @dinImg, :width => "350", :height => "250"}
       = link_to 'Favorite Dinner', favorite_recipe_path(:Type => "Dinner", :Title => @dinTitle, :Calories => @dinCals, :PrepTime => @dinTime, :Cost => @dinPrice)
     %footer.footer Footer
-
-= link_to 'Edit Preferences', edit_path
-
-= link_to "Log Out", destroy_user_session_path, method: :delete 
-
-= link_to "My Favorites", favorited_recipes_path
