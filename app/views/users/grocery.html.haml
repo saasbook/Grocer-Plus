@@ -1,0 +1,46 @@
+%body
+%h2.text-center Groceries
+
+.wrapper
+    %aside.aside.aside-l
+        %header.title Breakfast
+        %table
+            %tbody
+                %tr
+                - @breakfast.each do |recipe|
+                    %tr
+                        %td= recipe.title 
+                        %table
+                            %tbody
+                                %tr
+                                - recipe.groceries.each do |grocery|
+                                    %td= grocery
+
+    %aside.aside.aside-d
+        %header.title Lunch
+        %table
+            %tbody
+                - @lunch.each do |recipe|
+                    %tr
+                        %td= recipe.title 
+                        %table
+                            %tbody
+                                %tr
+                                - recipe.groceries.each do |grocery|
+                                    %td= grocery
+
+    %aside.aside.aside-d
+        %header.title Dinner
+        %table
+            %tbody
+                - @dinner.each do |recipe|
+                    %tr
+                        %td= recipe.title 
+                        %table
+                            %tbody
+                                %tr
+                                - recipe.groceries.each do |grocery|
+                                    %td= grocery
+
+= link_to 'Edit Preferences', edit_path
+= link_to "Log Out", destroy_user_session_path, method: :delete 
