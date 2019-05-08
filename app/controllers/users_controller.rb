@@ -181,6 +181,7 @@ class UsersController < ApplicationController
 		@breakCals = @breakHash["calories"]
 		@breakTime = @breakHash["readyInMinutes"]
 		@breakPrice = (@breakHash["price"] / 100).round(2)
+		@breakGroceries = @breakHash["groceries"]
 
 		@lunchHash = @daily_recipes[2][@day]
 		@lunchImg = @lunchHash["image"]
@@ -188,6 +189,7 @@ class UsersController < ApplicationController
 		@lunchCals = @lunchHash["calories"]
 		@lunchTime = @lunchHash["readyInMinutes"]
 		@lunchPrice = (@lunchHash["price"] / 100).round(2)
+		@lunchGroceries = @lunchHash["groceries"]
 
 		@dinHash = @daily_recipes[3][@day]
 		@dinImg = @dinHash["image"]
@@ -195,6 +197,7 @@ class UsersController < ApplicationController
 		@dinCals = @dinHash["calories"]
 		@dinTime = @dinHash["readyInMinutes"]
 		@dinPrice = (@dinHash["price"] / 100).round(2)
+		@dinGroceries = @dinHash["groceries"]
 	end
 
 
@@ -267,9 +270,25 @@ class UsersController < ApplicationController
 	end
 
 	def favorite_recipe
-		current_user.recipes.create(:type => "FavoritedRecipe", :meal_type => params[:Type], :title => params[:Title], 
-			:calories => params[:Calories], :time => params[:PrepTime], :cost => params[:Cost])
+		favorited_recipe = Recipe.new do |r|
+			r.type = "FavoritedRecipe"
+			r.meal_type = params[:Type]
+			r.title = params[:Title]
+			r.calories = params[:Calories]
+			r.time = params[:PrepTime]
+			r.cost = params[:Cost]
+		end
+		favorited_recipe.save!
+		current_user.recipes << favorited_recipe
 		current_user.save!
+
+		# current_user.recipes.create(:type => "FavoritedRecipe", :meal_type => params[:Type], :title => params[:Title], 
+		# 	:calories => params[:Calories], :time => params[:PrepTime], :cost => params[:Cost])
+		params[:Groceries].each do |grocery|
+			new_grocery = Grocery.create(:name => grocery["text"], :weight_in_grams => grocery["weight"])
+			new_grocery.recipe = favorited_recipe
+			new_grocery.save!
+		end
 		redirect_to favorited_recipes_path
 	end
 
