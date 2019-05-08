@@ -1,6 +1,7 @@
 require 'net/http'
 class Recipe < ActiveRecord::Base
     has_and_belongs_to_many :users
+    has_many :groceries
 
     def self.call_api(uri)
         req = Net::HTTP::Get.new(uri)
