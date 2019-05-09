@@ -86,7 +86,7 @@ class UsersController < ApplicationController
 	    @height = current_user.height * 2.54
 	    @exercise = current_user.exercise
 	    @goal = current_user.goal
-	    @budget = current_user.budget
+	    #@budget = current_user.budget
 	    @time = current_user.time
 		@cuisine = current_user.cuisine
 	end
@@ -167,6 +167,7 @@ class UsersController < ApplicationController
 	# 			 }
 	# 		]
 	# }
+  
 	def show
 		set_vars_from_curr_user
 		@calories = self.class.calc_calories(@gender, @weight, @height, @age, @exercise, @goal).round(0)
@@ -180,21 +181,21 @@ class UsersController < ApplicationController
 		@breakTitle = @breakHash["title"]
 		@breakCals = @breakHash["calories"]
 		@breakTime = @breakHash["readyInMinutes"]
-		@breakPrice = (@breakHash["price"] / 100).round(2)
+		#@breakPrice = (@breakHash["price"] / 100).round(2)
 
 		@lunchHash = @daily_recipes[2][@day]
 		@lunchImg = @lunchHash["image"]
 		@lunchTitle = @lunchHash["title"]
 		@lunchCals = @lunchHash["calories"]
 		@lunchTime = @lunchHash["readyInMinutes"]
-		@lunchPrice = (@lunchHash["price"] / 100).round(2)
+		#@lunchPrice = (@lunchHash["price"] / 100).round(2)
 
 		@dinHash = @daily_recipes[3][@day]
 		@dinImg = @dinHash["image"]
 		@dinTitle = @dinHash["title"]
 		@dinCals = @dinHash["calories"]
 		@dinTime = @dinHash["readyInMinutes"]
-		@dinPrice = (@dinHash["price"] / 100).round(2)
+		#@dinPrice = (@dinHash["price"] / 100).round(2)
 	end
 
 
@@ -257,7 +258,7 @@ class UsersController < ApplicationController
 		current_user.age = params[:age].to_i
 		current_user.weight = params[:weight].to_i
 		current_user.height = params[:height].to_i
-		current_user.budget = params[:budget].to_i
+		#current_user.budget = params[:budget].to_i
 		current_user.time = params[:time].to_i
 		current_user.gender = params[:gender]
 		current_user.exercise = params[:exercise]
@@ -268,7 +269,7 @@ class UsersController < ApplicationController
 
 	def favorite_recipe
 		current_user.recipes.create(:type => "FavoritedRecipe", :meal_type => params[:Type], :title => params[:Title], 
-			:calories => params[:Calories], :time => params[:PrepTime], :cost => params[:Cost])
+			:calories => params[:Calories], :time => params[:PrepTime])
 		current_user.save!
 		redirect_to favorited_recipes_path
 	end
