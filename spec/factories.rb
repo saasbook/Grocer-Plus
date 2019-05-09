@@ -12,4 +12,11 @@ FactoryBot.define do
         time { 30 }
         cuisine { "spicy" }
     end
+
+    factory :recipe do
+        title { "Eggs Benedict" }
+        calories { 200 }
+        time { 45 }
+        meal_type { "breakfast" }
+    end
 end
