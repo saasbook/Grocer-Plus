@@ -1,9 +1,11 @@
 html, body {
     background-image: url('signup_food.jpg');
-
     height: 100%;
     margin: 0;
     padding: 0;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .sign_label {
@@ -14,7 +16,7 @@ html, body {
 
 .new_user {
     position: relative;
+    left: 25%;
     top: 75px;
-    left: 25%;    
 }
 
