@@ -1,4 +1,5 @@
 %body
+  = render 'navbar'
   %h2.text-center Recommended Daily Meal Plan
   .wrapper
     %header.header Your calories are #{@calories}
@@ -6,7 +7,6 @@
       %h3 Breakfast - #{@breakTitle}
       %h5 Calories: #{@breakCals}
       %h5 Preparation time: #{@breakTime} mins
-      
       %img{:src => @breakImg, :width => "350", :height => "250"}
       = link_to 'Favorite Breakfast', favorite_recipe_path(:Type => "Breakfast", :Title => @breakTitle, :Calories => @breakCals, :PrepTime => @breakTime)
       
@@ -14,7 +14,6 @@
       %h3 Lunch - #{@lunchTitle}
       %h5 Calories: #{@lunchCals}
       %h5 Preparation time: #{@lunchTime} mins
-      
       %img{:src => @lunchImg, :width => "350", :height => "250"}
       = link_to 'Favorite Lunch', favorite_recipe_path(:Type => "Lunch", :Title => @lunchTitle, :Calories => @lunchCals, :PrepTime => @lunchTime)
 
@@ -22,13 +21,7 @@
       %h3 Dinner - #{@dinTitle}
       %h5 Calories: #{@dinCals}
       %h5 Preparation time: #{@dinTime} mins
-     
       %img{:src => @dinImg, :width => "350", :height => "250"}
       = link_to 'Favorite Dinner', favorite_recipe_path(:Type => "Dinner", :Title => @dinTitle, :Calories => @dinCals, :PrepTime => @dinTime)
     %footer.footer Footer
-
-= link_to 'Edit Preferences', edit_path
-
-= link_to "Log Out", destroy_user_session_path, method: :delete 
-
-= link_to "My Favorites", favorited_recipes_path
+    

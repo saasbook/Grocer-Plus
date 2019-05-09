@@ -1,2 +1,16 @@
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+
+<% if notice and alert %>
+	<div style="background-color:gray" class="alerts">
+		<p class="notice"><%= notice%></p>
+		<p class="alert"><%= alert %></p>
+	</div>
+<% elsif notice %>
+	<div style="background-color:gray" class="alerts">
+		<p class="notice"><%= notice%></p>
+	</div>
+<% elsif alert %>
+	<div style="background-color:gray" class="alerts">
+		<p class="notice"><%= notice%></p>
+	</div>
+<% end %>
