@@ -10,7 +10,7 @@ describe ".find_in_api" do
    'title' => "Eggs Benedict",
    'calories' => 200,
    'totalTime' => 45,
-   'price' => 2,
+  
    'yield' => 4
    }},	
   {'recipe' => {
@@ -21,7 +21,7 @@ describe ".find_in_api" do
    'title' => "Sweet & Sour Soup",
    'calories' => 340,
    'totalTime' => 50,
-  'price' => 3,
+  
   'yield' => 4
   }},	
    {'recipe' => {
@@ -32,7 +32,7 @@ describe ".find_in_api" do
    'title' => "Mushroom Risotto",
    'calories' => 200,
    'totalTime' => 75,
-   'price' => 8,
+   
    'yield' => 4
    }},
    {'recipe' => {
@@ -43,7 +43,7 @@ describe ".find_in_api" do
    'title' => "waffles",
    'calories' => 200,
    'totalTime' => 45,
-   'price' => 8,
+   
    'yield' => 4
    }},
    {'recipe' => {
@@ -54,7 +54,7 @@ describe ".find_in_api" do
    'title' => "salad",
    'calories' => 200,
    'totalTime' => 45,
-   'price' => 8,
+   
    'yield' => 4	
    }
   },
@@ -66,7 +66,7 @@ describe ".find_in_api" do
    'title' => "burrito",
    'calories' => 200,
    'totalTime' => 45,
-   'price' => 8,
+   
    'yield' => 4	
    }},
    {'recipe' => {
@@ -77,7 +77,7 @@ describe ".find_in_api" do
    'title' => "grapes",
    'calories' => 200,
    'totalTime' => 45,
-   'price' => 8,
+   
    'yield' => 4
    }},
    {'recipe' => {
@@ -88,7 +88,7 @@ describe ".find_in_api" do
    'title' => "cherries",
    'calories' => 200,
    'totalTime' => 45,
-   'price' => 8,
+   
    'yield' => 4	
    }},
    {'recipe' => {
@@ -99,7 +99,7 @@ describe ".find_in_api" do
    'title' => "milk",
    'calories' => 200,
    'totalTime' => 45,
-   'price' => 8,
+   
    'yield' => 4	
    }}
 ]

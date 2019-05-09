@@ -86,7 +86,7 @@ class UsersController < ApplicationController
 	    @height = current_user.height * 2.54
 	    @exercise = current_user.exercise
 	    @goal = current_user.goal
-	    @budget = current_user.budget
+	    #@budget = current_user.budget
 	    @time = current_user.time
 		@cuisine = current_user.cuisine
 	end
@@ -98,72 +98,63 @@ class UsersController < ApplicationController
 			 	'id' => 123456,
 			 	'title' => "Eggs Benedict",
 			 	'calories' => 200,
-			 	'readyInMinutes' => 45,
-				 'price' => 2
+			 	'readyInMinutes' => 45
 				 },	
 				{'day' => 1,
 			 	'slot' => 2,
 			 	'id' => 123456,
 			 	'title' => "Sweet & Sour Soup",
 			 	'calories' => 340,
-			 	'readyInMinutes' => 50,
-				'price' => 3
+			 	'readyInMinutes' => 50
 				},	
 				 {'day'=> 1,
 				 'slot' => 3,
 				 'id' => 123456,
 				 'title' => "Mushroom Risotto",
 				 'calories' => 200,
-				 'readyInMinutes' => 75,
-				 'price' => 8	
+				 'readyInMinutes' => 75
 				 },
 				 {'day'=> 2,
 				 'slot' => 1,
 				 'id' => 123456,
 				 'title' => "waffles",
 				 'calories' => 200,
-				 'readyInMinutes' => 45,
-				 'price' => 8	
+				 'readyInMinutes' => 45
 				 },
 				 {'day'=> 2,
 				 'slot' => 2,
 				 'id' => 123456,
 				 'title' => "salad",
 				 'calories' => 200,
-				 'readyInMinutes' => 45,
-				 'price' => 8	
+				 'readyInMinutes' => 45
 				 },
 				 {'day'=> 2,
 				 'slot' => 3,
 				 'id' => 123456,
 				 'title' => "burrito",
 				 'calories' => 200,
-				 'readyInMinutes' => 45,
-				 'price' => 8	
+				 'readyInMinutes' => 45
 				 },
 				 {'day'=> 3,
 				 'slot' => 1,
 				 'id' => 123456,
 				 'title' => "grapes",
 				 'calories' => 200,
-				 'readyInMinutes' => 45,
-				 'price' => 8
+				 'readyInMinutes' => 45
 				 },
 				 {'day'=> 3,
 				 'slot' => 2,
 				 'id' => 123456,
 				 'title' => "cherries",
 				 'calories' => 200,
-				 'readyInMinutes' => 45,
-				 'price' => 8	
+				 'readyInMinutes' => 45
 				 },
 				 {'day'=> 3,
 				 'slot' => 3,
 				 'id' => 123456,
 				 'title' => "milk",
 				 'calories' => 200,
-				 'readyInMinutes' => 45,
-				 'price' => 8	
+				 'readyInMinutes' => 45
 				 }
 			]
 	}
@@ -180,21 +171,21 @@ class UsersController < ApplicationController
 		@breakTitle = @breakHash["title"]
 		@breakCals = @breakHash["calories"]
 		@breakTime = @breakHash["readyInMinutes"]
-		@breakPrice = (@breakHash["price"] / 100).round(2)
+		#@breakPrice = (@breakHash["price"] / 100).round(2)
 
 		@lunchHash = @daily_recipes[2][@day]
 		@lunchImg = @lunchHash["image"]
 		@lunchTitle = @lunchHash["title"]
 		@lunchCals = @lunchHash["calories"]
 		@lunchTime = @lunchHash["readyInMinutes"]
-		@lunchPrice = (@lunchHash["price"] / 100).round(2)
+		#@lunchPrice = (@lunchHash["price"] / 100).round(2)
 
 		@dinHash = @daily_recipes[3][@day]
 		@dinImg = @dinHash["image"]
 		@dinTitle = @dinHash["title"]
 		@dinCals = @dinHash["calories"]
 		@dinTime = @dinHash["readyInMinutes"]
-		@dinPrice = (@dinHash["price"] / 100).round(2)
+		#@dinPrice = (@dinHash["price"] / 100).round(2)
 	end
 
 
@@ -257,7 +248,7 @@ class UsersController < ApplicationController
 		current_user.age = params[:age].to_i
 		current_user.weight = params[:weight].to_i
 		current_user.height = params[:height].to_i
-		current_user.budget = params[:budget].to_i
+		#current_user.budget = params[:budget].to_i
 		current_user.time = params[:time].to_i
 		current_user.gender = params[:gender]
 		current_user.exercise = params[:exercise]
@@ -268,7 +259,7 @@ class UsersController < ApplicationController
 
 	def favorite_recipe
 		current_user.recipes.create(:type => "FavoritedRecipe", :meal_type => params[:Type], :title => params[:Title], 
-			:calories => params[:Calories], :time => params[:PrepTime], :cost => params[:Cost])
+			:calories => params[:Calories], :time => params[:PrepTime])
 		current_user.save!
 		redirect_to favorited_recipes_path
 	end
