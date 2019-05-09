@@ -1,3 +1,8 @@
+- if current_user.age
+  = render 'navbar'
+- else
+  = render 'bar'
+
 %h2 Enter dietary restrictions and preferences here
 
 = form_tag edit_path, :class => '' do
