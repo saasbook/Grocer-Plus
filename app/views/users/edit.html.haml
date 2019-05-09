@@ -30,6 +30,13 @@
   = number_field_tag(:time, 'time', min: 1, required: true)
 
   = label_tag(:cuisine, 'Cuisine Preferences')
-  = text_field(:cuisine, 'cuisine')
+  = check_box(:cuisine, "cuisine", {:multiple => true}, "chinese", nil)
+  = label_tag :cuisine, 'Chinese'
+  = check_box(:cuisine, "cuisine", {:multiple => true}, "italian", nil)
+  = label_tag :cuisine, 'Italian'
+  = check_box(:cuisine, "cuisine", {:multiple => true}, "thai", nil)
+  = label_tag :cuisine, 'Thai'
+  = check_box(:cuisine, "cuisine", {:multiple => true}, "mexican", nil)
+  = label_tag :cuisine, 'Mexican'
 
   = submit_tag 'Save Changes'

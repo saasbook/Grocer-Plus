@@ -170,7 +170,7 @@ class UsersController < ApplicationController
 	def show
 		set_vars_from_curr_user
 		@calories = self.class.calc_calories(@gender, @weight, @height, @age, @exercise, @goal).round(0)
-		@all_recipes = Recipe.find_in_api(@calories, @budget, @time)
+		@all_recipes = Recipe.find_in_api(@calories, @budget, @time, @cuisine)
 		@daily_recipes = self.class.do_daily_recipes(@all_recipes)
 
 		@day = "Monday"
@@ -261,7 +261,10 @@ class UsersController < ApplicationController
 		current_user.time = params[:time].to_i
 		current_user.gender = params[:gender]
 		current_user.exercise = params[:exercise]
-		current_user.cuisine = params[:cuisine]["cuisine"]
+		current_user.cuisine = ''
+		params[:cuisine]["cuisine"].each do |elem|
+			current_user.cuisine += '&cuisineType=' + elem
+		end
 		current_user.save!
 		redirect_to show_path
 	end
