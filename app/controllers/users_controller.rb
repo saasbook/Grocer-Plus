@@ -179,6 +179,7 @@ class UsersController < ApplicationController
 		@breakTitle = @breakHash["title"]
 		@breakCals = @breakHash["calories"]
 		@breakTime = @breakHash["readyInMinutes"]
+		@breakLink = @breakHash['link']
 		#@breakPrice = (@breakHash["price"] / 100).round(2)
 
 		@lunchHash = @daily_recipes[2][@day]
@@ -186,6 +187,7 @@ class UsersController < ApplicationController
 		@lunchTitle = @lunchHash["title"]
 		@lunchCals = @lunchHash["calories"]
 		@lunchTime = @lunchHash["readyInMinutes"]
+		@lunchLink = @lunchHash['link']
 		#@lunchPrice = (@lunchHash["price"] / 100).round(2)
 
 		@dinHash = @daily_recipes[3][@day]
@@ -193,6 +195,8 @@ class UsersController < ApplicationController
 		@dinTitle = @dinHash["title"]
 		@dinCals = @dinHash["calories"]
 		@dinTime = @dinHash["readyInMinutes"]
+		@dinLink = @dinHash['link']
+		
 		#@dinPrice = (@dinHash["price"] / 100).round(2)
 	end
 
@@ -267,7 +271,8 @@ class UsersController < ApplicationController
 
 	def favorite_recipe
 		current_user.recipes.create(:type => "FavoritedRecipe", :meal_type => params[:Type], :title => params[:Title], 
-			:calories => params[:Calories], :time => params[:PrepTime])
+			:calories => params[:Calories], :time => params[:PrepTime]
+			)
 		current_user.save!
 		redirect_to favorited_recipes_path
 	end
