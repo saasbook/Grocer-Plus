@@ -1,34 +1,34 @@
 %body
+  = render 'navbar'
   %h2.text-center Recommended Daily Meal Plan
   .wrapper
     %header.header Your calories are #{@calories}
     %aside.aside.aside-l
-      %h3 Breakfast - #{@breakTitle}
+      %h3 Breakfast: 
+      =link_to(@breakTitle, @breakLink)
+      
       %h5 Calories: #{@breakCals}
       %h5 Preparation time: #{@breakTime} mins
-      %h5 Cost: $#{@breakPrice}
-      %img{:src => @breakImg, :width => "350", :height => "250"}
-      = link_to 'Favorite Breakfast', favorite_recipe_path(:Type => "Breakfast", :Title => @breakTitle, :Calories => @breakCals, :PrepTime => @breakTime, :Cost => @breakPrice)
+
+      %img{:src => @breakImg, :width => "300", :height => "200"}
+      = link_to 'Favorite Breakfast', favorite_recipe_path(:Type => "Breakfast", :Title => @breakTitle, :Calories => @breakCals, :PrepTime => @breakTime)
+      
       
     %aside.aside.aside-d
-      %h3 Lunch - #{@lunchTitle}
+      %h3 Lunch:
+      =link_to(@lunchTitle, @lunchLink)
       %h5 Calories: #{@lunchCals}
       %h5 Preparation time: #{@lunchTime} mins
-      %h5 Cost: $#{@lunchPrice}
-      %img{:src => @lunchImg, :width => "350", :height => "250"}
-      = link_to 'Favorite Lunch', favorite_recipe_path(:Type => "Lunch", :Title => @lunchTitle, :Calories => @lunchCals, :PrepTime => @lunchTime, :Cost => @lunchPrice)
+      
+      %img{:src => @lunchImg, :width => "300", :height => "200"}
+      = link_to 'Favorite Lunch', favorite_recipe_path(:Type => "Lunch", :Title => @lunchTitle, :Calories => @lunchCals, :PrepTime => @lunchTime)
 
     %aside.aside.aside-b
-      %h3 Dinner - #{@dinTitle}
+      %h3 Dinner:
+      =link_to(@dinTitle, @dinLink)
       %h5 Calories: #{@dinCals}
       %h5 Preparation time: #{@dinTime} mins
-      %h5 Cost: $#{@dinPrice}
-      %img{:src => @dinImg, :width => "350", :height => "250"}
-      = link_to 'Favorite Dinner', favorite_recipe_path(:Type => "Dinner", :Title => @dinTitle, :Calories => @dinCals, :PrepTime => @dinTime, :Cost => @dinPrice)
+      %img{:src => @dinImg, :width => "300", :height => "200"}
+      = link_to 'Favorite Dinner', favorite_recipe_path(:Type => "Dinner", :Title => @dinTitle, :Calories => @dinCals, :PrepTime => @dinTime)
     %footer.footer Footer
-
-= link_to 'Edit Preferences', edit_path
-
-= link_to "Log Out", destroy_user_session_path, method: :delete 
-
-= link_to "My Favorites", favorited_recipes_path
+    
