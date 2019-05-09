@@ -31,14 +31,11 @@
   = label_tag(:time, 'Time available to cook per day')
   = number_field_tag(:time, 'time', min: 1, required: true)
 
-  = label_tag(:cuisine, 'Cuisine Preferences')
-  = check_box(:cuisine, "cuisine", {:multiple => true}, "chinese", nil)
-  = label_tag :cuisine, 'Chinese'
-  = check_box(:cuisine, "cuisine", {:multiple => true}, "italian", nil)
-  = label_tag :cuisine, 'Italian'
-  = check_box(:cuisine, "cuisine", {:multiple => true}, "thai", nil)
-  = label_tag :cuisine, 'Thai'
-  = check_box(:cuisine, "cuisine", {:multiple => true}, "mexican", nil)
-  = label_tag :cuisine, 'Mexican'
+  = label_tag(:cuisine, 'Dietary Preferences')
+  = check_box(:cuisine, "cuisine", {:multiple => true}, "vegetarian", nil)
+  = label_tag :cuisine, 'vegetarian'
+  = check_box(:cuisine, "cuisine", {:multiple => true}, "vegan", nil)
+  = label_tag :cuisine, 'vegan'
+  //For more tags see https://developer.edamam.com/edamam-docs-recipe-api
 
   = submit_tag 'Save Changes'

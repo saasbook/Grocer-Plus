@@ -268,7 +268,7 @@ class UsersController < ApplicationController
 		current_user.exercise = params[:exercise]
 		current_user.cuisine = ''
 		params[:cuisine]["cuisine"].each do |elem|
-			current_user.cuisine += '&cuisineType=' + elem
+			current_user.cuisine += '&health=' + elem
 		end
 		current_user.save!
 		redirect_to show_path
