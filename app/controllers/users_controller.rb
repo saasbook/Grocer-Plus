@@ -170,7 +170,7 @@ class UsersController < ApplicationController
   
 	def show
 		set_vars_from_curr_user
-		if user.recipes.blank? || params[:api] == :true
+		if user.recipes.blank? || params.key?(:api)
 			@calories = self.class.calc_calories(@gender, @weight, @height, @age, @exercise, @goal).round(0)
 			@all_recipes = Recipe.find_in_api(@calories, @budget, @time)
 			@daily_recipes = self.class.do_daily_recipes(@all_recipes)
