@@ -1,5 +1,10 @@
 .edit-view {
     overflow-x: hidden;
+    background-image: asset-url("fork.jpeg");
+    background-repeat: no-repeat;
+    background-size: 45% 100%;
+
+    background-position: 100% 0;
 }
 
 .edit-form {
@@ -41,4 +46,8 @@
 .radios {
 	position: relative !important;
 	top: 10px !important;	
+}
+
+.edit-img {
+	z-index: 1000;
 }
