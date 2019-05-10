@@ -203,6 +203,24 @@ class UsersController < ApplicationController
 			lunch_recipe = self.class.convert_to_recipe(@lunchHash, "Lunch")
 			dinner_recipe = self.class.convert_to_recipe(@dinHash, "Dinner")
 
+			@breakHash["groceries"].each do |grocery|
+				new_grocery = Grocery.create(:name => grocery["text"], :weight_in_grams => grocery["weight"].to_f.round(2))
+				new_grocery.recipe = breakfast_recipe
+				new_grocery.save!
+			end
+
+			@lunchHash["groceries"].each do |grocery|
+				new_grocery = Grocery.create(:name => grocery["text"], :weight_in_grams => grocery["weight"].to_f.round(2))
+				new_grocery.recipe = lunch_recipe
+				new_grocery.save!
+			end
+
+			@dinHash["groceries"].each do |grocery|
+				new_grocery = Grocery.create(:name => grocery["text"], :weight_in_grams => grocery["weight"].to_f.round(2))
+				new_grocery.recipe = dinner_recipe
+				new_grocery.save!
+			end
+
 			current_user.recipes << breakfast_recipe
 			current_user.recipes << lunch_recipe
 			current_user.recipes << dinner_recipe
@@ -358,19 +376,13 @@ class UsersController < ApplicationController
 
 		# current_user.recipes.create(:type => "FavoritedRecipe", :meal_type => params[:Type], :title => params[:Title], 
 		# 	:calories => params[:Calories], :time => params[:PrepTime], :cost => params[:Cost])
-		params[:Groceries].each do |grocery|
-			new_grocery = Grocery.create(:name => grocery["text"], :weight_in_grams => grocery["weight"].to_f.round(2))
-			new_grocery.recipe = favorited_recipe
-			new_grocery.save!
-		end
 		redirect_to favorited_recipes_path
 	end
 
 	def grocery_list
-		@favorited_recipes = current_user.recipes.where(:type => "FavoritedRecipe")
-		@breakfast = current_user.recipes.where(:type => "FavoritedRecipe", :meal_type => "Breakfast")
-		@lunch = current_user.recipes.where(:type => "FavoritedRecipe", :meal_type => "Lunch")
-		@dinner = current_user.recipes.where(:type => "FavoritedRecipe", :meal_type => "Dinner")
+		@breakfast = current_user.recipes.where(:type => "PlanRecipe", :meal_type => "Breakfast")
+		@lunch = current_user.recipes.where(:type => "PlanRecipe", :meal_type => "Lunch")
+		@dinner = current_user.recipes.where(:type => "PlanRecipe", :meal_type => "Dinner")
 	end
 
 	def favorited_recipes
