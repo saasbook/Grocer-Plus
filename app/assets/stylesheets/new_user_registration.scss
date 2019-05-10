@@ -8,6 +8,10 @@
     overflow-x: hidden;
 }
 
+.one {
+    content:url(asset-url("signup_food.jpg"));
+}
+
 .signup {
     position: relative;
     transform: perspective(1px) translateY(20%) translateX(280%);
@@ -20,7 +24,6 @@
 .sign_label {
     padding-top: 15px;
     color: #333;
-
     font-size: 65px;
     font-family: 'Roboto';
     font-weight: 500;

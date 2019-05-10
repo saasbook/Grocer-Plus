@@ -1,6 +1,6 @@
 <body class="show-view">
   <%= render 'navbar' %>
-  <h2 class="text-center">Recommended Daily Meal Plan</h2>
+  <h2 class="text-center show-label">Your Meal Plan</h2>
   <header class="header">Your calories are <%=@calories%></header>
 
   <div class="flex-row">
@@ -8,7 +8,7 @@
 
       
       <div class="card">
-        <img class="card-img-top" src="<%= @breakImg %>" >
+        <img height="200" width="300" class="card-img-top" src="<%= @breakImg %>"/>
         <div class="card-body">
           <h5 class="card-title"><%= @breakTitle%></h5>
           <p class="card-text">Text may not use</p>
@@ -19,12 +19,12 @@
         </ul>
         <div class="card-body">
           <%= link_to "View Recipe", @breakLink, class: "btn btn-primary" %>
-          <%= link_to "Favorite Recipe", favorite_recipe_path(:Type => "Breakfast", :Title => @breakTitle, :Calories => @breakCals, :PrepTime => @breakTime), class: "btn btn-primary"%>
+          <%= link_to "Favorite Breakfast", favorite_recipe_path(:Type => "Breakfast", :Title => @breakTitle, :Calories => @breakCals, :PrepTime => @breakTime), class: "btn btn-primary fav"%>
         </div>
       </div>
 
       <div class="card two">
-        <img class="card-img-top" src="<%= @lunchImg %>">
+        <img height="200" width="300" class="card-img-top" src="https://www.nhm.ac.uk/discover/dino-directory/_jcr_content/par/row2cells13_copy/par2/headertextimage.img.320.low.jpg/1530562710870.jpg"/>
         <div class="card-body">
           <h5 class="card-title"><%= @lunchTitle%></h5>
           <p class="card-text">Text may not use</p>
@@ -35,12 +35,12 @@
         </ul>
         <div class="card-body">
           <%= link_to "View Recipe", @lunchLink, class: "btn btn-primary" %>
-          <%= link_to "Favorite Recipe", favorite_recipe_path(:Type => "Lunch", :Title => @lunchTitle, :Calories => @lunchCals, :PrepTime => @lunchTime), class: "btn btn-primary"%>
+          <%= link_to "Favorite Lunch", favorite_recipe_path(:Type => "Lunch", :Title => @lunchTitle, :Calories => @lunchCals, :PrepTime => @lunchTime), class: "btn btn-primary fav"%>
         </div>
       </div>
 
       <div class="card three">
-        <img class="card-img-top" src="<%= @dinImg %>">
+        <img height="200" width="300" class="card-img-top" src="<%= @dinImg %>">
         <div class="card-body">
           <h5 class="card-title"><%= @dinTitle%></h5>
           <p class="card-text">Text may not use</p>
@@ -51,7 +51,7 @@
         </ul>
         <div class="card-body">
           <%= link_to "View Recipe", @dinLink, class: "btn btn-primary" %>
-          <%= link_to "Favorite Recipe", favorite_recipe_path(:Type => "Dinner", :Title => @dinTitle, :Calories => @dinCals, :PrepTime => @dinTime), class: "btn btn-primary"%>
+          <%= link_to "Favorite Dinner", favorite_recipe_path(:Type => "Dinner", :Title => @dinTitle, :Calories => @dinCals, :PrepTime => @dinTime), class: "btn btn-primary fav"%>
         </div>
       </div>
     </div>
