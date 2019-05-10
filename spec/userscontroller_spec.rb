@@ -194,18 +194,23 @@ describe UsersController, :type => :controller do
         allow(Recipe).to receive(:find_in_api).and_return(ret)
         allow(UsersController).to receive(:do_daily_recipes).and_return(s)
         allow(UsersController).to receive(:convert_to_recipe).and_return(recipe)
-        get 'show'
       end
 
-      it "Should render the meal plan view" do
+      it "should render the meal plan view" do
+        get 'show'
         expect(controller).to render_template(:show)
       end
 
-      it "Should commit displayed recipes to the database" do
+      it "should commit displayed recipes to the database" do
+        get 'show'
         user = User.where(:email => "john.apple@gmail.com").first
         expect(user.recipes.size).to eq(1) # ID is same (from factory), so only commits 1 recipe
       end
 
+      it "should call API if ':api' in params" do
+        expect(Recipe).to receive(:find_in_api)
+        get "show", {:api => :true}
+      end
 
     end
 
