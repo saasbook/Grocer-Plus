@@ -187,8 +187,8 @@ describe UsersController, :type => :controller do
     describe "Show action" do
 
       before(:each) do
-        user = create(:user)
-        recipe = create(:recipe)
+        user = create(:user_with_recipes)
+        recipe = build(:plan_recipe)
         allow(controller).to receive(:current_user).and_return(user)
         allow(UsersController).to receive(:calc_calories).and_return(2000)
         allow(Recipe).to receive(:find_in_api).and_return(ret)
@@ -202,8 +202,8 @@ describe UsersController, :type => :controller do
       end
 
       it "Should commit displayed recipes to the database" do
-        user = User.where(:email => "john.apple@gmail.com")
-        expect(user.recipes.size).to eq(3)
+        user = User.where(:email => "john.apple@gmail.com").first
+        expect(user.recipes.size).to eq(1) # ID is same (from factory), so only commits 1 recipe
       end
 
 

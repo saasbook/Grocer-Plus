@@ -201,7 +201,6 @@ class UsersController < ApplicationController
 			@dinLink = @dinHash['link']
 			
 			#@dinPrice = (@dinHash["price"] / 100).round(2)
-
 			breakfast_recipe = self.class.convert_to_recipe(@breakHash, "Breakfast")
 			lunch_recipe = self.class.convert_to_recipe(@lunchHash, "Lunch")
 			dinner_recipe = self.class.convert_to_recipe(@dinHash, "Dinner")
@@ -219,7 +218,7 @@ class UsersController < ApplicationController
 
 	def self.convert_to_recipe(hash, meal_type)
 		new_recipe = Recipe.new
-		new_recipe.type = "MealPlanRecipe"
+		new_recipe.type = "PlanRecipe"
 		new_recipe.meal_type = meal_type
 		new_recipe.calories = hash["calories"]
 		new_recipe.time = hash["readyInMinutes"]

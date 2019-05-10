@@ -1,4 +1,14 @@
 FactoryBot.define do
+
+    factory :plan_recipe do
+        type { "PlanRecipe" }
+        title { "Eggs Benedict" }
+        calories { 200 }
+        time { 45 }
+        meal_type { "breakfast" }
+        user
+    end
+
     factory :user do
         email { "john.apple@gmail.com" }
         password { "hello1" }
@@ -11,13 +21,14 @@ FactoryBot.define do
         budget { 100 }
         time { 30 }
         cuisine { "spicy" }
-        recipes
-    end
-
-    factory :recipe do
-        title { "Eggs Benedict" }
-        calories { 200 }
-        time { 45 }
-        meal_type { "breakfast" }
+        
+        factory :user_with_recipes do
+            transient do
+                recipes_count { 0 }
+            end
+            after(:create) do |user, evaluator|
+                create_list(:recipe, evaluator.recipes_count, user: user)
+            end
+        end
     end
 end
