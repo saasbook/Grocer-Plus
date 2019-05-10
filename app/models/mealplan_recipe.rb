@@ -1,0 +1,2 @@
+class MealPlanRecipe < Recipe
+end
