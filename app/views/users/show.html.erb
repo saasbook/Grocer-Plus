@@ -18,7 +18,7 @@
           <li class="list-group-item">Preparation Time: <%=@breakTime%> mins</li>
         </ul>
         <div class="card-body">
-          <a href="#" class="btn btn-primary">View Recipe</a>
+          <%= link_to "View Recipe", @breakLink, class: "btn btn-primary" %>
           <%= link_to "Favorite Recipe", favorite_recipe_path(:Type => "Breakfast", :Title => @breakTitle, :Calories => @breakCals, :PrepTime => @breakTime), class: "btn btn-primary"%>
         </div>
       </div>
@@ -34,7 +34,7 @@
           <li class="list-group-item">Preparation Time: <%=@lunchTime%> mins</li>
         </ul>
         <div class="card-body">
-          <a href="#" class="btn btn-primary">View Recipe</a>
+          <%= link_to "View Recipe", @lunchLink, class: "btn btn-primary" %>
           <%= link_to "Favorite Recipe", favorite_recipe_path(:Type => "Lunch", :Title => @lunchTitle, :Calories => @lunchCals, :PrepTime => @lunchTime), class: "btn btn-primary"%>
         </div>
       </div>
@@ -50,7 +50,7 @@
             <li class="list-group-item">Preparation Time: <%=@dinTime%> mins</li>
         </ul>
         <div class="card-body">
-          <a href="#" class="btn btn-primary">View Recipe</a>
+          <%= link_to "View Recipe", @dinLink, class: "btn btn-primary" %>
           <%= link_to "Favorite Recipe", favorite_recipe_path(:Type => "Dinner", :Title => @dinTitle, :Calories => @dinCals, :PrepTime => @dinTime), class: "btn btn-primary"%>
         </div>
       </div>
