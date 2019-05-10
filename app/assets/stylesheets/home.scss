@@ -9,10 +9,37 @@
 }
 
 .welcome-label {
-	padding-top: 150px;
-	padding-right: 375px;
+	padding-top: 170px;
+	padding-right: 260px;
     color: #333;
     font-size: 100px;
     font-family: 'Roboto';
-    font-weight: 500;
+    font-weight: 300;
+}
+
+.welcome-txt {
+	padding-right: 260px;
+	font-size: 23px;
+    font-family: 'Roboto';
+    font-weight: 400;	
+}
+
+.home-buttons {
+	position: relative;
+	padding-right: 350px;
+	padding-top: 15px;
+}
+
+.home-log {
+	position: relative;
+	left: 60px;
+}
+
+.btn-xlarge {
+    padding: 18px 28px;
+    font-size: 25px;
+    line-height: normal;
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
 }
