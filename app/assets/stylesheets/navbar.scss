@@ -13,10 +13,9 @@
 
 span {
   position: absolute;
-  left: 10px;
-  top: 0px;
-  left: 20px;
-  color: white;
+  left: 30px;
+  top: 7px;
+  color: #228B22;
 }
 
 .sidenav a {
@@ -43,4 +42,22 @@ span {
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+}
+
+.grocer-plus-top {
+  position: absolute;
+  right: 30px;
+  padding-left: 30px;
+  padding-top: 13px;
+  color: #228B22;
+  z-index: 1;
+  font-size: 22px;
+  font-family: 'Roboto';
+  font-weight: 500;
+}
+
+.topnav {
+  background-color: white;
+  height: 60px;
+  box-shadow: 2px 5px 50px #888888;
 }
