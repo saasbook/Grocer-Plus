@@ -17,17 +17,17 @@
 @import "users";
 @import "navbar";
 @import "alerts";
+@import "new_user_registration";
+@import "new_user_session";
+@import "welcome_bar";
 
-.topnav {
-  background-color: #333;
-  height: 50px;
+* {
+    font-family: 'Roboto';
+    font-weight: 300;
 }
 
-.grocer-plus {
-  position: absolute;
-  right: 20px;
-  top: 5px;
-  color: white;
-  z-index: 1;
-  font-size: 35px;
+.topnav {
+  background-color: white;
+  height: 60px;
+  box-shadow: 2px 5px 50px #888888;
 }

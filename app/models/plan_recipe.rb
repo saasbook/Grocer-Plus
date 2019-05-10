@@ -1,0 +1,2 @@
+class PlanRecipe < Recipe
+end
