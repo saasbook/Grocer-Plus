@@ -13,6 +13,16 @@
 
 ActiveRecord::Schema.define(version: 20190510072618) do
 
+  create_table "groceries", force: :cascade do |t|
+    t.string   "name"
+    t.float    "weight_in_grams"
+    t.integer  "recipe_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "groceries", ["recipe_id"], name: "index_groceries_on_recipe_id"
+
   create_table "recipes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
