@@ -85,6 +85,21 @@
           </div>      
         </div>
 
+        <div class="form-group row">
+          <div class="col-sm-2 col-form-label">      
+            <%= label_tag(:dietary_preferences, 'Dietary Preferences', class:"ed_lbl") %>
+          </div>
+          <div class="col-sm-10">
+            <div class="checks">
+              <%= check_box(:dietary_preferences, "dietary_preferences", {:multiple => true}, "vegetarian", class:"form-check-input form-control edin") %>
+              <%= label_tag(:dietary_preferences, 'Vegetarian', class:"vg_label_one") %>
+
+              <%= check_box(:dietary_preferences, "dietary_preferences", {:multiple => true}, "vegan",class:"form-check-input form-control edin") %>
+              <%= label_tag(:dietary_preferences, 'Vegan', class:"vg_label_two") %>
+            </div>
+          </div>      
+        </div>
+
         <div class="form-group row ed_actions">
         <%= submit_tag 'Save Changes', class:"btn btn-primary" %>
         </div>
