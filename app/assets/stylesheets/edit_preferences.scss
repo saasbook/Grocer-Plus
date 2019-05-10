@@ -1,0 +1,65 @@
+.edit-view {
+    overflow-x: hidden;
+    background-image: asset-url("fork.jpeg");
+    background-repeat: no-repeat;
+    background-size: 45% 100%;
+
+    background-position: 100% 0;
+}
+
+.edit-form {
+    padding-top: 25px;
+    padding-left: 175px;
+}
+
+
+.ed_lbl {
+    font-size: 20px;
+    font-family: 'Roboto';
+    font-weight: 500;
+}
+
+.mal {
+	padding-right: 15px;
+}
+
+.edin {
+	width: 20% !important;
+	position: relative !important;
+	top: 3px !important;
+}
+
+.edsel {
+	position: relative !important;
+	top: 10px !important;	
+}
+
+.edit-label {
+	padding-left: 100px;
+	padding-top: 50px;
+	color: #333;
+    font-size: 60px;
+    font-family: 'Roboto';
+    font-weight: 500;
+}
+
+.radios {
+	position: relative !important;
+	top: 10px !important;	
+}
+
+.edit-img {
+	z-index: 1000;
+}
+
+.ed_actions {
+	padding-left: 150px;
+}
+
+.checks {
+	padding-top: 10px;
+}
+
+.vg_label_one {
+	padding-right: 15px; 
+}

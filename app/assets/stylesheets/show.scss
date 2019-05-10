@@ -1,0 +1,40 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.show-view {
+  background-image: asset-url("show_food.jpg");
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-repeat: no-repeat;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.mp-cards {
+  padding-top: 20px;
+  padding-left: 125px;
+  padding-right: 125px;
+}
+
+.show-label {
+  padding-top: 30px;
+  color: #333;
+  font-size: 60px;
+  font-family: 'Roboto';
+  font-weight: 500;
+}
+
+.fav {
+  width: 160px;
+  position: relative;
+  left: 60px;
+}
+
+.calorie-label {
+  font-family: 'Roboto';
+  font-weight: 400;
+  color: #333;
+
+}
