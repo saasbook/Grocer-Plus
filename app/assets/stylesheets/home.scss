@@ -1,0 +1,67 @@
+.home-view {
+    background-image: asset-url("home_food.jpg");
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.welcome-label {
+	padding-top: 170px;
+	padding-right: 260px;
+    color: #333;
+    font-size: 100px;
+    font-family: 'Roboto';
+    font-weight: 500;
+}
+
+.logout-label {
+    padding-top: 170px;
+    padding-right:250px;
+    color: #333;
+    font-size: 100px;
+    font-family: 'Roboto';
+    font-weight: 500;
+}
+
+.welcome-txt {
+	padding-right: 260px;
+	font-size: 23px;
+    font-family: 'Roboto';
+    font-weight: 400;	
+}
+
+.logout-txt {
+    padding-right: 265px;
+    font-size: 23px;
+    font-family: 'Roboto';
+    font-weight: 400;       
+}
+
+.sign-out {
+    position: relative;
+    top: 12px;
+    right: 130px;
+}
+
+.home-buttons {
+	position: relative;
+	padding-right: 330px;
+	padding-top: 15px;
+}
+
+.home-log {
+	position: relative;
+	left: 60px;
+}
+
+.btn-xlarge {
+    padding: 18px 28px;
+    font-size: 23px;
+    line-height: normal;
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
+}

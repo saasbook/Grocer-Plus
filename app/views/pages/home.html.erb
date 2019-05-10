@@ -1,10 +1,17 @@
-<div class=text-center>
-<h1>Welcome!</h1>
-
-<% if current_user %>
-    <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-<% else %>
-    <%= link_to 'Sign up', new_user_registration_path %>
-    <%= link_to 'Sign in', new_user_session_path %>
-<% end %>
-</div>
+<%= render "devise/shared/welcome_bar" %>
+<body class="home-view">
+	<div class="text-center home-content">
+		<% if current_user %>
+			<h1 class="logout-label">Log Out.</h1>
+			<p class="logout-txt"> Are you sure you want to log out? </p>
+		    <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class:"btn btn-primary btn-xlarge sign-out" %>
+		<% else %>
+			<h1 class="welcome-label">Welcome!</h1>
+			<p class="welcome-txt"> GrocerPlus is great! You should use us! </p>
+			<div class="home-buttons">
+			    <%= link_to 'Sign Up', new_user_registration_path, class:"btn btn-primary btn-xlarge home-si" %>
+			    <%= link_to 'Log In', new_user_session_path, class:"btn btn-primary btn-xlarge home-log" %>
+			</div>
+		<% end %>
+	</div>
+</body>
