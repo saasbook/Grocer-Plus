@@ -1,5 +1,5 @@
 .signup-view {
-    background-image: url('signup_food.jpg');
+    background-image: asset-url("signup_food.jpg");
     height: 100%;
     margin: 0;
     padding: 0;
@@ -10,8 +10,7 @@
 
 .signup {
     position: relative;
-    transform: perspective(1px) translateY(25%) translateX(280%);
-    background-color: #696969;
+    transform: perspective(1px) translateY(20%) translateX(280%);
     width: 325px;
     height: 400px;
     text-align: center;
@@ -20,31 +19,41 @@
 
 .sign_label {
     padding-top: 15px;
-    padding-right:30px;
-    color: white;
-    width: 350px;
-    height: 50px;
-    font-size: 50px;
+    color: #333;
+
+    font-size: 65px;
     font-family: 'Roboto';
-    font-weight: 200;
+    font-weight: 500;
 }
 
 .new_user {
-
+    font-family: 'Roboto';
+    font-weight: 500;
     border-radius: 0px 0px 45px 45px;
 }
 
 .su-form-content {
-    padding-top: 15px;
+
 }
 
 .su_field {
     padding-top: 15px;
-    color: white;
+    color: #333;
+
+}
+
+.su_lbl {
+    font-size: 20px;
+    font-family: 'Roboto';
+    font-weight: 500;
 }
 
 .su_actions {
     padding-top: 25px;
-    padding-bottom:40px;
+    padding-bottom:35px;
 }
 
+.btn, .btn-primary {
+    background-color: #228B22 !important ; 
+    border-color: #228B22 !important;
+}
