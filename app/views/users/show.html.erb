@@ -1,0 +1,63 @@
+<body>
+  <%= render 'navbar' %>
+  <h2 class="text-center">Recommended Daily Meal Plan</h2>
+  <header class="header">Your calories are <%=@calories%></header>
+
+
+
+  <div class="flex-container">
+    <div class="flex-row">
+      <div class="card-deck">
+
+        <div class="card flex-item" style="width:18rem;">
+          <img class="card-img-top" src="...">
+          <div class="card-body">
+            <h5 class="card-title"><%= @breakTitle%></h5>
+            <p class="card-text">Text may not use</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Calories: <%=@breakCals%> </li>
+            <li class="list-group-item">Preparation Time: <%=@breakTime%> mins</li>
+          </ul>
+          <div class="card-body">
+            <a href="#" class="btn btn-primary">View Recipe</a>
+            <a href="#" class="btn btn-primary">Favorite Recipe</a>
+          </div>
+        </div>
+
+        <div class="card flex-item" style="width:18rem;">
+          <img class="card-img-top" src="...">
+          <div class="card-body">
+            <h5 class="card-title"><%= @lunchTitle%></h5>
+            <p class="card-text">Text may not use</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Calories: <%=@lunchCals%> </li>
+            <li class="list-group-item">Preparation Time: <%=@lunchTime%> mins</li>
+          </ul>
+          <div class="card-body">
+            <a href="#" class="btn btn-primary">View Recipe</a>
+            <a href="#" class="btn btn-primary">Favorite Recipe</a>
+          </div>
+        </div>
+
+        <div class="card flex-item" style="width:18rem;">
+          <img class="card-img-top" src="...">
+          <div class="card-body">
+            <h5 class="card-title"><%= @dinTitle%></h5>
+            <p class="card-text">Text may not use</p>
+          </div>
+          <ul class="list-group list-group-flush">
+              <li class="list-group-item">Calories: <%=@dinCals%> </li>
+              <li class="list-group-item">Preparation Time: <%=@dinTime%> mins</li>
+          </ul>
+          <div class="card-body">
+            <a href="#" class="btn btn-primary">View Recipe</a>
+            <a href="#" class="btn btn-primary">Favorite Recipe</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
