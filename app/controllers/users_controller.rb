@@ -170,36 +170,51 @@ class UsersController < ApplicationController
   
 	def show
 		set_vars_from_curr_user
-		@calories = self.class.calc_calories(@gender, @weight, @height, @age, @exercise, @goal).round(0)
-		@all_recipes = Recipe.find_in_api(@calories, @budget, @time)
-		@daily_recipes = self.class.do_daily_recipes(@all_recipes)
+		if user.recipes.blank? || params[:api] == :true
+			@calories = self.class.calc_calories(@gender, @weight, @height, @age, @exercise, @goal).round(0)
+			@all_recipes = Recipe.find_in_api(@calories, @budget, @time)
+			@daily_recipes = self.class.do_daily_recipes(@all_recipes)
 
-		@day = "Monday"
-		# return recipes for Monday (eventually second index will be replaced with day variable)
-		@breakHash = @daily_recipes[1][@day]
-		@breakImg = @breakHash["image"]
-		@breakTitle = @breakHash["title"]
-		@breakCals = @breakHash["calories"]
-		@breakTime = @breakHash["readyInMinutes"]
-		@breakLink = @breakHash['link']
-		#@breakPrice = (@breakHash["price"] / 100).round(2)
+			@day = "Monday"
+			# return recipes for Monday (eventually second index will be replaced with day variable)
+			@breakHash = @daily_recipes[1][@day]
+			@breakImg = @breakHash["image"]
+			@breakTitle = @breakHash["title"]
+			@breakCals = @breakHash["calories"]
+			@breakTime = @breakHash["readyInMinutes"]
+			@breakLink = @breakHash['link']
+			#@breakPrice = (@breakHash["price"] / 100).round(2)
 
-		@lunchHash = @daily_recipes[2][@day]
-		@lunchImg = @lunchHash["image"]
-		@lunchTitle = @lunchHash["title"]
-		@lunchCals = @lunchHash["calories"]
-		@lunchTime = @lunchHash["readyInMinutes"]
-		@lunchLink = @lunchHash['link']
-		#@lunchPrice = (@lunchHash["price"] / 100).round(2)
+			@lunchHash = @daily_recipes[2][@day]
+			@lunchImg = @lunchHash["image"]
+			@lunchTitle = @lunchHash["title"]
+			@lunchCals = @lunchHash["calories"]
+			@lunchTime = @lunchHash["readyInMinutes"]
+			@lunchLink = @lunchHash['link']
+			#@lunchPrice = (@lunchHash["price"] / 100).round(2)
 
-		@dinHash = @daily_recipes[3][@day]
-		@dinImg = @dinHash["image"]
-		@dinTitle = @dinHash["title"]
-		@dinCals = @dinHash["calories"]
-		@dinTime = @dinHash["readyInMinutes"]
-		@dinLink = @dinHash['link']
-		
-		#@dinPrice = (@dinHash["price"] / 100).round(2)
+			@dinHash = @daily_recipes[3][@day]
+			@dinImg = @dinHash["image"]
+			@dinTitle = @dinHash["title"]
+			@dinCals = @dinHash["calories"]
+			@dinTime = @dinHash["readyInMinutes"]
+			@dinLink = @dinHash['link']
+			
+			#@dinPrice = (@dinHash["price"] / 100).round(2)
+
+			breakfast_recipe = convert_to_recipe(@breakHash, "breakfast")
+			lunch_recipe = convert_to_recipe(@lunchHash, "lunch")
+			dinner_recipe = convert_to_recipe(@dinHash, "dinner")
+
+			current_user.recipes << breakfast_recipe
+			current_user.recipes << lunch_recipe
+			current_user.recipes << dinner_recipe
+			current_user.save!
+		else
+			set_view_vars(current_user.recipes[0], "breakfast")
+			set_view_vars(current_user.recipes[1], "lunch")
+			set_view_vars(current_user.recipes[2], "dinner")
+		end
 	end
 
 

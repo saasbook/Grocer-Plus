@@ -5,7 +5,7 @@
 
 %h2 Enter dietary restrictions and preferences here
 
-= form_tag edit_path, :class => '' do
+= form_tag edit_path(:api => :true), :class => '' do
 
   = label_tag(:age, 'Age')
   = number_field_tag :age, 'age', min: 1, required: true, class: ""
