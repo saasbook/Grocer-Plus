@@ -3,6 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .show-view {
+  background-image: asset-url("show_food.jpg");
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-repeat: no-repeat;
+  max-width: 100%;
   overflow-x: hidden;
 }
 
