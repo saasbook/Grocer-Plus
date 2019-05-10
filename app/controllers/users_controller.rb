@@ -351,10 +351,13 @@ class UsersController < ApplicationController
 	end
 
 	def favorite_recipe
-		current_user.recipes.create(:type => "FavoritedRecipe", :meal_type => params[:Type], :title => params[:Title], 
-			:calories => params[:Calories], :time => params[:PrepTime]
-			)
-		current_user.save!
+		previously_favorited = current_user.recipes.where(:type => "FavoritedRecipe", :meal_type => params[:Type], :title => params[:Title], 
+		:calories => params[:Calories], :time => params[:PrepTime])
+		if previously_favorited.blank?
+			current_user.recipes.create(:type => "FavoritedRecipe", :meal_type => params[:Type], :title => params[:Title], 
+				:calories => params[:Calories], :time => params[:PrepTime]
+				)
+			current_user.save!
 		redirect_to favorited_recipes_path
 	end
 
