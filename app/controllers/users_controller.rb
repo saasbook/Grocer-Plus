@@ -358,6 +358,7 @@ class UsersController < ApplicationController
 				:calories => params[:Calories], :time => params[:PrepTime]
 				)
 			current_user.save!
+		end
 		redirect_to favorited_recipes_path
 	end
 
