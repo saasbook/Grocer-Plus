@@ -208,8 +208,10 @@ class UsersController < ApplicationController
 			current_user.recipes << breakfast_recipe
 			current_user.recipes << lunch_recipe
 			current_user.recipes << dinner_recipe
+			current_user.calories = @calories
 			current_user.save!
 		else
+			@calories = current_user.calories
 			breakfast_recipe = current_user.recipes[0]
 			lunch_recipe = current_user.recipes[1]
 			dinner_recipe = current_user.recipes[2]
