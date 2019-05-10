@@ -11,6 +11,7 @@ FactoryBot.define do
         budget { 100 }
         time { 30 }
         cuisine { "spicy" }
+        recipes
     end
 
     factory :recipe do
