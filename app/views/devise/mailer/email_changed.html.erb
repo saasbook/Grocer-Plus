@@ -1,3 +1,5 @@
+<%= render "devise/shared/welcome_bar" %>
+
 <p>Hello <%= @email %>!</p>
 
 <% if @resource.try(:unconfirmed_email?) %>
