@@ -1,4 +1,4 @@
-.signup-view {
+.login-view {
     background-image: asset-url("signup_food.jpg");
     height: 100%;
     margin: 0;
@@ -8,7 +8,7 @@
     overflow-x: hidden;
 }
 
-.signup {
+.login {
     position: relative;
     transform: perspective(1px) translateY(20%) translateX(280%);
     width: 325px;
@@ -17,7 +17,7 @@
     border-radius: 45px 45px 45px 45px;
 }
 
-.sign_label {
+.login_label {
     padding-top: 15px;
     color: #333;
 
@@ -32,21 +32,21 @@
     border-radius: 0px 0px 45px 45px;
 }
 
-.su_field {
+.lo_field {
     padding-top: 15px;
     color: #333;
 
 }
 
-.su_lbl {
+.lo_lbl {
     font-size: 20px;
     font-family: 'Roboto';
     font-weight: 500;
 }
 
-.su_actions {
-    padding-top: 25px;
-    padding-bottom:35px;
+.lo_actions {
+    padding-top: 15px;
+    padding-bottom:30px;
 }
 
 .btn, .btn-primary {
