@@ -26,7 +26,6 @@ Scenario: Sign up with improper credentials
 	Then I should not see "Enter dietary restrictions and preferences here"
 	And I should see "Email"
 	And I should see "Password"
-	And I should see "Password confirmation"
 	And I should see "Sign up"
 
 Scenario: Sign up with different passwords
