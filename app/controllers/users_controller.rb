@@ -164,9 +164,7 @@ class UsersController < ApplicationController
 	# 			 'calories' => 200,
 	# 			 'readyInMinutes' => 45,
 	# 			 'price' => 8	
-	# 			 }
-	# 		]
-	# }
+	# 			 }]}
   
 	def show
 		set_vars_from_curr_user
