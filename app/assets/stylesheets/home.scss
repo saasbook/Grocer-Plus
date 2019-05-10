@@ -17,11 +17,33 @@
     font-weight: 300;
 }
 
+.logout-label {
+    padding-top: 170px;
+    padding-right:250px;
+    color: #333;
+    font-size: 100px;
+    font-family: 'Roboto';
+    font-weight: 300;
+}
+
 .welcome-txt {
 	padding-right: 260px;
 	font-size: 23px;
     font-family: 'Roboto';
     font-weight: 400;	
+}
+
+.logout-txt {
+    padding-right: 250px;
+    font-size: 23px;
+    font-family: 'Roboto';
+    font-weight: 400;       
+}
+
+.sign-out {
+    position: relative;
+    top: 12px;
+    right: 130px;
 }
 
 .home-buttons {
