@@ -8,42 +8,42 @@
     overflow-x: hidden;
 }
 
-.sign_label {
-    padding-top: 10px;
+.signup {
     position: relative;
-    left: 63%;
-    top: 110px;
-    background-color:#696969;
+    transform: perspective(1px) translateY(25%) translateX(275%);
+    background-color: #696969;
+    width: 325px;
+    height: 400px;
+    text-align: center;
+    border-radius: 45px 45px 45px 45px;
+}
+
+.sign_label {
+    padding-top: 15px;
+    padding-right:30px;
     color: white;
     width: 350px;
     height: 50px;
-    border-radius: 45px 45px 0px 0px;
-    font-family: 'Helvetica';
+    font-size: 50px;
+    font-family: 'Roboto';
+    font-weight: 200;
 }
 
 .new_user {
-    position: relative;
-    left: 63%;
-    top: 75px;
-    width: 350px;
-    height: 350px;
-    background-color: #696969;
+
     border-radius: 0px 0px 45px 45px;
-    font-family: 'Helvetica';
 }
 
 .su-form-content {
     position: relative;
-    top: 20px;   
 }
 
 .su_field {
+    padding-top: 15px;
     color: white;
-    padding-bottom: 20px;
 }
 
 .su_actions {
-    padding-top: 10px;
-    padding-bottom: 45px;
+    padding-top: 25px;
 }
 
