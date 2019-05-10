@@ -91,80 +91,80 @@ class UsersController < ApplicationController
 		@cuisine = current_user.cuisine
 	end
 
-	@all_recipes = {'items' => 
-				[
-				{'day' => 1,
-			 	'slot' => 1,
-			 	'id' => 123456,
-			 	'title' => "Eggs Benedict",
-			 	'calories' => 200,
-			 	'readyInMinutes' => 45,
-				 'price' => 2
-				 },	
-				{'day' => 1,
-			 	'slot' => 2,
-			 	'id' => 123456,
-			 	'title' => "Sweet & Sour Soup",
-			 	'calories' => 340,
-			 	'readyInMinutes' => 50,
-				'price' => 3
-				},	
-				 {'day'=> 1,
-				 'slot' => 3,
-				 'id' => 123456,
-				 'title' => "Mushroom Risotto",
-				 'calories' => 200,
-				 'readyInMinutes' => 75,
-				 'price' => 8	
-				 },
-				 {'day'=> 2,
-				 'slot' => 1,
-				 'id' => 123456,
-				 'title' => "waffles",
-				 'calories' => 200,
-				 'readyInMinutes' => 45,
-				 'price' => 8	
-				 },
-				 {'day'=> 2,
-				 'slot' => 2,
-				 'id' => 123456,
-				 'title' => "salad",
-				 'calories' => 200,
-				 'readyInMinutes' => 45,
-				 'price' => 8	
-				 },
-				 {'day'=> 2,
-				 'slot' => 3,
-				 'id' => 123456,
-				 'title' => "burrito",
-				 'calories' => 200,
-				 'readyInMinutes' => 45,
-				 'price' => 8	
-				 },
-				 {'day'=> 3,
-				 'slot' => 1,
-				 'id' => 123456,
-				 'title' => "grapes",
-				 'calories' => 200,
-				 'readyInMinutes' => 45,
-				 'price' => 8
-				 },
-				 {'day'=> 3,
-				 'slot' => 2,
-				 'id' => 123456,
-				 'title' => "cherries",
-				 'calories' => 200,
-				 'readyInMinutes' => 45,
-				 'price' => 8	
-				 },
-				 {'day'=> 3,
-				 'slot' => 3,
-				 'id' => 123456,
-				 'title' => "milk",
-				 'calories' => 200,
-				 'readyInMinutes' => 45,
-				 'price' => 8	
-				 }]}
+	# @all_recipes = {'items' => 
+	# 			[
+	# 			{'day' => 1,
+	# 		 	'slot' => 1,
+	# 		 	'id' => 123456,
+	# 		 	'title' => "Eggs Benedict",
+	# 		 	'calories' => 200,
+	# 		 	'readyInMinutes' => 45,
+	# 			 'price' => 2
+	# 			 },	
+	# 			{'day' => 1,
+	# 		 	'slot' => 2,
+	# 		 	'id' => 123456,
+	# 		 	'title' => "Sweet & Sour Soup",
+	# 		 	'calories' => 340,
+	# 		 	'readyInMinutes' => 50,
+	# 			'price' => 3
+	# 			},	
+	# 			 {'day'=> 1,
+	# 			 'slot' => 3,
+	# 			 'id' => 123456,
+	# 			 'title' => "Mushroom Risotto",
+	# 			 'calories' => 200,
+	# 			 'readyInMinutes' => 75,
+	# 			 'price' => 8	
+	# 			 },
+	# 			 {'day'=> 2,
+	# 			 'slot' => 1,
+	# 			 'id' => 123456,
+	# 			 'title' => "waffles",
+	# 			 'calories' => 200,
+	# 			 'readyInMinutes' => 45,
+	# 			 'price' => 8	
+	# 			 },
+	# 			 {'day'=> 2,
+	# 			 'slot' => 2,
+	# 			 'id' => 123456,
+	# 			 'title' => "salad",
+	# 			 'calories' => 200,
+	# 			 'readyInMinutes' => 45,
+	# 			 'price' => 8	
+	# 			 },
+	# 			 {'day'=> 2,
+	# 			 'slot' => 3,
+	# 			 'id' => 123456,
+	# 			 'title' => "burrito",
+	# 			 'calories' => 200,
+	# 			 'readyInMinutes' => 45,
+	# 			 'price' => 8	
+	# 			 },
+	# 			 {'day'=> 3,
+	# 			 'slot' => 1,
+	# 			 'id' => 123456,
+	# 			 'title' => "grapes",
+	# 			 'calories' => 200,
+	# 			 'readyInMinutes' => 45,
+	# 			 'price' => 8
+	# 			 },
+	# 			 {'day'=> 3,
+	# 			 'slot' => 2,
+	# 			 'id' => 123456,
+	# 			 'title' => "cherries",
+	# 			 'calories' => 200,
+	# 			 'readyInMinutes' => 45,
+	# 			 'price' => 8	
+	# 			 },
+	# 			 {'day'=> 3,
+	# 			 'slot' => 3,
+	# 			 'id' => 123456,
+	# 			 'title' => "milk",
+	# 			 'calories' => 200,
+	# 			 'readyInMinutes' => 45,
+	# 			 'price' => 8	
+	# 			 }]}
   
 	def show
 		set_vars_from_curr_user
