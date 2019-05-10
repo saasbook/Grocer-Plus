@@ -202,21 +202,29 @@ class UsersController < ApplicationController
 			
 			#@dinPrice = (@dinHash["price"] / 100).round(2)
 
-			breakfast_recipe = convert_to_recipe(@breakHash, "breakfast")
-			lunch_recipe = convert_to_recipe(@lunchHash, "lunch")
-			dinner_recipe = convert_to_recipe(@dinHash, "dinner")
+			breakfast_recipe = self.class.convert_to_recipe(@breakHash, "Breakfast")
+			lunch_recipe = self.class.convert_to_recipe(@lunchHash, "Lunch")
+			dinner_recipe = self.class.convert_to_recipe(@dinHash, "Dinner")
 
 			current_user.recipes << breakfast_recipe
 			current_user.recipes << lunch_recipe
 			current_user.recipes << dinner_recipe
 			current_user.save!
 		else
-			set_view_vars(current_user.recipes[0], "breakfast")
-			set_view_vars(current_user.recipes[1], "lunch")
-			set_view_vars(current_user.recipes[2], "dinner")
+			self.class.set_view_vars(current_user.recipes[0], "breakfast")
+			self.class.set_view_vars(current_user.recipes[1], "lunch")
+			self.class.set_view_vars(current_user.recipes[2], "dinner")
 		end
 	end
 
+	def self.convert_to_recipe(hash, meal_type)
+		new_recipe = Recipe.new
+		new_recipe.type = "MealPlanRecipe"
+		new_recipe.meal_type = meal_type
+		new_recipe.calories = hash["calories"]
+		new_recipe.time = hash["readyInMinutes"]
+		return new_recipe
+	end
 
 	def self.do_daily_recipes(all_recipes)
 		daily_recipes = Hash.new()
