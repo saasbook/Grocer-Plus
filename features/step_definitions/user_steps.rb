@@ -6,11 +6,50 @@
 # end
 
 api_result = {"items"=>[{"day"=>1, "value"=>"{\"id\":655340,\"imageType\":\"jpg\",\"title\":\"Peanut Butter Swirl Banana Bread\"}", 
-"slot"=>1, "id"=>123456, "title"=>nil, "calories"=>50, "totalTime"=>45, "yield"=>4, "readyInMinutes"=>45}, 
+"slot"=>1, "id"=>123456, "title"=>nil, "calories"=>50, "totalTime"=>45, "yield"=>4, "readyInMinutes"=>45, "groceries"=> [
+	{
+	  "text": "6 cups watermelon chunks, seeded",
+	  "weight": 924.0
+	},
+	{
+	  "text": "5 tomatoes, cored and quartered",
+	  "weight": 615.0
+	},
+	{
+	  "text": "1 tablespoon sweet smoked paprika",
+	  "weight": 6.8
+	}
+]}, 
 {"day"=>1, "value"=>"{\"id\":655340,\"imageType\":\"jpg\",\"title\":\"Peanut Butter Swirl Banana Bread\"}", "slot"=>2, "id"=>123456, 
-"title"=>nil, "calories"=>50, "totalTime"=>45, "yield"=>4, "readyInMinutes"=>45}, {"day"=>1, 
+"title"=>nil, "calories"=>50, "totalTime"=>45, "yield"=>4, "readyInMinutes"=>45, "groceries"=> [
+	{
+	  "text": "6 cups watermelon chunks, seeded",
+	  "weight": 924.0
+	},
+	{
+	  "text": "5 tomatoes, cored and quartered",
+	  "weight": 615.0
+	},
+	{
+	  "text": "1 tablespoon sweet smoked paprika",
+	  "weight": 6.8
+	}
+]}, {"day"=>1, 
 "value"=>"{\"id\":655340,\"imageType\":\"jpg\",\"title\":\"Peanut Butter Swirl Banana Bread\"}", "slot"=>3, "id"=>123456, "title"=>nil, 
-"calories"=>50, "totalTime"=>45, "yield"=>4, "readyInMinutes"=>45}]}
+"calories"=>50, "totalTime"=>45, "yield"=>4, "readyInMinutes"=>45, "groceries"=> [
+	{
+	  "text": "6 cups watermelon chunks, seeded",
+	  "weight": 924.0
+	},
+	{
+	  "text": "5 tomatoes, cored and quartered",
+	  "weight": 615.0
+	},
+	{
+	  "text": "1 tablespoon sweet smoked paprika",
+	  "weight": 6.8
+	}
+]}]}
 
 Given /a user exists/ do
 	user = create(:user)
