@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
 	#def user_params
-	#	params.permit(:age, :weight, :height, :exercise, :goal, :budget, :time, :cuisine, :gender)
+	#	params.permit(:age, :weight, :height, :exercise, :goal, :budget, :time, :dietary_preferences, :gender)
 	#end
 # 	@@all_recipes = {'items' => 
 # 	[
@@ -88,7 +88,7 @@ class UsersController < ApplicationController
 	    @goal = current_user.goal
 	    #@budget = current_user.budget
 	    @time = current_user.time
-		@cuisine = current_user.cuisine
+		@dietary_preferences = current_user.dietary_preferences
 	end
 
 	# @all_recipes = {'items' => 
@@ -171,7 +171,7 @@ class UsersController < ApplicationController
 	def show
 		set_vars_from_curr_user
 		@calories = self.class.calc_calories(@gender, @weight, @height, @age, @exercise, @goal).round(0)
-		@all_recipes = Recipe.find_in_api(@calories, @budget, @time, @cuisine)
+		@all_recipes = Recipe.find_in_api(@calories, @budget, @time, @dietary_preferences)
 		@daily_recipes = self.class.do_daily_recipes(@all_recipes)
 
 		@day = "Monday"
@@ -266,9 +266,13 @@ class UsersController < ApplicationController
 		current_user.time = params[:time].to_i
 		current_user.gender = params[:gender]
 		current_user.exercise = params[:exercise]
-		current_user.cuisine = ''
-		params[:cuisine]["cuisine"].each do |elem|
-			current_user.cuisine += '&health=' + elem
+		current_user.dietary_preferences = ''
+		if params[:dietary_preferences] and params[:dietary_preferences]["dietary_preferences"]
+			params[:dietary_preferences]["dietary_preferences"].each do |elem|
+				current_user.dietary_preferences += '&health=' + elem
+			end
+		else
+			current_user.dietary_preferences = ''
 		end
 		current_user.save!
 		redirect_to show_path

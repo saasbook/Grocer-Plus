@@ -3,7 +3,7 @@
 - else
   = render 'bar'
 
-%h2 Enter dietary restrictions and preferences here
+%h2.text-center Please enter your information here
 
 = form_tag edit_path, :class => '' do
 
@@ -31,11 +31,11 @@
   = label_tag(:time, 'Time available to cook per day')
   = number_field_tag(:time, 'time', min: 1, required: true)
 
-  = label_tag(:cuisine, 'Dietary Preferences')
-  = check_box(:cuisine, "cuisine", {:multiple => true}, "vegetarian", nil)
-  = label_tag :cuisine, 'vegetarian'
-  = check_box(:cuisine, "cuisine", {:multiple => true}, "vegan", nil)
-  = label_tag :cuisine, 'vegan'
+  = label_tag(:dietary_preferences, 'Dietary Preferences')
+  = check_box(:dietary_preferences, "dietary_preferences", {:multiple => true}, "vegetarian", nil)
+  = label_tag :dietary_preferences, 'vegetarian'
+  = check_box(:dietary_preferences, "dietary_preferences", {:multiple => true}, "vegan", nil)
+  = label_tag :dietary_preferences, 'vegan'
   //For more tags see https://developer.edamam.com/edamam-docs-recipe-api
 
   = submit_tag 'Save Changes'

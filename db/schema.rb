@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190426213534) do
+ActiveRecord::Schema.define(version: 20190510011333) do
 
   create_table "recipes", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20190426213534) do
     t.string   "goal"
     t.integer  "budget"
     t.integer  "time"
-    t.string   "cuisine"
+    t.string   "dietary_preferences"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

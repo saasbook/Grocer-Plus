@@ -10,7 +10,7 @@ FactoryBot.define do
         goal { "gain" }
         budget { 100 }
         time { 30 }
-        cuisine { "spicy" }
+        dietary_preferences { "vegetarian" }
     end
 
     factory :recipe do
