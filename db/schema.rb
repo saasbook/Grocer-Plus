@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190510040746) do
+ActiveRecord::Schema.define(version: 20190510071309) do
 
   create_table "groceries", force: :cascade do |t|
     t.string   "name"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20190510040746) do
     t.decimal  "cost"
     t.string   "meal_type"
     t.integer  "user_id"
+    t.string   "image"
+    t.string   "link"
   end
 
   add_index "recipes", ["user_id"], name: "index_recipes_on_user_id"

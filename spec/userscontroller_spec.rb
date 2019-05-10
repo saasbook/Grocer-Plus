@@ -186,30 +186,50 @@ describe UsersController, :type => :controller do
     end
     describe "Show action" do
 
-      before(:each) do
-        user = create(:user_with_recipes)
-        recipe = build(:plan_recipe)
-        allow(controller).to receive(:current_user).and_return(user)
-        allow(UsersController).to receive(:calc_calories).and_return(2000)
-        allow(Recipe).to receive(:find_in_api).and_return(ret)
-        allow(UsersController).to receive(:do_daily_recipes).and_return(s)
-        allow(UsersController).to receive(:convert_to_recipe).and_return(recipe)
+      describe "involving API call" do
+
+        before(:each) do
+          user = create(:user_with_recipes)
+          recipe = build(:plan_recipe)
+          allow(controller).to receive(:current_user).and_return(user)
+          allow(UsersController).to receive(:calc_calories).and_return(2000)
+          allow(Recipe).to receive(:find_in_api).and_return(ret)
+          allow(UsersController).to receive(:do_daily_recipes).and_return(s)
+          allow(UsersController).to receive(:convert_to_recipe).and_return(recipe)
+        end
+
+        it "should render the meal plan view" do
+          get 'show'
+          expect(controller).to render_template(:show)
+        end
+
+        it "should commit displayed recipes to the database" do
+          get 'show'
+          user = User.where(:email => "john.apple@gmail.com").first
+          expect(user.recipes.size).to eq(1) # ID is same (from factory), so only commits 1 recipe
+        end
+
+        it "should call API if user has no recipes in database" do
+          expect(Recipe).to receive(:find_in_api)
+          get "show"
+        end
+
       end
 
-      it "should render the meal plan view" do
-        get 'show'
-        expect(controller).to render_template(:show)
-      end
+      describe "not involving API call" do
 
-      it "should commit displayed recipes to the database" do
-        get 'show'
-        user = User.where(:email => "john.apple@gmail.com").first
-        expect(user.recipes.size).to eq(1) # ID is same (from factory), so only commits 1 recipe
-      end
+        it "should not call API if user has recipes saved to database" do
+          user = create(:user_with_recipes)
+          breakfast_recipe = create(:plan_recipe, :user_id => 1)
+          lunch_recipe = create(:plan_recipe, :user_id => 1, :id => 2)
+          dinner_recipe = create(:plan_recipe, :user_id => 1, :id => 3)
 
-      it "should call API if ':api' in params" do
-        expect(Recipe).to receive(:find_in_api)
-        get "show", {:api => :true}
+          allow(controller).to receive(:current_user).and_return(user)
+          allow(UsersController).to receive(:calc_calories).and_return(2000)
+          expect(Recipe).not_to receive(:find_in_api)
+          get "show"
+        end
+
       end
 
     end
