@@ -15,3 +15,19 @@
 @import "pages";
 @import "recipes";
 @import "users";
+@import "navbar";
+@import "alerts";
+
+.topnav {
+  background-color: #333;
+  height: 50px;
+}
+
+.grocer-plus {
+  position: absolute;
+  right: 20px;
+  top: 5px;
+  color: white;
+  z-index: 1;
+  font-size: 35px;
+}

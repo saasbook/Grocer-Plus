@@ -6,7 +6,7 @@ Feature: Login to Grocer-Plus
 
 Background:
 
-	Given I am an existing user with email "john.apple@gmail.com" and password "hello1" and age "18" and height "160" and weight "60" and time "60"
+	Given a user exists
   	And I am on the login page
 
 Scenario: Log in with proper credentials
@@ -14,9 +14,7 @@ Scenario: Log in with proper credentials
 	When I fill in "user[email]" with "john.apple@gmail.com"
 	And I fill in "user[password]" with "hello1"
 	And I press "Log in"
-	And I favorite a "Breakfast" meal
 	Then I should see "Log Out"
-    And I should see "Favorites"
 
 
 Scenario: Attempting to log in with improper credentials fails
