@@ -170,7 +170,81 @@ class UsersController < ApplicationController
 		set_vars_from_curr_user
 		if current_user.recipes.blank?
 			@calories = self.class.calc_calories(@gender, @weight, @height, @age, @exercise, @goal).round(0)
-			@all_recipes = Recipe.find_in_api(@calories, @budget, @time, @dietary_preferences)
+			# @all_recipes = Recipe.find_in_api(@calories, @budget, @time, @dietary_preferences)
+			@all_recipes = {'items' => 
+				[
+				{'day' => 1,
+			 	'slot' => 1,
+			 	'id' => 123456,
+			 	'title' => "Eggs Benedict",
+			 	'calories' => 200,
+			 	'readyInMinutes' => 45,
+				 'price' => 2
+				 },	
+				{'day' => 1,
+			 	'slot' => 2,
+			 	'id' => 123456,
+			 	'title' => "Sweet & Sour Soup",
+			 	'calories' => 340,
+			 	'readyInMinutes' => 50,
+				'price' => 3
+				},	
+				 {'day'=> 1,
+				 'slot' => 3,
+				 'id' => 123456,
+				 'title' => "Mushroom Risotto",
+				 'calories' => 200,
+				 'readyInMinutes' => 75,
+				 'price' => 8	
+				 },
+				 {'day'=> 2,
+				 'slot' => 1,
+				 'id' => 123456,
+				 'title' => "waffles",
+				 'calories' => 200,
+				 'readyInMinutes' => 45,
+				 'price' => 8	
+				 },
+				 {'day'=> 2,
+				 'slot' => 2,
+				 'id' => 123456,
+				 'title' => "salad",
+				 'calories' => 200,
+				 'readyInMinutes' => 45,
+				 'price' => 8	
+				 },
+				 {'day'=> 2,
+				 'slot' => 3,
+				 'id' => 123456,
+				 'title' => "burrito",
+				 'calories' => 200,
+				 'readyInMinutes' => 45,
+				 'price' => 8	
+				 },
+				 {'day'=> 3,
+				 'slot' => 1,
+				 'id' => 123456,
+				 'title' => "grapes",
+				 'calories' => 200,
+				 'readyInMinutes' => 45,
+				 'price' => 8
+				 },
+				 {'day'=> 3,
+				 'slot' => 2,
+				 'id' => 123456,
+				 'title' => "cherries",
+				 'calories' => 200,
+				 'readyInMinutes' => 45,
+				 'price' => 8	
+				 },
+				 {'day'=> 3,
+				 'slot' => 3,
+				 'id' => 123456,
+				 'title' => "milk",
+				 'calories' => 200,
+				 'readyInMinutes' => 45,
+				 'price' => 8	
+				 }]}
 			@daily_recipes = self.class.do_daily_recipes(@all_recipes)
 
 			@day = "Monday"
