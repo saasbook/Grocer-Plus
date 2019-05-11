@@ -1,4 +1,4 @@
-.signup-view {
+.devise-view {
     background-image: asset-url("signup_food.jpg");
     height: 100%;
     margin: 0;
@@ -8,7 +8,7 @@
     overflow-x: hidden;
 }
 
-.signup {
+.devise {
     position: relative;
     transform: perspective(1px) translateY(20%) translateX(280%);
     width: 325px;
@@ -17,42 +17,27 @@
     border-radius: 45px 45px 45px 45px;
 }
 
-.sign_label {
+.fyp_label {
     padding-top: 15px;
     color: #333;
-    font-size: 65px;
+    font-size: 40px;
     font-family: 'Roboto';
     font-weight: 500;
 }
 
-.new_user {
-    font-family: 'Roboto';
-    font-weight: 500;
-    border-radius: 0px 0px 45px 45px;
-}
-
-.su_field {
+.dv_field {
     padding-top: 15px;
     color: #333;
 
 }
 
-.su_lbl {
+.dv_lbl {
     font-size: 20px;
     font-family: 'Roboto';
     font-weight: 500;
 }
 
-.su_actions {
-    padding-top: 25px;
-    padding-bottom:35px;
-}
-
-.btn, .btn-primary {
-    background-color: #228B22 !important ; 
-    border-color: #228B22 !important;
-}
-
-.btn:hover {
-    border-color: #006400 !important ;
+.dv_actions {
+    padding-top: 15px;
+    padding-bottom:30px;
 }

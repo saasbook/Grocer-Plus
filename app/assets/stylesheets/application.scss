@@ -14,12 +14,15 @@
 @import "bootstrap";
 @import "pages";
 @import "recipes";
-@import "users";
 @import "navbar";
 @import "alerts";
 @import "new_user_registration";
+@import "edit_preferences";
 @import "new_user_session";
 @import "welcome_bar";
+@import "home";
+@import "show";
+@import "devise";
 
 * {
     font-family: 'Roboto';

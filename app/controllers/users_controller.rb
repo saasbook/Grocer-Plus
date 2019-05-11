@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
 	#def user_params
-	#	params.permit(:age, :weight, :height, :exercise, :goal, :budget, :time, :cuisine, :gender)
+	#	params.permit(:age, :weight, :height, :exercise, :goal, :budget, :time, :dietary_preferences, :gender)
 	#end
 # 	@@all_recipes = {'items' => 
 # 	[
@@ -88,7 +88,7 @@ class UsersController < ApplicationController
 	    @goal = current_user.goal
 	    #@budget = current_user.budget
 	    @time = current_user.time
-		@cuisine = current_user.cuisine
+		@dietary_preferences = current_user.dietary_preferences
 	end
 
 	# @all_recipes = {'items' => 
@@ -168,11 +168,11 @@ class UsersController < ApplicationController
   
 	def show
 		set_vars_from_curr_user
-		if current_user.recipes.blank?
+		if current_user.recipes.where(:type => "PlanRecipe").blank?
 			@calories = self.class.calc_calories(@gender, @weight, @height, @age, @exercise, @goal).round(0)
 			@all_recipes = Recipe.find_in_api(@calories, @budget, @time)
 			if @all_recipes.nil?
-				flash[:error] = "401: Request Denied"
+				flash[:error] = "API request limit reached, please try again in one minute!"
 				redirect_to edit_path
 				return
 			end
@@ -208,6 +208,24 @@ class UsersController < ApplicationController
 			lunch_recipe = self.class.convert_to_recipe(@lunchHash, "Lunch")
 			dinner_recipe = self.class.convert_to_recipe(@dinHash, "Dinner")
 
+			@breakHash["groceries"].each do |grocery|
+				new_grocery = Grocery.create(:name => grocery["text"], :weight_in_grams => grocery["weight"].to_f.round(2))
+				new_grocery.recipe = breakfast_recipe
+				new_grocery.save!
+			end
+
+			@lunchHash["groceries"].each do |grocery|
+				new_grocery = Grocery.create(:name => grocery["text"], :weight_in_grams => grocery["weight"].to_f.round(2))
+				new_grocery.recipe = lunch_recipe
+				new_grocery.save!
+			end
+
+			@dinHash["groceries"].each do |grocery|
+				new_grocery = Grocery.create(:name => grocery["text"], :weight_in_grams => grocery["weight"].to_f.round(2))
+				new_grocery.recipe = dinner_recipe
+				new_grocery.save!
+			end
+
 			current_user.recipes << breakfast_recipe
 			current_user.recipes << lunch_recipe
 			current_user.recipes << dinner_recipe
@@ -215,9 +233,9 @@ class UsersController < ApplicationController
 			current_user.save!
 		else
 			@calories = current_user.calories
-			breakfast_recipe = current_user.recipes[0]
-			lunch_recipe = current_user.recipes[1]
-			dinner_recipe = current_user.recipes[2]
+			breakfast_recipe = current_user.recipes.where(:type => "PlanRecipe")[0]
+			lunch_recipe = current_user.recipes.where(:type => "PlanRecipe")[1]
+			dinner_recipe = current_user.recipes.where(:type => "PlanRecipe")[2]
 
 			@breakTitle = breakfast_recipe.title
 			@breakCals = breakfast_recipe.calories
@@ -340,7 +358,14 @@ class UsersController < ApplicationController
 		current_user.time = params[:time].to_i
 		current_user.gender = params[:gender]
 		current_user.exercise = params[:exercise]
-		current_user.cuisine = params[:cuisine]["cuisine"]
+		current_user.dietary_preferences = ''
+		if params.key?("dietary_preferences") 
+			params["dietary_preferences"].each do |elem|
+				current_user.dietary_preferences += '&health=' + elem
+			end
+		else
+			current_user.dietary_preferences = ''
+		end
 		current_user.save!
 		if params.key?(:api)
 			current_user.recipes.where(:type => "PlanRecipe").delete_all
@@ -349,15 +374,24 @@ class UsersController < ApplicationController
 	end
 
 	def favorite_recipe
-		current_user.recipes.create(:type => "FavoritedRecipe", :meal_type => params[:Type], :title => params[:Title], 
-			:calories => params[:Calories], :time => params[:PrepTime]
-			)
-		current_user.save!
+		previously_favorited = current_user.recipes.where(:type => "FavoritedRecipe", :meal_type => params[:Type], :title => params[:Title], 
+		:calories => params[:Calories], :time => params[:PrepTime])
+		if previously_favorited.blank?
+			current_user.recipes.create(:type => "FavoritedRecipe", :meal_type => params[:Type], :title => params[:Title], 
+				:calories => params[:Calories], :time => params[:PrepTime]
+				)
+			current_user.save!
+		end
 		redirect_to favorited_recipes_path
 	end
 
+	def grocery_list
+		@breakfast = current_user.recipes.where(:type => "PlanRecipe", :meal_type => "Breakfast")
+		@lunch = current_user.recipes.where(:type => "PlanRecipe", :meal_type => "Lunch")
+		@dinner = current_user.recipes.where(:type => "PlanRecipe", :meal_type => "Dinner")
+	end
+
 	def favorited_recipes
-		@favorited_recipes = current_user.recipes.where(:type => "FavoritedRecipe")
 		@breakfast = current_user.recipes.where(:type => "FavoritedRecipe", :meal_type => "Breakfast")
 		@lunch = current_user.recipes.where(:type => "FavoritedRecipe", :meal_type => "Lunch")
 		@dinner = current_user.recipes.where(:type => "FavoritedRecipe", :meal_type => "Dinner")

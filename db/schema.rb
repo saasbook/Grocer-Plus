@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20190510072618) do
     t.string   "goal"
     t.integer  "budget"
     t.integer  "time"
-    t.string   "cuisine"
+    t.string   "dietary_preferences"
     t.integer  "calories"
   end
 
