@@ -410,8 +410,8 @@ class UsersController < ApplicationController
 		current_user.gender = params[:gender]
 		current_user.exercise = params[:exercise]
 		current_user.dietary_preferences = ''
-		if params[:dietary_preferences] and params[:dietary_preferences]["dietary_preferences"]
-			params[:dietary_preferences]["dietary_preferences"].each do |elem|
+		if params.key?("dietary_preferences") 
+			params["dietary_preferences"].each do |elem|
 				current_user.dietary_preferences += '&health=' + elem
 			end
 		else
