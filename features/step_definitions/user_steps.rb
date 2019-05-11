@@ -6,7 +6,7 @@
 # end
 
 api_result = {"items"=>[{"day"=>1, "value"=>"{\"id\":655340,\"imageType\":\"jpg\",\"title\":\"Peanut Butter Swirl Banana Bread\"}", 
-"slot"=>1, "id"=>123456, "title"=>nil, "calories"=>50, "totalTime"=>45, "yield"=>4, "readyInMinutes"=>45, "groceries"=> [
+"slot"=>1, "id"=>123456, "title"=>"Peanut Butter Swirl Banana Bread", "calories"=>50, "totalTime"=>45, "yield"=>4, "readyInMinutes"=>45, "groceries"=> [
 	{
 	  "text": "6 cups watermelon chunks, seeded",
 	  "weight": 924.0
@@ -20,8 +20,8 @@ api_result = {"items"=>[{"day"=>1, "value"=>"{\"id\":655340,\"imageType\":\"jpg\
 	  "weight": 6.8
 	}
 ]}, 
-{"day"=>1, "value"=>"{\"id\":655340,\"imageType\":\"jpg\",\"title\":\"Peanut Butter Swirl Banana Bread\"}", "slot"=>2, "id"=>123456, 
-"title"=>nil, "calories"=>50, "totalTime"=>45, "yield"=>4, "readyInMinutes"=>45, "groceries"=> [
+{"day"=>1, "value"=>"{\"id\":655340,\"imageType\":\"jpg\",\"title\":\"Chicken Pot Pie\"}", "slot"=>2, "id"=>123456, 
+"title"=>"Peanut Butter Swirl Banana Bread", "calories"=>50, "totalTime"=>45, "yield"=>4, "readyInMinutes"=>45, "groceries"=> [
 	{
 	  "text": "6 cups watermelon chunks, seeded",
 	  "weight": 924.0
@@ -35,7 +35,7 @@ api_result = {"items"=>[{"day"=>1, "value"=>"{\"id\":655340,\"imageType\":\"jpg\
 	  "weight": 6.8
 	}
 ]}, {"day"=>1, 
-"value"=>"{\"id\":655340,\"imageType\":\"jpg\",\"title\":\"Peanut Butter Swirl Banana Bread\"}", "slot"=>3, "id"=>123456, "title"=>nil, 
+"value"=>"{\"id\":655340,\"imageType\":\"jpg\",\"title\":\"Mac and Cheese\"}", "slot"=>3, "id"=>123456, "title"=>"Mac and Cheese", 
 "calories"=>50, "totalTime"=>45, "yield"=>4, "readyInMinutes"=>45, "groceries"=> [
 	{
 	  "text": "6 cups watermelon chunks, seeded",

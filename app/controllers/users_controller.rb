@@ -228,9 +228,9 @@ class UsersController < ApplicationController
 			current_user.save!
 		else
 			@calories = current_user.calories
-			breakfast_recipe = current_user.recipes[0]
-			lunch_recipe = current_user.recipes[1]
-			dinner_recipe = current_user.recipes[2]
+			breakfast_recipe = current_user.recipes.where(:type => "PlanRecipe")[0]
+			lunch_recipe = current_user.recipes.where(:type => "PlanRecipe")[1]
+			dinner_recipe = current_user.recipes.where(:type => "PlanRecipe")[2]
 
 			@breakTitle = breakfast_recipe.title
 			@breakCals = breakfast_recipe.calories
