@@ -1,0 +1,43 @@
+.devise-view {
+    background-image: asset-url("signup_food.jpg");
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.devise {
+    position: relative;
+    transform: perspective(1px) translateY(20%) translateX(280%);
+    width: 325px;
+    height: 400px;
+    text-align: center;
+    border-radius: 45px 45px 45px 45px;
+}
+
+.fyp_label {
+    padding-top: 15px;
+    color: #333;
+    font-size: 40px;
+    font-family: 'Roboto';
+    font-weight: 500;
+}
+
+.dv_field {
+    padding-top: 15px;
+    color: #333;
+
+}
+
+.dv_lbl {
+    font-size: 20px;
+    font-family: 'Roboto';
+    font-weight: 500;
+}
+
+.dv_actions {
+    padding-top: 15px;
+    padding-bottom:30px;
+}
