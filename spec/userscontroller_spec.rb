@@ -197,8 +197,8 @@ describe UsersController, :type => :controller do
       before(:each) do
         user = create(:user)
         allow(controller).to receive(:current_user).and_return(user)
-        @fake_results = [instance_double(Recipe), instance_double(Recipe)]
-        allow(user).to receive_message_chain(:recipes, :where).and_return(@fake_results)
+        @fake_recipe = instance_double(Recipe)
+        allow(user).to receive_message_chain(:recipes, :where).and_return(@fake_recipe)
         get 'favorited_recipes'
       end
 
@@ -207,7 +207,9 @@ describe UsersController, :type => :controller do
       end 
 
       it "makes the favorited recipes available to that template" do
-        expect(assigns(:favorited_recipes)).to eq(@fake_results)
+        expect(assigns(:breakfast)).to eq(@fake_recipe)
+        expect(assigns(:lunch)).to eq(@fake_recipe)
+        expect(assigns(:dinner)).to eq(@fake_recipe)
       end 
 
     end
@@ -264,9 +266,9 @@ describe UsersController, :type => :controller do
     describe "Grocery List" do
 
       before(:each) do
-        user = create(:user_with_recipes)
+        @user = create(:user_with_recipes)
         recipe = build(:plan_recipe)
-        allow(controller).to receive(:current_user).and_return(user)
+        allow(controller).to receive(:current_user).and_return(@user)
       end
 
       it "should render the grocery list view" do
@@ -274,5 +276,15 @@ describe UsersController, :type => :controller do
         expect(controller).to render_template(:grocery_list)
       end
 
+      it "should make the meal plan recipes available to the grocery list template" do
+        fake_recipe = instance_double(Recipe)
+        allow(@user).to receive_message_chain(:recipes, :where).and_return(fake_recipe)
+        get 'grocery_list'
+        expect(assigns(:breakfast)).to eq(fake_recipe)
+        expect(assigns(:lunch)).to eq(fake_recipe)
+        expect(assigns(:dinner)).to eq(fake_recipe)
+      end
+
     end
+
   end
