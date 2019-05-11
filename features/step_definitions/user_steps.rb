@@ -73,3 +73,7 @@ end
 Then /I should see "(.*)" exactly once/ do |favorited_meal|
 	expect(page.has_text?(favorited_meal, :count => 1))
 end
+
+Then /I should see "(.*)" exactly three times/ do |grocery|
+	expect(page.has_text?(grocery, :count => 3))
+end

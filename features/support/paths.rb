@@ -27,6 +27,8 @@ module NavigationHelpers
   when /^the show page$/ then show_path
 
   when /^the favorites page$/ then favorited_recipes_path
+
+  when /^the grocery list page$/ then grocery_list_path
   
 
   when /^the signup page$/ then new_user_registration_path
