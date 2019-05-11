@@ -8,11 +8,9 @@ class Recipe < ActiveRecord::Base
         res = Net::HTTP.start(uri.hostname, :use_ssl => true) {|http|
             http.request(req)
         }
-        puts res.code
         if res.code == '401'
             return nil
         else
-            puts res.code
             return JSON.parse(res.body)
         end
     end
