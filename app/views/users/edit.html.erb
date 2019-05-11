@@ -8,7 +8,7 @@
   <div class="edit-container">
     <h2 class="edit-label"> Tell us about yourself. </h2>
     <div class="edit-form" class="form-inline">
-      <%= form_tag edit_path, :class => '' do %>
+      <%= form_tag edit_path(:api => :true), :class => '' do %>
 
         <div class="form-group row">
           <div class="col-sm-2 col-form-label">
