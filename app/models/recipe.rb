@@ -1,5 +1,6 @@
 require 'net/http'
 class Recipe < ActiveRecord::Base
+    has_many :groceries
     belongs_to :user
 
     def self.call_api(uri)
@@ -20,6 +21,7 @@ class Recipe < ActiveRecord::Base
             hash_to_append['title'] = res_json_hash['hits'][0]['recipe']['label']
             hash_to_append['calories'] = (res_json_hash['hits'][0]['recipe']['calories'] / res_json_hash['hits'][0]['recipe']['yield']).round(0)
             hash_to_append['readyInMinutes'] = res_json_hash['hits'][0]['recipe']['totalTime'].round(0)
+            hash_to_append['groceries'] = res_json_hash['hits'][0]['recipe']['ingredients']
             #hash_to_append['price'] = 123.00
             hash_to_append['link'] = res_json_hash['hits'][0]['recipe']['shareAs']
             hash_to_append['slot'] = idx+1

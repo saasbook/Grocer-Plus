@@ -4,15 +4,57 @@ describe UsersController, :type => :controller do
   s = {1=>{"Monday"=>{"day"=>1, "mealPlanId"=>0, "slot"=>1, "position"=>0, "type"=>"RECIPE", 
   "value"=>"{\"id\":651958,\"imageType\":\"jpg\",\"title\":\"Mini frittatas with quinoa\"}", "id"=>651958, 
   "title"=>"Mini frittatas with quinoa", "calories"=>47, "readyInMinutes"=>45, 
-  "image"=>"https://spoonacular.com/recipeImages/651958-556x370.jpg", "price"=>20.83}}, 
+  "image"=>"https://spoonacular.com/recipeImages/651958-556x370.jpg",
+  "groceries"=> [
+        {
+          "text": "6 cups watermelon chunks, seeded",
+          "weight": 924.0
+        },
+        {
+          "text": "5 tomatoes, cored and quartered",
+          "weight": 615.0
+        },
+        {
+          "text": "1 tablespoon sweet smoked paprika",
+          "weight": 6.8
+        }]
+        }}, 
   2=>{"Monday"=>{"day"=>1, "mealPlanId"=>0, "slot"=>2, "position"=>0, "type"=>"RECIPE", 
   "value"=>"{\"id\":659081,\"imageType\":\"jpg\",\"title\":\"Salmon Frittata\"}", "id"=>659081, 
   "title"=>"Salmon Frittata", "calories"=>617, "readyInMinutes"=>45, 
-  "image"=>"https://spoonacular.com/recipeImages/659081-556x370.jpg", "price"=>402.62}}, 
+  "image"=>"https://spoonacular.com/recipeImages/659081-556x370.jpg",
+  "groceries"=> [
+        {
+          "text": "6 cups watermelon chunks, seeded",
+          "weight": 924.0
+        },
+        {
+          "text": "5 tomatoes, cored and quartered",
+          "weight": 615.0
+        },
+        {
+          "text": "1 tablespoon sweet smoked paprika",
+          "weight": 6.8
+        }]
+        }}, 
   3=>{"Monday"=>{"day"=>1, "mealPlanId"=>0, "slot"=>3, "position"=>0, "type"=>"RECIPE", 
   "value"=>"{\"id\":646499,\"imageType\":\"jpg\",\"title\":\"Healthy Orange Chicken\"}", "id"=>646499, 
   "title"=>"Healthy Orange Chicken", "calories"=>440, "readyInMinutes"=>45, 
-  "image"=>"https://spoonacular.com/recipeImages/646499-556x370.jpg", "price"=>303.88}}}
+  "image"=>"https://spoonacular.com/recipeImages/646499-556x370.jpg",
+  "groceries"=> [
+        {
+          "text": "6 cups watermelon chunks, seeded",
+          "weight": 924.0
+        },
+        {
+          "text": "5 tomatoes, cored and quartered",
+          "weight": 615.0
+        },
+        {
+          "text": "1 tablespoon sweet smoked paprika",
+          "weight": 6.8
+        }]
+        }}}
 
 
   ret = {'items' => 
@@ -24,7 +66,20 @@ describe UsersController, :type => :controller do
    'title' => "Eggs Benedict",
    'calories' => 200,
    'readyInMinutes' => 45,
-   'price' => 2
+   "groceries"=> [
+        {
+          "text": "6 cups watermelon chunks, seeded",
+          "weight": 924.0
+        },
+        {
+          "text": "5 tomatoes, cored and quartered",
+          "weight": 615.0
+        },
+        {
+          "text": "1 tablespoon sweet smoked paprika",
+          "weight": 6.8
+        }
+    ]
    },	
   {'day' => 1,
   'value' => '{"id":655340,"imageType":"jpg","title":"Peanut Butter Swirl Banana Bread"}',
@@ -33,7 +88,20 @@ describe UsersController, :type => :controller do
    'title' => "Sweet & Sour Soup",
    'calories' => 340,
    'readyInMinutes' => 50,
-  'price' => 3
+   "groceries"=> [
+        {
+          "text": "6 cups watermelon chunks, seeded",
+          "weight": 924.0
+        },
+        {
+          "text": "5 tomatoes, cored and quartered",
+          "weight": 615.0
+        },
+        {
+          "text": "1 tablespoon sweet smoked paprika",
+          "weight": 6.8
+        }
+    ]
   },	
    {'day'=> 1,
    'value' => '{"id":655340,"imageType":"jpg","title":"Peanut Butter Swirl Banana Bread"}',
@@ -42,63 +110,22 @@ describe UsersController, :type => :controller do
    'title' => "Mushroom Risotto",
    'calories' => 200,
    'readyInMinutes' => 75,
-   'price' => 8	
-   },
-   {'day'=> 2,
-   'value' => '{"id":655340,"imageType":"jpg","title":"Peanut Butter Swirl Banana Bread"}',
-   'slot' => 1,
-   'id' => 123456,
-   'title' => "waffles",
-   'calories' => 200,
-   'readyInMinutes' => 45,
-   'price' => 8	
-   },
-   {'day'=> 2,
-   'slot' => 2,
-   'value' => '{"id":655340,"imageType":"jpg","title":"Peanut Butter Swirl Banana Bread"}',
-   'id' => 123456,
-   'title' => "salad",
-   'calories' => 200,
-   'readyInMinutes' => 45,
-   'price' => 8	
-   },
-   {'day'=> 2,
-   'slot' => 3,
-   'value' => '{"id":655340,"imageType":"jpg","title":"Peanut Butter Swirl Banana Bread"}',
-   'id' => 123456,
-   'title' => "burrito",
-   'calories' => 200,
-   'readyInMinutes' => 45,
-   'price' => 8	
-   },
-   {'day'=> 3,
-   'slot' => 1,
-   'value' => '{"id":655340,"imageType":"jpg","title":"Peanut Butter Swirl Banana Bread"}',
-   'id' => 123456,
-   'title' => "grapes",
-   'calories' => 200,
-   'readyInMinutes' => 45,
-   'price' => 8
-   },
-   {'day'=> 3,
-   'slot' => 2,
-   'value' => '{"id":655340,"imageType":"jpg","title":"Peanut Butter Swirl Banana Bread"}',
-   'id' => 123456,
-   'title' => "cherries",
-   'calories' => 200,
-   'readyInMinutes' => 45,
-   'price' => 8	
-   },
-   {'day'=> 3,
-   'slot' => 3,
-   'value' => '{"id":655340,"imageType":"jpg","title":"Peanut Butter Swirl Banana Bread"}',
-   'id' => 123456,
-   'title' => "milk",
-   'calories' => 200,
-   'readyInMinutes' => 45,
-   'price' => 8	
+   "groceries"=> [
+        {
+          "text": "6 cups watermelon chunks, seeded",
+          "weight": 924.0
+        },
+        {
+          "text": "5 tomatoes, cored and quartered",
+          "weight": 615.0
+        },
+        {
+          "text": "1 tablespoon sweet smoked paprika",
+          "weight": 6.8
+        }
+    ]
    }
-]
+  ]
 }
 
     #it "calls the model method that performs spoonacular search" do
@@ -170,8 +197,8 @@ describe UsersController, :type => :controller do
       before(:each) do
         user = create(:user)
         allow(controller).to receive(:current_user).and_return(user)
-        @fake_results = [instance_double(Recipe), instance_double(Recipe)]
-        allow(user).to receive_message_chain(:recipes, :where).and_return(@fake_results)
+        @fake_recipe = instance_double(Recipe)
+        allow(user).to receive_message_chain(:recipes, :where).and_return(@fake_recipe)
         get 'favorited_recipes'
       end
 
@@ -180,7 +207,9 @@ describe UsersController, :type => :controller do
       end 
 
       it "makes the favorited recipes available to that template" do
-        expect(assigns(:favorited_recipes)).to eq(@fake_results)
+        expect(assigns(:breakfast)).to eq(@fake_recipe)
+        expect(assigns(:lunch)).to eq(@fake_recipe)
+        expect(assigns(:dinner)).to eq(@fake_recipe)
       end 
 
     end
@@ -230,6 +259,30 @@ describe UsersController, :type => :controller do
           get "show"
         end
 
+      end
+
+    end
+
+    describe "Grocery List" do
+
+      before(:each) do
+        @user = create(:user_with_recipes)
+        recipe = build(:plan_recipe)
+        allow(controller).to receive(:current_user).and_return(@user)
+      end
+
+      it "should render the grocery list view" do
+        get 'grocery_list'
+        expect(controller).to render_template(:grocery_list)
+      end
+
+      it "should make the meal plan recipes available to the grocery list template" do
+        fake_recipe = instance_double(Recipe)
+        allow(@user).to receive_message_chain(:recipes, :where).and_return(fake_recipe)
+        get 'grocery_list'
+        expect(assigns(:breakfast)).to eq(fake_recipe)
+        expect(assigns(:lunch)).to eq(fake_recipe)
+        expect(assigns(:dinner)).to eq(fake_recipe)
       end
 
     end
