@@ -66,6 +66,10 @@ Given /I am logged in/ do
 	}
 end
 
-And /I favorite a "(.*)" meal/ do |meal_type|
-	click_link ("Favorite " + meal_type)
+When /I favorite "Peanut Butter Swirl Banana Bread"/ do
+	click_link ("Favorite Breakfast")
+end
+
+Then /I should see "(.*)" exactly once/ do |favorited_meal|
+	expect(page.has_text?(favorited_meal, :count => 1))
 end

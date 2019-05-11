@@ -168,7 +168,7 @@ class UsersController < ApplicationController
   
 	def show
 		set_vars_from_curr_user
-		if current_user.recipes.blank?
+		if current_user.recipes.where(:type => "PlanRecipe").blank?
 			@calories = self.class.calc_calories(@gender, @weight, @height, @age, @exercise, @goal).round(0)
 			@all_recipes = Recipe.find_in_api(@calories, @budget, @time, @dietary_preferences)
 			@daily_recipes = self.class.do_daily_recipes(@all_recipes)
@@ -354,8 +354,8 @@ class UsersController < ApplicationController
 		current_user.gender = params[:gender]
 		current_user.exercise = params[:exercise]
 		current_user.dietary_preferences = ''
-		if params[:dietary_preferences] and params[:dietary_preferences]["dietary_preferences"]
-			params[:dietary_preferences]["dietary_preferences"].each do |elem|
+		if params.key?("dietary_preferences") 
+			params["dietary_preferences"].each do |elem|
 				current_user.dietary_preferences += '&health=' + elem
 			end
 		else
@@ -369,20 +369,14 @@ class UsersController < ApplicationController
 	end
 
 	def favorite_recipe
-		favorited_recipe = Recipe.new do |r|
-			r.type = "FavoritedRecipe"
-			r.meal_type = params[:Type]
-			r.title = params[:Title]
-			r.calories = params[:Calories]
-			r.time = params[:PrepTime]
-			r.cost = params[:Cost]
+		previously_favorited = current_user.recipes.where(:type => "FavoritedRecipe", :meal_type => params[:Type], :title => params[:Title], 
+		:calories => params[:Calories], :time => params[:PrepTime])
+		if previously_favorited.blank?
+			current_user.recipes.create(:type => "FavoritedRecipe", :meal_type => params[:Type], :title => params[:Title], 
+				:calories => params[:Calories], :time => params[:PrepTime]
+				)
+			current_user.save!
 		end
-		favorited_recipe.save!
-		current_user.recipes << favorited_recipe
-		current_user.save!
-
-		# current_user.recipes.create(:type => "FavoritedRecipe", :meal_type => params[:Type], :title => params[:Title], 
-		# 	:calories => params[:Calories], :time => params[:PrepTime], :cost => params[:Cost])
 		redirect_to favorited_recipes_path
 	end
 
