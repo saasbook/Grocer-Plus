@@ -3,7 +3,11 @@
 - else
   = render 'bar'
 
+= flash[:error]
+
 %h2 Enter dietary restrictions and preferences here
+
+
 
 = form_tag edit_path(:api => :true), :class => '' do
 

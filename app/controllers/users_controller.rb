@@ -171,6 +171,11 @@ class UsersController < ApplicationController
 		if current_user.recipes.blank?
 			@calories = self.class.calc_calories(@gender, @weight, @height, @age, @exercise, @goal).round(0)
 			@all_recipes = Recipe.find_in_api(@calories, @budget, @time)
+			if @all_recipes.nil?
+				flash[:error] = "401: Request Denied"
+				redirect_to edit_path
+				return
+			end
 			@daily_recipes = self.class.do_daily_recipes(@all_recipes)
 
 			@day = "Monday"
