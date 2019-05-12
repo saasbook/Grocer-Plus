@@ -32,85 +32,94 @@ class UsersController < ApplicationController
 				return
 			end
 			@daily_recipes = self.class.do_daily_recipes(@all_recipes)
-			@day = "Monday"
-			
-			@breakHash = @daily_recipes[1][@day]
-			@breakImg = @breakHash["image"]
-			@breakTitle = @breakHash["title"]
-			@breakCals = @breakHash["calories"]
-			@breakTime = @breakHash["readyInMinutes"]
-			@breakLink = @breakHash['links'][0]
-			@break_instructions_link = @breakHash['links'][1]
-
-			@lunchHash = @daily_recipes[2][@day]
-			@lunchImg = @lunchHash["image"]
-			@lunchTitle = @lunchHash["title"]
-			@lunchCals = @lunchHash["calories"]
-			@lunchTime = @lunchHash["readyInMinutes"]
-			@lunchLink = @lunchHash['links'][0]
-			@lunch_instructions_link = @lunchHash['links'][1]
-
-			@dinHash = @daily_recipes[3][@day]
-			@dinImg = @dinHash["image"]
-			@dinTitle = @dinHash["title"]
-			@dinCals = @dinHash["calories"]
-			@dinTime = @dinHash["readyInMinutes"]
-			@dinLink = @dinHash['links'][0]
-			@din_instructions_link = @dinHash['links'][1]
-			
-			breakfast_recipe = self.class.convert_to_recipe(@breakHash, "Breakfast")
-			lunch_recipe = self.class.convert_to_recipe(@lunchHash, "Lunch")
-			dinner_recipe = self.class.convert_to_recipe(@dinHash, "Dinner")
-
-			@breakHash["groceries"].each do |grocery|
-				new_grocery = Grocery.create(:name => grocery["text"], :weight_in_grams => grocery["weight"].to_f.round(2))
-				new_grocery.recipe = breakfast_recipe
-				new_grocery.save!
-			end
-
-			@lunchHash["groceries"].each do |grocery|
-				new_grocery = Grocery.create(:name => grocery["text"], :weight_in_grams => grocery["weight"].to_f.round(2))
-				new_grocery.recipe = lunch_recipe
-				new_grocery.save!
-			end
-
-			@dinHash["groceries"].each do |grocery|
-				new_grocery = Grocery.create(:name => grocery["text"], :weight_in_grams => grocery["weight"].to_f.round(2))
-				new_grocery.recipe = dinner_recipe
-				new_grocery.save!
-			end
-
-			current_user.recipes << breakfast_recipe
-			current_user.recipes << lunch_recipe
-			current_user.recipes << dinner_recipe
-			current_user.calories = @calories
-			current_user.save!
+			save_vars_recipes_groceries(@daily_recipes[1]["Monday"], "breakfast")
+			save_vars_recipes_groceries(@daily_recipes[2]["Monday"], "lunch")
+			save_vars_recipes_groceries(@daily_recipes[3]["Monday"], "dinner")
+			save_current_user
 		else
 			@calories = current_user.calories
 			breakfast_recipe = current_user.recipes.where(:type => "PlanRecipe")[0]
 			lunch_recipe = current_user.recipes.where(:type => "PlanRecipe")[1]
 			dinner_recipe = current_user.recipes.where(:type => "PlanRecipe")[2]
+			set_vars_from_recipe(breakfast_recipe, "breakfast")
+			set_vars_from_recipe(lunch_recipe, "lunch")
+			set_vars_from_recipe(dinner_recipe, "dinner")
+		end
+	end
+  
+	def save_current_user
+		current_user.calories = @calories
+		current_user.save!
+	end
 
-			@breakTitle = breakfast_recipe.title
-			@breakCals = breakfast_recipe.calories
-			@breakTime = breakfast_recipe.time
-			@breakImg = breakfast_recipe.image
-			@breakLink = breakfast_recipe.link
-			@break_instructions_link = breakfast_recipe.instr_link
+	def save_vars_recipes_groceries(hash, meal_type)
+		if meal_type == "breakfast"
+			set_vars_for_meal_plan(hash, "breakfast")
+			breakfast_recipe = self.class.convert_to_recipe(hash, "Breakfast")
+			save_groceries(hash, breakfast_recipe)
+			current_user.recipes << breakfast_recipe
+		elsif meal_type == "lunch"
+			set_vars_for_meal_plan(hash, "lunch")
+			lunch_recipe = self.class.convert_to_recipe(hash, "Lunch")
+			save_groceries(hash, lunch_recipe)
+			current_user.recipes << lunch_recipe
+		elsif meal_type == "dinner"
+			set_vars_for_meal_plan(hash, "dinner")
+			dinner_recipe = self.class.convert_to_recipe(hash, "Dinner")
+			save_groceries(hash, dinner_recipe)
+			current_user.recipes << dinner_recipe
+		end
+	end
 
-			@lunchTitle = lunch_recipe.title
-			@lunchCals = lunch_recipe.calories
-			@lunchTime = lunch_recipe.time
-			@lunchImg = lunch_recipe.image
-			@lunchLink = lunch_recipe.link
-			@lunch_instructions_link = lunch_recipe.instr_link
+	def set_vars_for_meal_plan(hash, meal_type)
+		if meal_type == "breakfast"
+			@breakImg = hash["image"]
+			@breakTitle = hash["title"]
+			@breakCals = hash["calories"]
+			@breakTime = hash["readyInMinutes"]
+			@breakLink = hash['link']
+		elsif meal_type == "lunch"
+			@lunchImg = hash["image"]
+			@lunchTitle = hash["title"]
+			@lunchCals = hash["calories"]
+			@lunchTime = hash["readyInMinutes"]
+			@lunchLink = hash['link']
+		elsif meal_type == "dinner"
+			@dinImg = hash["image"]
+			@dinTitle = hash["title"]
+			@dinCals = hash["calories"]
+			@dinTime = hash["readyInMinutes"]
+			@dinLink = hash['link']
+		end
+	end
 
-			@dinTitle = dinner_recipe.title
-			@dinCals = dinner_recipe.calories
-			@dinTime = dinner_recipe.time
-			@dinImg = dinner_recipe.image
-			@dinLink = dinner_recipe.link
-			@din_instructions_link = dinner_recipe.instr_link
+	def save_groceries(hash, recipe)
+		hash["groceries"].each do |grocery|
+			new_grocery = Grocery.create(:name => grocery["text"], :weight_in_grams => grocery["weight"].to_f.round(2))
+			new_grocery.recipe = recipe
+			new_grocery.save!
+		end
+	end
+
+	def set_vars_from_recipe(recipe, meal_type)
+		if meal_type == "breakfast"
+			@breakTitle = recipe.title
+			@breakCals = recipe.calories
+			@breakTime = recipe.time
+			@breakImg = recipe.image
+			@breakLink = recipe.link
+		elsif meal_type == "lunch"
+			@lunchTitle = recipe.title
+			@lunchCals = recipe.calories
+			@lunchTime = recipe.time
+			@lunchImg = recipe.image
+			@lunchLink = recipe.link
+		elsif meal_type == "dinner"
+			@dinTitle = recipe.title
+			@dinCals = recipe.calories
+			@dinTime = recipe.time
+			@dinImg = recipe.image
+			@dinLink = recipe.link
 		end
 	end
 
@@ -153,13 +162,9 @@ class UsersController < ApplicationController
 		else
 			calories = 10*preference_list[1] + 6.25*preference_list[2] - 5*preference_list[3] - 161
 		end
-		if preference_list[4] == 'Light'
-			calories *= 1.375
-		elsif preference_list[4] == 'Moderate'
-			calories *= 1.55
-		else
-			calories *= 1.725
-		end
+		
+		calories = UsersController.exercise_level(calories, preference_list[4])
+
 		#If you are sedentary and do not exercise, multiply your 
 		#BMR by 1.2. If you exercise lightly one to three times 
 		#per week, multiply by 1.375. If you exercise three to 
@@ -168,9 +173,25 @@ class UsersController < ApplicationController
 		#seven days a week and also have a physically demanding job, 
 		#multiply by 1.9.
 		#https://www.livestrong.com/article/526442-the-activity-factor-for-calculating-calories-burned/
-		if preference_list[5] == 'Gain'
+		calories = UsersController.goal(calories, preference_list[5])
+		return calories
+	end
+
+	def self.exercise_level(calories, level)
+		if level == 'Light'
+			calories *= 1.375
+		elsif level == 'Moderate'
+			calories *= 1.55
+		else
+			calories *= 1.725
+		end
+		return calories
+	end
+
+	def self.goal(calories, target_goal)
+		if target_goal == 'Gain'
 			calories += 500
-		elsif preference_list[5] == 'Lose'
+		elsif target_goal == 'Lose'
 			calories -= 500
 		end
 		return calories
