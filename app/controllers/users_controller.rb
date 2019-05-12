@@ -96,23 +96,23 @@ class UsersController < ApplicationController
 
 	def set_vars_from_recipe(recipe, meal_type)
 		if meal_type == "breakfast"
-			@breakTitle = breakfast_recipe.title
-			@breakCals = breakfast_recipe.calories
-			@breakTime = breakfast_recipe.time
-			@breakImg = breakfast_recipe.image
-			@breakLink = breakfast_recipe.link
+			@breakTitle = recipe.title
+			@breakCals = recipe.calories
+			@breakTime = recipe.time
+			@breakImg = recipe.image
+			@breakLink = recipe.link
 		elsif meal_type == "lunch"
-			@lunchTitle = lunch_recipe.title
-			@lunchCals = lunch_recipe.calories
-			@lunchTime = lunch_recipe.time
-			@lunchImg = lunch_recipe.image
-			@lunchLink = lunch_recipe.link
+			@lunchTitle = recipe.title
+			@lunchCals = recipe.calories
+			@lunchTime = recipe.time
+			@lunchImg = recipe.image
+			@lunchLink = recipe.link
 		elsif meal_type == "dinner"
-			@dinTitle = dinner_recipe.title
-			@dinCals = dinner_recipe.calories
-			@dinTime = dinner_recipe.time
-			@dinImg = dinner_recipe.image
-			@dinLink = dinner_recipe.link
+			@dinTitle = recipe.title
+			@dinCals = recipe.calories
+			@dinTime = recipe.time
+			@dinImg = recipe.image
+			@dinLink = recipe.link
 		end
 	end
 
