@@ -16,16 +16,16 @@ class UsersController < ApplicationController
 			@preference_list = [@gender, @weight, @height, @age, @exercise, @goal]
 			@calories = self.class.calc_calories(@preference_list).round(0)
 			@all_recipes = Recipe.find_in_api(@calories, @budget, @time, @dietary_preferences)
-			check_api_rate_limit
+			if @all_recipes.nil?
+				flash[:alert] = "API limit reached, please try again in one minute!"
+				redirect_to edit_path
+				return
+			end
 			@daily_recipes = self.class.do_daily_recipes(@all_recipes)
-			@breakHash = @daily_recipes[1]["Monday"]
-			save_vars_recipes_groceries(@breakHash, "breakfast")
-			@lunchHash = @daily_recipes[2]["Monday"]
-			save_vars_recipes_groceries(@lunchHash, "lunch")
-			@dinHash = @daily_recipes[3]["Monday"]
-			save_vars_recipes_groceries(@dinHash, "dinner")
-			current_user.calories = @calories
-			current_user.save!
+			save_vars_recipes_groceries(@daily_recipes[1]["Monday"], "breakfast")
+			save_vars_recipes_groceries(@daily_recipes[2]["Monday"], "lunch")
+			save_vars_recipes_groceries(@daily_recipes[3]["Monday"], "dinner")
+			save_current_user
 		else
 			@calories = current_user.calories
 			breakfast_recipe = current_user.recipes.where(:type => "PlanRecipe")[0]
@@ -37,13 +37,17 @@ class UsersController < ApplicationController
 		end
 	end
 
-	def check_api_rate_limit
-		if @all_recipes.nil?
-			flash[:alert] = "API limit reached, please try again in one minute!"
-			redirect_to edit_path
-			return
-		end
+	def save_current_user
+		current_user.calories = @calories
+		current_user.save!
 	end
+	# def check_api_rate_limit
+	# 	if @all_recipes.nil?
+	# 		flash[:alert] = "API limit reached, please try again in one minute!"
+	# 		redirect_to edit_path
+	# 		return
+	# 	end
+	# end
 
 	def save_vars_recipes_groceries(hash, meal_type)
 		if meal_type == "breakfast"
@@ -66,23 +70,23 @@ class UsersController < ApplicationController
 
 	def set_vars_for_meal_plan(hash, meal_type)
 		if meal_type == "breakfast"
-			@breakImg = @breakHash["image"]
-			@breakTitle = @breakHash["title"]
-			@breakCals = @breakHash["calories"]
-			@breakTime = @breakHash["readyInMinutes"]
-			@breakLink = @breakHash['link']
+			@breakImg = hash["image"]
+			@breakTitle = hash["title"]
+			@breakCals = hash["calories"]
+			@breakTime = hash["readyInMinutes"]
+			@breakLink = hash['link']
 		elsif meal_type == "lunch"
-			@lunchImg = @lunchHash["image"]
-			@lunchTitle = @lunchHash["title"]
-			@lunchCals = @lunchHash["calories"]
-			@lunchTime = @lunchHash["readyInMinutes"]
-			@lunchLink = @lunchHash['link']
+			@lunchImg = hash["image"]
+			@lunchTitle = hash["title"]
+			@lunchCals = hash["calories"]
+			@lunchTime = hash["readyInMinutes"]
+			@lunchLink = hash['link']
 		elsif meal_type == "dinner"
-			@dinImg = @dinHash["image"]
-			@dinTitle = @dinHash["title"]
-			@dinCals = @dinHash["calories"]
-			@dinTime = @dinHash["readyInMinutes"]
-			@dinLink = @dinHash['link']
+			@dinImg = hash["image"]
+			@dinTitle = hash["title"]
+			@dinCals = hash["calories"]
+			@dinTime = hash["readyInMinutes"]
+			@dinLink = hash['link']
 		end
 	end
 
