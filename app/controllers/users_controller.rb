@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 		if current_user.recipes.where(:type => "PlanRecipe").blank?
 			@preference_list = [@gender, @weight, @height, @age, @exercise, @goal]
 			@calories = self.class.calc_calories(@preference_list).round(0)
-			@all_recipes = Recipe.find_in_api(@calories, @budget, @time, @dietary_preferences)
+			@all_recipes = Recipe.find_in_api(@calories, @time, @dietary_preferences)
 			if @all_recipes.nil?
 				flash[:alert] = "API limit reached, please try again in one minute!"
 				redirect_to edit_path
@@ -183,6 +183,7 @@ class UsersController < ApplicationController
 		current_user.time = params[:time].to_i
 		current_user.gender = params[:gender]
 		current_user.exercise = params[:exercise]
+		current_user.goal = params[:goal]
 		current_user.dietary_preferences = ''
 		if params.key?("dietary_preferences") 
 			params["dietary_preferences"].each do |elem|

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190512085628) do
+ActiveRecord::Schema.define(version: 20190512114457) do
 
   create_table "groceries", force: :cascade do |t|
     t.string   "name"
@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 20190512085628) do
     t.integer  "height"
     t.string   "exercise"
     t.string   "goal"
-    t.integer  "budget"
     t.integer  "time"
     t.string   "dietary_preferences"
     t.integer  "calories"

@@ -14,7 +14,7 @@ class Recipe < ActiveRecord::Base
             return JSON.parse(res.body)
         end
     end
-    def self.find_in_api(calories, budget, time, dietary_preferences)
+    def self.find_in_api(calories, time, dietary_preferences)
         base_uri = 'https://api.edamam.com/search'
         meal_types = ['breakfast', 'lunch', 'dinner']
         res = {'items' => []}
