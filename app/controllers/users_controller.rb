@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
 	def set_vars_from_curr_user
 		@age = current_user.age
 	    @gender = current_user.gender
