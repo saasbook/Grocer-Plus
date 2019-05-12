@@ -3,7 +3,8 @@ require 'rails_helper'
 describe UsersController, :type => :controller do
   s = {1=>{"Monday"=>{"day"=>1, "mealPlanId"=>0, "slot"=>1, "position"=>0, "type"=>"RECIPE", 
   "value"=>"{\"id\":651958,\"imageType\":\"jpg\",\"title\":\"Mini frittatas with quinoa\"}", "id"=>651958, 
-  "title"=>"Mini frittatas with quinoa", "calories"=>47, "readyInMinutes"=>45, 
+  "title"=>"Mini frittatas with quinoa", "calories"=>47, "readyInMinutes"=>45,
+  "links" => ["hi.com", "yo.com"], 
   "image"=>"https://spoonacular.com/recipeImages/651958-556x370.jpg",
   "groceries"=> [
         {
@@ -21,7 +22,8 @@ describe UsersController, :type => :controller do
         }}, 
   2=>{"Monday"=>{"day"=>1, "mealPlanId"=>0, "slot"=>2, "position"=>0, "type"=>"RECIPE", 
   "value"=>"{\"id\":659081,\"imageType\":\"jpg\",\"title\":\"Salmon Frittata\"}", "id"=>659081, 
-  "title"=>"Salmon Frittata", "calories"=>617, "readyInMinutes"=>45, 
+  "title"=>"Salmon Frittata", "calories"=>617, "readyInMinutes"=>45,
+  "links" => ["hi.com", "yo.com"], 
   "image"=>"https://spoonacular.com/recipeImages/659081-556x370.jpg",
   "groceries"=> [
         {
@@ -39,7 +41,8 @@ describe UsersController, :type => :controller do
         }}, 
   3=>{"Monday"=>{"day"=>1, "mealPlanId"=>0, "slot"=>3, "position"=>0, "type"=>"RECIPE", 
   "value"=>"{\"id\":646499,\"imageType\":\"jpg\",\"title\":\"Healthy Orange Chicken\"}", "id"=>646499, 
-  "title"=>"Healthy Orange Chicken", "calories"=>440, "readyInMinutes"=>45, 
+  "title"=>"Healthy Orange Chicken", "calories"=>440, "readyInMinutes"=>45,
+  "links" => ["hi.com", "yo.com"], 
   "image"=>"https://spoonacular.com/recipeImages/646499-556x370.jpg",
   "groceries"=> [
         {
@@ -128,50 +131,41 @@ describe UsersController, :type => :controller do
   ]
 }
 
-    #it "calls the model method that performs spoonacular search" do
-    #    user = create(:user)
-    #    allow(controller).to receive(:current_user).and_return(user)
-    #    allow(UsersController).to receive(:calc_calories).and_return(2000)
-    #    expect(Recipe).to receive(:find_in_api).with(2000)
-    #    get 'show'
-    #end
-    #it 'selects the show template for rendering'
-    #it 'makes the api search results available to that template'
     describe "Calculate Calories" do
       it "Should calculate calories for men" do
-        UsersController.calc_calories('Male', 80, 180, 25, 'Light', 'Maintain') == 2481.875
+        UsersController.calc_calories(['Male', 80, 180, 25, 'Light', 'Maintain']) == 2481.875
       end
 
       it "Should calculate calories for varying weight" do
-        UsersController.calc_calories('Male', 90, 180, 25, 'Light', 'Maintain') == 2619.375
+        UsersController.calc_calories(['Male', 90, 180, 25, 'Light', 'Maintain']) == 2619.375
       end
 
       it "Should calculate calories for varying height" do
-        UsersController.calc_calories('Male', 80, 170, 25, 'Light', 'Maintain') == 2395.9375
+        UsersController.calc_calories(['Male', 80, 170, 25, 'Light', 'Maintain']) == 2395.9375
       end
 
       it "Should calculate calories for varying ages" do
-        UsersController.calc_calories('Male', 80, 180, 40, 'Light', 'Maintain') == 2378.75
+        UsersController.calc_calories(['Male', 80, 180, 40, 'Light', 'Maintain']) == 2378.75
       end
 
       it "Should calculate calories for moderate exercise level" do
-        UsersController.calc_calories('Male', 80, 180, 25, 'Moderate', 'Maintain') == 2797.75
+        UsersController.calc_calories(['Male', 80, 180, 25, 'Moderate', 'Maintain']) == 2797.75
       end
 
       it "Should calculate calories for heavy exercise level" do
-        UsersController.calc_calories('Male', 80, 180, 25, 'Heavy', 'Maintain') == 3113.624
+        UsersController.calc_calories(['Male', 80, 180, 25, 'Heavy', 'Maintain']) == 3113.624
       end
 
       it "Should calculate calories for losing weight" do
-        UsersController.calc_calories('Male', 80, 180, 25, 'Light', 'Lose') == 1981.875
+        UsersController.calc_calories(['Male', 80, 180, 25, 'Light', 'Lose']) == 1981.875
       end
 
       it "Should calculate calories for gaining weight" do
-        UsersController.calc_calories('Male', 80, 180, 25, 'Light', 'Gain') == 2981.875
+        UsersController.calc_calories(['Male', 80, 180, 25, 'Light', 'Gain']) == 2981.875
       end
 
       it "Should calculate calories for women" do
-        UsersController.calc_calories('Female', 80, 180, 25, 'Light', 'Maintain') == 2315.875
+        UsersController.calc_calories(['Female', 80, 180, 25, 'Light', 'Maintain']) == 2315.875
       end
     end
     describe "Favorite a Recipe" do
@@ -235,7 +229,7 @@ describe UsersController, :type => :controller do
         it "should commit displayed recipes to the database" do
           get 'show'
           user = User.where(:email => "john.apple@gmail.com").first
-          expect(user.recipes.size).to eq(1) # ID is same (from factory), so only commits 1 recipe
+          expect(user.recipes.size).to eq(1) 
         end
 
         it "should call API if user has no recipes in database" do

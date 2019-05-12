@@ -1,12 +1,5 @@
-# Given /I am an existing user with email "(.*)"/ do |email|
-# 	User.create(:email => email, :password => password, :age => age, :height => height, :weight => weight, :time => time)
-# 	user = User.find_by_email('john.apple@gmail.com')
-# 	# @current_user = user
-# 	# sign_in_as user
-# end
-
 api_result = {"items"=>[{"day"=>1, "value"=>"{\"id\":655340,\"imageType\":\"jpg\",\"title\":\"Peanut Butter Swirl Banana Bread\"}", 
-"slot"=>1, "id"=>123456, "title"=>"Peanut Butter Swirl Banana Bread", "calories"=>50, "totalTime"=>45, "yield"=>4, "readyInMinutes"=>45, "groceries"=> [
+"slot"=>1, "id"=>123456, "title"=>"Peanut Butter Swirl Banana Bread", "calories"=>50, "totalTime"=>45, "yield"=>4, "links" => ["hi.com", "yo.com"], "readyInMinutes"=>45, "groceries"=> [
 	{
 	  "text": "6 cups watermelon chunks, seeded",
 	  "weight": 924.0
@@ -21,7 +14,7 @@ api_result = {"items"=>[{"day"=>1, "value"=>"{\"id\":655340,\"imageType\":\"jpg\
 	}
 ]}, 
 {"day"=>1, "value"=>"{\"id\":655340,\"imageType\":\"jpg\",\"title\":\"Chicken Pot Pie\"}", "slot"=>2, "id"=>123456, 
-"title"=>"Peanut Butter Swirl Banana Bread", "calories"=>50, "totalTime"=>45, "yield"=>4, "readyInMinutes"=>45, "groceries"=> [
+"title"=>"Peanut Butter Swirl Banana Bread", "calories"=>50, "totalTime"=>45, "yield"=>4, "links" => ["hi.com", "yo.com"], "readyInMinutes"=>45, "groceries"=> [
 	{
 	  "text": "6 cups watermelon chunks, seeded",
 	  "weight": 924.0
@@ -36,7 +29,7 @@ api_result = {"items"=>[{"day"=>1, "value"=>"{\"id\":655340,\"imageType\":\"jpg\
 	}
 ]}, {"day"=>1, 
 "value"=>"{\"id\":655340,\"imageType\":\"jpg\",\"title\":\"Mac and Cheese\"}", "slot"=>3, "id"=>123456, "title"=>"Mac and Cheese", 
-"calories"=>50, "totalTime"=>45, "yield"=>4, "readyInMinutes"=>45, "groceries"=> [
+"calories"=>50, "totalTime"=>45, "yield"=>4, "readyInMinutes"=>45, "links" => ["hi.com", "yo.com"], "groceries"=> [
 	{
 	  "text": "6 cups watermelon chunks, seeded",
 	  "weight": 924.0

@@ -1,84 +1,14 @@
 class UsersController < ApplicationController
 
-	#def user_params
-	#	params.permit(:age, :weight, :height, :exercise, :goal, :budget, :time, :dietary_preferences, :gender)
-	#end
-# 	@@all_recipes = {'items' => 
-# 	[
-# 	{'day' => 1,
-# 	 'slot' => 1,
-# 	 'id' => 123456,
-# 	 'title' => "Eggs Benedict",
-# 	 'calories' => 200,
-# 	 'readyInMinutes' => 45,
-# 	 'price' => 2
-# 	 },	
-# 	{'day' => 1,
-# 	 'slot' => 2,
-# 	 'id' => 123456,
-# 	 'title' => "Sweet & Sour Soup",
-# 	 'calories' => 340,
-# 	 'readyInMinutes' => 50,
-# 	'price' => 3
-# 	},	
-# 	 {'day'=> 1,
-# 	 'slot' => 3,
-# 	 'id' => 123456,
-# 	 'title' => "Mushroom Risotto",
-# 	 'calories' => 200,
-# 	 'readyInMinutes' => 75,
-# 	 'price' => 8	
-# 	 },
-# 	 {'day'=> 2,
-# 	 'slot' => 1,
-# 	 'id' => 123456,
-# 	 'title' => "waffles",
-# 	 'calories' => 200,
-# 	 'readyInMinutes' => 45,
-# 	 'price' => 8	
-# 	 },
-# 	 {'day'=> 2,
-# 	 'slot' => 2,
-# 	 'id' => 123456,
-# 	 'title' => "salad",
-# 	 'calories' => 200,
-# 	 'readyInMinutes' => 45,
-# 	 'price' => 8	
-# 	 },
-# 	 {'day'=> 2,
-# 	 'slot' => 3,
-# 	 'id' => 123456,
-# 	 'title' => "burrito",
-# 	 'calories' => 200,
-# 	 'readyInMinutes' => 45,
-# 	 'price' => 8	
-# 	 },
-# 	 {'day'=> 3,
-# 	 'slot' => 1,
-# 	 'id' => 123456,
-# 	 'title' => "grapes",
-# 	 'calories' => 200,
-# 	 'readyInMinutes' => 45,
-# 	 'price' => 8
-# 	 },
-# 	 {'day'=> 3,
-# 	 'slot' => 2,
-# 	 'id' => 123456,
-# 	 'title' => "cherries",
-# 	 'calories' => 200,
-# 	 'readyInMinutes' => 45,
-# 	 'price' => 8	
-# 	 },
-# 	 {'day'=> 3,
-# 	 'slot' => 3,
-# 	 'id' => 123456,
-# 	 'title' => "milk",
-# 	 'calories' => 200,
-# 	 'readyInMinutes' => 45,
-# 	 'price' => 8	
-# 	 }
-# ]
-# }
+	before_action :require_login
+
+	def require_login
+		if current_user.nil?
+			redirect_to new_user_session_path
+			return
+		end
+	end
+
 	def set_vars_from_curr_user
 		@age = current_user.age
 	    @gender = current_user.gender
@@ -86,172 +16,110 @@ class UsersController < ApplicationController
 	    @height = current_user.height * 2.54
 	    @exercise = current_user.exercise
 	    @goal = current_user.goal
-	    #@budget = current_user.budget
 	    @time = current_user.time
 		@dietary_preferences = current_user.dietary_preferences
 	end
-
-	# @all_recipes = {'items' => 
-	# 			[
-	# 			{'day' => 1,
-	# 		 	'slot' => 1,
-	# 		 	'id' => 123456,
-	# 		 	'title' => "Eggs Benedict",
-	# 		 	'calories' => 200,
-	# 		 	'readyInMinutes' => 45,
-	# 			 'price' => 2
-	# 			 },	
-	# 			{'day' => 1,
-	# 		 	'slot' => 2,
-	# 		 	'id' => 123456,
-	# 		 	'title' => "Sweet & Sour Soup",
-	# 		 	'calories' => 340,
-	# 		 	'readyInMinutes' => 50,
-	# 			'price' => 3
-	# 			},	
-	# 			 {'day'=> 1,
-	# 			 'slot' => 3,
-	# 			 'id' => 123456,
-	# 			 'title' => "Mushroom Risotto",
-	# 			 'calories' => 200,
-	# 			 'readyInMinutes' => 75,
-	# 			 'price' => 8	
-	# 			 },
-	# 			 {'day'=> 2,
-	# 			 'slot' => 1,
-	# 			 'id' => 123456,
-	# 			 'title' => "waffles",
-	# 			 'calories' => 200,
-	# 			 'readyInMinutes' => 45,
-	# 			 'price' => 8	
-	# 			 },
-	# 			 {'day'=> 2,
-	# 			 'slot' => 2,
-	# 			 'id' => 123456,
-	# 			 'title' => "salad",
-	# 			 'calories' => 200,
-	# 			 'readyInMinutes' => 45,
-	# 			 'price' => 8	
-	# 			 },
-	# 			 {'day'=> 2,
-	# 			 'slot' => 3,
-	# 			 'id' => 123456,
-	# 			 'title' => "burrito",
-	# 			 'calories' => 200,
-	# 			 'readyInMinutes' => 45,
-	# 			 'price' => 8	
-	# 			 },
-	# 			 {'day'=> 3,
-	# 			 'slot' => 1,
-	# 			 'id' => 123456,
-	# 			 'title' => "grapes",
-	# 			 'calories' => 200,
-	# 			 'readyInMinutes' => 45,
-	# 			 'price' => 8
-	# 			 },
-	# 			 {'day'=> 3,
-	# 			 'slot' => 2,
-	# 			 'id' => 123456,
-	# 			 'title' => "cherries",
-	# 			 'calories' => 200,
-	# 			 'readyInMinutes' => 45,
-	# 			 'price' => 8	
-	# 			 },
-	# 			 {'day'=> 3,
-	# 			 'slot' => 3,
-	# 			 'id' => 123456,
-	# 			 'title' => "milk",
-	# 			 'calories' => 200,
-	# 			 'readyInMinutes' => 45,
-	# 			 'price' => 8	
-	# 			 }]}
   
 	def show
 		set_vars_from_curr_user
 		if current_user.recipes.where(:type => "PlanRecipe").blank?
-			@calories = self.class.calc_calories(@gender, @weight, @height, @age, @exercise, @goal).round(0)
-			@all_recipes = Recipe.find_in_api(@calories, @budget, @time, @dietary_preferences)
+			@preference_list = [@gender, @weight, @height, @age, @exercise, @goal]
+			@calories = self.class.calc_calories(@preference_list).round(0)
+			@all_recipes = Recipe.find_in_api(@calories, @time, @dietary_preferences)
+			if @all_recipes.nil?
+				flash[:alert] = "API limit reached, please try again in one minute!"
+				redirect_to edit_path
+				return
+			end
 			@daily_recipes = self.class.do_daily_recipes(@all_recipes)
-
-			@day = "Monday"
-			# return recipes for Monday (eventually second index will be replaced with day variable)
-			@breakHash = @daily_recipes[1][@day]
-			@breakImg = @breakHash["image"]
-			@breakTitle = @breakHash["title"]
-			@breakCals = @breakHash["calories"]
-			@breakTime = @breakHash["readyInMinutes"]
-			@breakLink = @breakHash['link']
-			#@breakPrice = (@breakHash["price"] / 100).round(2)
-
-			@lunchHash = @daily_recipes[2][@day]
-			@lunchImg = @lunchHash["image"]
-			@lunchTitle = @lunchHash["title"]
-			@lunchCals = @lunchHash["calories"]
-			@lunchTime = @lunchHash["readyInMinutes"]
-			@lunchLink = @lunchHash['link']
-			#@lunchPrice = (@lunchHash["price"] / 100).round(2)
-
-			@dinHash = @daily_recipes[3][@day]
-			@dinImg = @dinHash["image"]
-			@dinTitle = @dinHash["title"]
-			@dinCals = @dinHash["calories"]
-			@dinTime = @dinHash["readyInMinutes"]
-			@dinLink = @dinHash['link']
-			
-			#@dinPrice = (@dinHash["price"] / 100).round(2)
-			breakfast_recipe = self.class.convert_to_recipe(@breakHash, "Breakfast")
-			lunch_recipe = self.class.convert_to_recipe(@lunchHash, "Lunch")
-			dinner_recipe = self.class.convert_to_recipe(@dinHash, "Dinner")
-
-			@breakHash["groceries"].each do |grocery|
-				new_grocery = Grocery.create(:name => grocery["text"], :weight_in_grams => grocery["weight"].to_f.round(2))
-				new_grocery.recipe = breakfast_recipe
-				new_grocery.save!
-			end
-
-			@lunchHash["groceries"].each do |grocery|
-				new_grocery = Grocery.create(:name => grocery["text"], :weight_in_grams => grocery["weight"].to_f.round(2))
-				new_grocery.recipe = lunch_recipe
-				new_grocery.save!
-			end
-
-			@dinHash["groceries"].each do |grocery|
-				new_grocery = Grocery.create(:name => grocery["text"], :weight_in_grams => grocery["weight"].to_f.round(2))
-				new_grocery.recipe = dinner_recipe
-				new_grocery.save!
-			end
-
-			current_user.recipes << breakfast_recipe
-			current_user.recipes << lunch_recipe
-			current_user.recipes << dinner_recipe
-			current_user.calories = @calories
-			current_user.save!
+			save_vars_recipes_groceries(@daily_recipes[1]["Monday"], "breakfast")
+			save_vars_recipes_groceries(@daily_recipes[2]["Monday"], "lunch")
+			save_vars_recipes_groceries(@daily_recipes[3]["Monday"], "dinner")
+			save_current_user
 		else
 			@calories = current_user.calories
 			breakfast_recipe = current_user.recipes.where(:type => "PlanRecipe")[0]
 			lunch_recipe = current_user.recipes.where(:type => "PlanRecipe")[1]
 			dinner_recipe = current_user.recipes.where(:type => "PlanRecipe")[2]
+			set_vars_from_recipe(breakfast_recipe, "breakfast")
+			set_vars_from_recipe(lunch_recipe, "lunch")
+			set_vars_from_recipe(dinner_recipe, "dinner")
+		end
+	end
+  
+	def save_current_user
+		current_user.calories = @calories
+		current_user.save!
+	end
 
-			@breakTitle = breakfast_recipe.title
-			@breakCals = breakfast_recipe.calories
-			@breakTime = breakfast_recipe.time
-			@breakImg = breakfast_recipe.image
-			@breakLink = breakfast_recipe.link
+	def save_vars_recipes_groceries(hash, meal_type)
+		if meal_type == "breakfast"
+			set_vars_for_meal_plan(hash, "breakfast")
+			breakfast_recipe = self.class.convert_to_recipe(hash, "Breakfast")
+			save_groceries(hash, breakfast_recipe)
+			current_user.recipes << breakfast_recipe
+		elsif meal_type == "lunch"
+			set_vars_for_meal_plan(hash, "lunch")
+			lunch_recipe = self.class.convert_to_recipe(hash, "Lunch")
+			save_groceries(hash, lunch_recipe)
+			current_user.recipes << lunch_recipe
+		elsif meal_type == "dinner"
+			set_vars_for_meal_plan(hash, "dinner")
+			dinner_recipe = self.class.convert_to_recipe(hash, "Dinner")
+			save_groceries(hash, dinner_recipe)
+			current_user.recipes << dinner_recipe
+		end
+	end
 
-			@lunchTitle = lunch_recipe.title
-			@lunchCals = lunch_recipe.calories
-			@lunchTime = lunch_recipe.time
-			@lunchImg = lunch_recipe.image
-			@lunchLink = lunch_recipe.link
+	def set_vars_for_meal_plan(hash, meal_type)
+		if meal_type == "breakfast"
+			@breakImg = hash["image"]
+			@breakTitle = hash["title"]
+			@breakCals = hash["calories"]
+			@breakTime = hash["readyInMinutes"]
+			@breakLink = hash['link']
+		elsif meal_type == "lunch"
+			@lunchImg = hash["image"]
+			@lunchTitle = hash["title"]
+			@lunchCals = hash["calories"]
+			@lunchTime = hash["readyInMinutes"]
+			@lunchLink = hash['link']
+		elsif meal_type == "dinner"
+			@dinImg = hash["image"]
+			@dinTitle = hash["title"]
+			@dinCals = hash["calories"]
+			@dinTime = hash["readyInMinutes"]
+			@dinLink = hash['link']
+		end
+	end
 
-			@dinTitle = dinner_recipe.title
-			@dinCals = dinner_recipe.calories
-			@dinTime = dinner_recipe.time
-			@dinImg = dinner_recipe.image
-			@dinLink = dinner_recipe.link
-			# self.class.set_view_vars(current_user.recipes[0], "Breakfast")
-			# self.class.set_view_vars(current_user.recipes[1], "Lunch")
-			# self.class.set_view_vars(current_user.recipes[2], "Dinner")
+	def save_groceries(hash, recipe)
+		hash["groceries"].each do |grocery|
+			new_grocery = Grocery.create(:name => grocery["text"], :weight_in_grams => grocery["weight"].to_f.round(2))
+			new_grocery.recipe = recipe
+			new_grocery.save!
+		end
+	end
+
+	def set_vars_from_recipe(recipe, meal_type)
+		if meal_type == "breakfast"
+			@breakTitle = recipe.title
+			@breakCals = recipe.calories
+			@breakTime = recipe.time
+			@breakImg = recipe.image
+			@breakLink = recipe.link
+		elsif meal_type == "lunch"
+			@lunchTitle = recipe.title
+			@lunchCals = recipe.calories
+			@lunchTime = recipe.time
+			@lunchImg = recipe.image
+			@lunchLink = recipe.link
+		elsif meal_type == "dinner"
+			@dinTitle = recipe.title
+			@dinCals = recipe.calories
+			@dinTime = recipe.time
+			@dinImg = recipe.image
+			@dinLink = recipe.link
 		end
 	end
 
@@ -263,37 +131,13 @@ class UsersController < ApplicationController
 		new_recipe.calories = hash["calories"]
 		new_recipe.time = hash["readyInMinutes"]
 		new_recipe.image = hash["image"]
-		new_recipe.link = hash["link"]
+		new_recipe.link = hash["links"][0]
+		new_recipe.instr_link = hash["links"][1]
 		return new_recipe
 	end
 
-	# def self.set_view_vars(recipe, meal_type)
-	# 	if meal_type == "Breakfast"
-	# 		#@breakImg = recipe["image"]
-	# 		byebug
-	# 		@breakTitle = recipe.title
-	# 		@breakCals = recipe.calories
-	# 		@breakTime = recipe.time
-	# 		#@breakLink = recipe['link']
-	# 	elsif meal_type == "Lunch"
-	# 		#@lunchImg = recipe["image"]
-	# 		@lunchTitle = recipe.title
-	# 		@lunchCals = recipe.calories
-	# 		@lunchTime = recipe.time
-	# 		#@lunchLink = recipe['link']
-	# 	else
-	# 		@dinImg = recipe["image"]
-	# 		@dinTitle = recipe.title
-	# 		@dinCals = recipe.calories
-	# 		@dinTime = recipe.time
-	# 		#@dinLink = recipe['link']
-	# 	end
-	# end
-
 	def self.do_daily_recipes(all_recipes)
 		daily_recipes = Hash.new()
-
-		# helper: display days instead of indexes
 		days = {1 => "Monday", 2 => "Tuesday", 3 => "Wednesday",
 			4 => "Thursday", 5 => "Friday", 6 => "Saturday", 7 => "Sunday"}
 
@@ -309,24 +153,18 @@ class UsersController < ApplicationController
 		return daily_recipes
 	end
 
-	def self.calc_calories(gender, weight, height, age, exercise, goal)
-		#These calculations require kg and cm.  Will need to add
-		#units to the form in the future.
+	def self.calc_calories(preference_list)
 		#Formula found here:
 		#https://www.calculator.net/calorie-calculator.html
-		weight = weight * 0.453592
-	    if gender == 'Male'
-		    calories = 10*weight + 6.25*height - 5*age + 5
+		preference_list[1] = preference_list[1] * 0.453592
+	    if preference_list[0] == 'Male'
+		    calories = 10*preference_list[1] + 6.25*preference_list[2] - 5*preference_list[3] + 5
 		else
-			calories = 10*weight + 6.25*height - 5*age - 161
+			calories = 10*preference_list[1] + 6.25*preference_list[2] - 5*preference_list[3] - 161
 		end
-		if exercise == 'Light'
-			calories *= 1.375
-		elsif exercise == 'Moderate'
-			calories *= 1.55
-		else
-			calories *= 1.725
-		end
+		
+		calories = UsersController.exercise_level(calories, preference_list[4])
+
 		#If you are sedentary and do not exercise, multiply your 
 		#BMR by 1.2. If you exercise lightly one to three times 
 		#per week, multiply by 1.375. If you exercise three to 
@@ -335,24 +173,38 @@ class UsersController < ApplicationController
 		#seven days a week and also have a physically demanding job, 
 		#multiply by 1.9.
 		#https://www.livestrong.com/article/526442-the-activity-factor-for-calculating-calories-burned/
+		calories = UsersController.goal(calories, preference_list[5])
+		return calories
+	end
 
-		if goal == 'Gain'
+	def self.exercise_level(calories, level)
+		if level == 'Light'
+			calories *= 1.375
+		elsif level == 'Moderate'
+			calories *= 1.55
+		else
+			calories *= 1.725
+		end
+		return calories
+	end
+
+	def self.goal(calories, target_goal)
+		if target_goal == 'Gain'
 			calories += 500
-		elsif goal == 'Lose'
+		elsif target_goal == 'Lose'
 			calories -= 500
 		end
 		return calories
 	end
 
 	def update
-		#save form data for user
 		current_user.age = params[:age].to_i
 		current_user.weight = params[:weight].to_i
 		current_user.height = params[:height].to_i
-		#current_user.budget = params[:budget].to_i
 		current_user.time = params[:time].to_i
 		current_user.gender = params[:gender]
 		current_user.exercise = params[:exercise]
+		current_user.goal = params[:goal]
 		current_user.dietary_preferences = ''
 		if params.key?("dietary_preferences") 
 			params["dietary_preferences"].each do |elem|
@@ -373,7 +225,7 @@ class UsersController < ApplicationController
 		:calories => params[:Calories], :time => params[:PrepTime])
 		if previously_favorited.blank?
 			current_user.recipes.create(:type => "FavoritedRecipe", :meal_type => params[:Type], :title => params[:Title], 
-				:calories => params[:Calories], :time => params[:PrepTime]
+				:calories => params[:Calories], :time => params[:PrepTime], :instr_link => params[:Instr_link]
 				)
 			current_user.save!
 		end

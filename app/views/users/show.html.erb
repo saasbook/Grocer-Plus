@@ -1,11 +1,9 @@
 <body class="show-view">
   <%= render 'navbar' %>
-  <h2 class="text-center show-label">Your Meal Plan.</h2>
+  <h2 class="text-center show-label">Today's Meal Plan</h2>
   <h4 class="text-center calorie-label">Recommended Daily Caloric Intake: <%=@calories %></h2>
   <div class="flex-row">
     <div class="card-deck mp-cards">
-
-      
       <div class="card">
         <img height="200" width="300" class="card-img-top" src="<%= @breakImg %>"/>
         <div class="card-body">
@@ -17,11 +15,10 @@
         </ul>
         <div class="card-body">
           <%= link_to "View Recipe", @breakLink, class: "btn btn-primary" %>
-          <%= link_to "Favorite Breakfast", favorite_recipe_path(:Type => "Breakfast", :Title => @breakTitle, :Calories => @breakCals, :PrepTime => @breakTime), class: "btn btn-primary fav"%>
+          <%= link_to "Favorite Breakfast", favorite_recipe_path(:Type => "Breakfast", :Title => @breakTitle, :Calories => @breakCals, :PrepTime => @breakTime, :Instr_link => @break_instructions_link), class: "btn btn-primary fav"%>
         </div>
       </div>
-
-      <div class="card two", style:>
+      <div class="card two">
         <img height="200" width="300" class="card-img-top" src="<%= @lunchImg %>"/>
         <div class="card-body">
           <h5 class="card-title"><%= @lunchTitle%></h5>
@@ -32,10 +29,9 @@
         </ul>
         <div class="card-body">
           <%= link_to "View Recipe", @lunchLink, class: "btn btn-primary" %>
-          <%= link_to "Favorite Lunch", favorite_recipe_path(:Type => "Lunch", :Title => @lunchTitle, :Calories => @lunchCals, :PrepTime => @lunchTime), class: "btn btn-primary fav"%>
+          <%= link_to "Favorite Lunch", favorite_recipe_path(:Type => "Lunch", :Title => @lunchTitle, :Calories => @lunchCals, :PrepTime => @lunchTime, :Instr_link => @lunch_instructions_link), class: "btn btn-primary fav"%>
         </div>
       </div>
-
       <div class="card three">
         <img height="200" width="300" class="card-img-top" src="<%= @dinImg %>">
         <div class="card-body">
@@ -47,10 +43,9 @@
         </ul>
         <div class="card-body">
           <%= link_to "View Recipe", @dinLink, class: "btn btn-primary" %>
-          <%= link_to "Favorite Dinner", favorite_recipe_path(:Type => "Dinner", :Title => @dinTitle, :Calories => @dinCals, :PrepTime => @dinTime), class: "btn btn-primary fav"%>
+          <%= link_to "Favorite Dinner", favorite_recipe_path(:Type => "Dinner", :Title => @dinTitle, :Calories => @dinCals, :PrepTime => @dinTime, :Instr_link => @din_instructions_link), class: "btn btn-primary fav"%>
         </div>
       </div>
     </div>
   </div>
-
 </body>
