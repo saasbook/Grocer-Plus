@@ -26,11 +26,7 @@ class UsersController < ApplicationController
 			@calories = self.class.calc_calories([@gender, @weight, @height, @age, @exercise, @goal]).round(0)
 			@all_recipes = Recipe.find_in_api(@calories, @time, @dietary_preferences)
 			if @all_recipes.nil? || @all_recipes.has_key?("hits")
-				if @all_recipes.nil?
-					flash[:alert] = "API limit reached, please try again in one minute!"
-				else
-					flash[:alert] = "We're sorry, the API did not return recipes for the data you specified"
-				end
+				flash[:alert] = set_alert
 				redirect_to edit_path
 				return
 			end
@@ -44,6 +40,14 @@ class UsersController < ApplicationController
 			set_vars_from_recipe(current_user.recipes.where(:type => "PlanRecipe")[0], "breakfast")
 			set_vars_from_recipe(current_user.recipes.where(:type => "PlanRecipe")[1], "lunch")
 			set_vars_from_recipe(current_user.recipes.where(:type => "PlanRecipe")[2], "dinner")
+		end
+	end
+
+	def set_alert
+		if @all_recipes.nil?
+			return "API limit reached, please try again in one minute!"
+		else
+			return "We're sorry, the API did not return recipes for the data you specified"
 		end
 	end
   
@@ -233,14 +237,16 @@ class UsersController < ApplicationController
 	end
 
 	def grocery_list
-		@breakfast = current_user.recipes.where(:type => "PlanRecipe", :meal_type => "Breakfast")
-		@lunch = current_user.recipes.where(:type => "PlanRecipe", :meal_type => "Lunch")
-		@dinner = current_user.recipes.where(:type => "PlanRecipe", :meal_type => "Dinner")
+		set_recipes("PlanRecipe")
 	end
 
 	def favorited_recipes
-		@breakfast = current_user.recipes.where(:type => "FavoritedRecipe", :meal_type => "Breakfast")
-		@lunch = current_user.recipes.where(:type => "FavoritedRecipe", :meal_type => "Lunch")
-		@dinner = current_user.recipes.where(:type => "FavoritedRecipe", :meal_type => "Dinner")
+		set_recipes("FavoritedRecipe")
+	end
+
+	def set_recipes(type)
+		@breakfast = current_user.recipes.where(:type => type, :meal_type => "Breakfast")
+		@lunch = current_user.recipes.where(:type => type, :meal_type => "Lunch")
+		@dinner = current_user.recipes.where(:type => type, :meal_type => "Dinner")
 	end
 end
