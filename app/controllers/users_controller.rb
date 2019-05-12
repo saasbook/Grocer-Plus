@@ -123,8 +123,6 @@ class UsersController < ApplicationController
 	end
 
 	def self.calc_calories(preference_list)
-		#These calculations require kg and cm.  Will need to add
-		#units to the form in the future.
 		#Formula found here:
 		#https://www.calculator.net/calorie-calculator.html
 		preference_list[1] = preference_list[1] * 0.453592
@@ -148,7 +146,6 @@ class UsersController < ApplicationController
 		#seven days a week and also have a physically demanding job, 
 		#multiply by 1.9.
 		#https://www.livestrong.com/article/526442-the-activity-factor-for-calculating-calories-burned/
-
 		if preference_list[5] == 'Gain'
 			calories += 500
 		elsif preference_list[5] == 'Lose'
@@ -158,7 +155,6 @@ class UsersController < ApplicationController
 	end
 
 	def update
-		#save form data for user
 		current_user.age = params[:age].to_i
 		current_user.weight = params[:weight].to_i
 		current_user.height = params[:height].to_i
