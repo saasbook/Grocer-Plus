@@ -17,7 +17,6 @@ class UsersController < ApplicationController
 			@calories = self.class.calc_calories(@gender, @weight, @height, @age, @exercise, @goal).round(0)
 			@all_recipes = Recipe.find_in_api(@calories, @budget, @time, @dietary_preferences)
 			@daily_recipes = self.class.do_daily_recipes(@all_recipes)
-
 			@day = "Monday"
 			# return recipes for Monday (eventually second index will be replaced with day variable)
 			@breakHash = @daily_recipes[1][@day]
@@ -26,7 +25,6 @@ class UsersController < ApplicationController
 			@breakCals = @breakHash["calories"]
 			@breakTime = @breakHash["readyInMinutes"]
 			@breakLink = @breakHash['link']
-			#@breakPrice = (@breakHash["price"] / 100).round(2)
 
 			@lunchHash = @daily_recipes[2][@day]
 			@lunchImg = @lunchHash["image"]
@@ -34,7 +32,6 @@ class UsersController < ApplicationController
 			@lunchCals = @lunchHash["calories"]
 			@lunchTime = @lunchHash["readyInMinutes"]
 			@lunchLink = @lunchHash['link']
-			#@lunchPrice = (@lunchHash["price"] / 100).round(2)
 
 			@dinHash = @daily_recipes[3][@day]
 			@dinImg = @dinHash["image"]
@@ -43,7 +40,6 @@ class UsersController < ApplicationController
 			@dinTime = @dinHash["readyInMinutes"]
 			@dinLink = @dinHash['link']
 			
-			#@dinPrice = (@dinHash["price"] / 100).round(2)
 			breakfast_recipe = self.class.convert_to_recipe(@breakHash, "Breakfast")
 			lunch_recipe = self.class.convert_to_recipe(@lunchHash, "Lunch")
 			dinner_recipe = self.class.convert_to_recipe(@dinHash, "Dinner")
@@ -94,9 +90,6 @@ class UsersController < ApplicationController
 			@dinTime = dinner_recipe.time
 			@dinImg = dinner_recipe.image
 			@dinLink = dinner_recipe.link
-			# self.class.set_view_vars(current_user.recipes[0], "Breakfast")
-			# self.class.set_view_vars(current_user.recipes[1], "Lunch")
-			# self.class.set_view_vars(current_user.recipes[2], "Dinner")
 		end
 	end
 
@@ -112,33 +105,8 @@ class UsersController < ApplicationController
 		return new_recipe
 	end
 
-	# def self.set_view_vars(recipe, meal_type)
-	# 	if meal_type == "Breakfast"
-	# 		#@breakImg = recipe["image"]
-	# 		byebug
-	# 		@breakTitle = recipe.title
-	# 		@breakCals = recipe.calories
-	# 		@breakTime = recipe.time
-	# 		#@breakLink = recipe['link']
-	# 	elsif meal_type == "Lunch"
-	# 		#@lunchImg = recipe["image"]
-	# 		@lunchTitle = recipe.title
-	# 		@lunchCals = recipe.calories
-	# 		@lunchTime = recipe.time
-	# 		#@lunchLink = recipe['link']
-	# 	else
-	# 		@dinImg = recipe["image"]
-	# 		@dinTitle = recipe.title
-	# 		@dinCals = recipe.calories
-	# 		@dinTime = recipe.time
-	# 		#@dinLink = recipe['link']
-	# 	end
-	# end
-
 	def self.do_daily_recipes(all_recipes)
 		daily_recipes = Hash.new()
-
-		# helper: display days instead of indexes
 		days = {1 => "Monday", 2 => "Tuesday", 3 => "Wednesday",
 			4 => "Thursday", 5 => "Friday", 6 => "Saturday", 7 => "Sunday"}
 
@@ -194,7 +162,6 @@ class UsersController < ApplicationController
 		current_user.age = params[:age].to_i
 		current_user.weight = params[:weight].to_i
 		current_user.height = params[:height].to_i
-		#current_user.budget = params[:budget].to_i
 		current_user.time = params[:time].to_i
 		current_user.gender = params[:gender]
 		current_user.exercise = params[:exercise]
