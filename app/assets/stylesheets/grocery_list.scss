@@ -1,7 +1,11 @@
 .grocery-view {
-    overflow-x: hidden;
-    background-repeat: no-repeat;
-    background-size: 45% 115%;
+	background-image: asset-url("grocery_food.jpg");
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background-repeat: no-repeat;
+	max-width: 100%;
+	overflow-x: hidden;
 }
 
 .grocery-list-label {
