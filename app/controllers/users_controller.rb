@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
 	def set_vars_from_curr_user
 		@age = current_user.age
 	    @gender = current_user.gender
@@ -14,7 +13,8 @@ class UsersController < ApplicationController
 	def show
 		set_vars_from_curr_user
 		if current_user.recipes.where(:type => "PlanRecipe").blank?
-			@calories = self.class.calc_calories(@gender, @weight, @height, @age, @exercise, @goal).round(0)
+			@preference_list = [@gender, @weight, @height, @age, @exercise, @goal]
+			@calories = self.class.calc_calories(@preference_list).round(0)
 			@all_recipes = Recipe.find_in_api(@calories, @budget, @time, @dietary_preferences)
 			if @all_recipes.nil?
 				flash[:alert] = "API limit reached, please try again in one minute!"
@@ -22,7 +22,6 @@ class UsersController < ApplicationController
 				return
 			end
 			@daily_recipes = self.class.do_daily_recipes(@all_recipes)
-
 			@day = "Monday"
 			
 			@breakHash = @daily_recipes[1][@day]
@@ -113,8 +112,6 @@ class UsersController < ApplicationController
 
 	def self.do_daily_recipes(all_recipes)
 		daily_recipes = Hash.new()
-
-		# helper: display days instead of indexes
 		days = {1 => "Monday", 2 => "Tuesday", 3 => "Wednesday",
 			4 => "Thursday", 5 => "Friday", 6 => "Saturday", 7 => "Sunday"}
 
@@ -130,20 +127,18 @@ class UsersController < ApplicationController
 		return daily_recipes
 	end
 
-	def self.calc_calories(gender, weight, height, age, exercise, goal)
-		#These calculations require kg and cm.  Will need to add
-		#units to the form in the future.
+	def self.calc_calories(preference_list)
 		#Formula found here:
 		#https://www.calculator.net/calorie-calculator.html
-		weight = weight * 0.453592
-	    if gender == 'Male'
-		    calories = 10*weight + 6.25*height - 5*age + 5
+		preference_list[1] = preference_list[1] * 0.453592
+	    if preference_list[0] == 'Male'
+		    calories = 10*preference_list[1] + 6.25*preference_list[2] - 5*preference_list[3] + 5
 		else
-			calories = 10*weight + 6.25*height - 5*age - 161
+			calories = 10*preference_list[1] + 6.25*preference_list[2] - 5*preference_list[3] - 161
 		end
-		if exercise == 'Light'
+		if preference_list[4] == 'Light'
 			calories *= 1.375
-		elsif exercise == 'Moderate'
+		elsif preference_list[4] == 'Moderate'
 			calories *= 1.55
 		else
 			calories *= 1.725
@@ -156,21 +151,18 @@ class UsersController < ApplicationController
 		#seven days a week and also have a physically demanding job, 
 		#multiply by 1.9.
 		#https://www.livestrong.com/article/526442-the-activity-factor-for-calculating-calories-burned/
-
-		if goal == 'Gain'
+		if preference_list[5] == 'Gain'
 			calories += 500
-		elsif goal == 'Lose'
+		elsif preference_list[5] == 'Lose'
 			calories -= 500
 		end
 		return calories
 	end
 
 	def update
-		#save form data for user
 		current_user.age = params[:age].to_i
 		current_user.weight = params[:weight].to_i
 		current_user.height = params[:height].to_i
-
 		current_user.time = params[:time].to_i
 		current_user.gender = params[:gender]
 		current_user.exercise = params[:exercise]

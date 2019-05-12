@@ -1,10 +1,3 @@
-# Given /I am an existing user with email "(.*)"/ do |email|
-# 	User.create(:email => email, :password => password, :age => age, :height => height, :weight => weight, :time => time)
-# 	user = User.find_by_email('john.apple@gmail.com')
-# 	# @current_user = user
-# 	# sign_in_as user
-# end
-
 api_result = {"items"=>[{"day"=>1, "value"=>"{\"id\":655340,\"imageType\":\"jpg\",\"title\":\"Peanut Butter Swirl Banana Bread\"}", 
 "slot"=>1, "id"=>123456, "title"=>"Peanut Butter Swirl Banana Bread", "calories"=>50, "totalTime"=>45, "yield"=>4, "readyInMinutes"=>45, "groceries"=> [
 	{
