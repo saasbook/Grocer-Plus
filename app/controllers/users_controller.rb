@@ -1,4 +1,14 @@
 class UsersController < ApplicationController
+
+	before_action :require_login
+
+	def require_login
+		if current_user.nil?
+			redirect_to new_user_session_path
+			return
+		end
+	end
+
 	def set_vars_from_curr_user
 		@age = current_user.age
 	    @gender = current_user.gender

@@ -5,7 +5,7 @@ class PagesController < ApplicationController
     elsif current_user and current_user.recipes 
       redirect_to show_path
     else
-      redirect_to new_user_registration_path
+      redirect_to new_user_session_path
     end
   end
 end
