@@ -136,13 +136,9 @@ class UsersController < ApplicationController
 		else
 			calories = 10*preference_list[1] + 6.25*preference_list[2] - 5*preference_list[3] - 161
 		end
-		if preference_list[4] == 'Light'
-			calories *= 1.375
-		elsif preference_list[4] == 'Moderate'
-			calories *= 1.55
-		else
-			calories *= 1.725
-		end
+		
+		calories = UsersController.exercise_level(calories, preference_list[4])
+
 		#If you are sedentary and do not exercise, multiply your 
 		#BMR by 1.2. If you exercise lightly one to three times 
 		#per week, multiply by 1.375. If you exercise three to 
@@ -151,9 +147,25 @@ class UsersController < ApplicationController
 		#seven days a week and also have a physically demanding job, 
 		#multiply by 1.9.
 		#https://www.livestrong.com/article/526442-the-activity-factor-for-calculating-calories-burned/
-		if preference_list[5] == 'Gain'
+		calories = UsersController.goal(calories, preference_list[5])
+		return calories
+	end
+
+	def self.exercise_level(calories, level)
+		if level == 'Light'
+			calories *= 1.375
+		elsif level == 'Moderate'
+			calories *= 1.55
+		else
+			calories *= 1.725
+		end
+		return calories
+	end
+
+	def self.goal(calories, target_goal)
+		if target_goal == 'Gain'
 			calories += 500
-		elsif preference_list[5] == 'Lose'
+		elsif target_goal == 'Lose'
 			calories -= 500
 		end
 		return calories
