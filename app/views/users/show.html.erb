@@ -15,7 +15,7 @@
         </ul>
         <div class="card-body">
           <%= link_to "View Recipe", @breakLink, class: "btn btn-primary" %>
-          <%= link_to "Favorite Breakfast", favorite_recipe_path(:Type => "Breakfast", :Title => @breakTitle, :Calories => @breakCals, :PrepTime => @breakTime), class: "btn btn-primary fav"%>
+          <%= link_to "Favorite Breakfast", favorite_recipe_path(:Type => "Breakfast", :Title => @breakTitle, :Calories => @breakCals, :PrepTime => @breakTime, :Instr_link => @break_instructions_link), class: "btn btn-primary fav"%>
         </div>
       </div>
       <div class="card two">
@@ -29,7 +29,7 @@
         </ul>
         <div class="card-body">
           <%= link_to "View Recipe", @lunchLink, class: "btn btn-primary" %>
-          <%= link_to "Favorite Lunch", favorite_recipe_path(:Type => "Lunch", :Title => @lunchTitle, :Calories => @lunchCals, :PrepTime => @lunchTime), class: "btn btn-primary fav"%>
+          <%= link_to "Favorite Lunch", favorite_recipe_path(:Type => "Lunch", :Title => @lunchTitle, :Calories => @lunchCals, :PrepTime => @lunchTime, :Instr_link => @lunch_instructions_link), class: "btn btn-primary fav"%>
         </div>
       </div>
       <div class="card three">
@@ -43,7 +43,7 @@
         </ul>
         <div class="card-body">
           <%= link_to "View Recipe", @dinLink, class: "btn btn-primary" %>
-          <%= link_to "Favorite Dinner", favorite_recipe_path(:Type => "Dinner", :Title => @dinTitle, :Calories => @dinCals, :PrepTime => @dinTime), class: "btn btn-primary fav"%>
+          <%= link_to "Favorite Dinner", favorite_recipe_path(:Type => "Dinner", :Title => @dinTitle, :Calories => @dinCals, :PrepTime => @dinTime, :Instr_link => @din_instructions_link), class: "btn btn-primary fav"%>
         </div>
       </div>
     </div>
