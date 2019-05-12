@@ -107,9 +107,6 @@ describe ".find_in_api" do
 
   before(:each) do
     stub_request(:get, %r{https://api\.edamam\.com/search.*}).
-    #%r{https://api\.edamam\.com/search?q=breakfast.*}
-    #'https://api.edamam.com/search?q=lunch'
-    #'https://api.edamam.com/search?q=dinner'
 
       with(  headers: {
       'Accept'=>'*/*',
@@ -121,10 +118,7 @@ describe ".find_in_api" do
     
   end
   
- # it 'should be a 200 OK' do
-  #  byebug
-  #  expect(Recipe.find_in_api(1,1,1,'vegetarian').code).to eq "200"
-  #end
+
   it 'should return a Hash' do
     expect(Recipe.find_in_api(1,1,1,'vegetarian')).to be_an_instance_of(Hash)
   end
@@ -132,10 +126,3 @@ describe ".find_in_api" do
     expect(Recipe.find_in_api(1,1,1,'vegetarian')).to include('items')
   end
 end
-  #describe ".get_announcements" do
-    #before { @result = FactoryGirl.create(:announcement) }
-  #  it "return announcement" do
-   #   Announcement.get_announcements.should_not be_empty
-    #end
-  #end
-  
