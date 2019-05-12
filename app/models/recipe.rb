@@ -24,6 +24,9 @@ class Recipe < ActiveRecord::Base
             if res_json_hash.nil?
                 return nil
             end
+            if (not res_json_hash['hits'].kind_of?(Array)) || res_json_hash['hits'].size == 0
+                return res_json_hash
+            end
             hash_to_append = res_json_hash['hits'][0]['recipe']
             hash_to_append['title'] = res_json_hash['hits'][0]['recipe']['label']
             hash_to_append['calories'] = (res_json_hash['hits'][0]['recipe']['calories'] / res_json_hash['hits'][0]['recipe']['yield']).round(0)
@@ -35,10 +38,6 @@ class Recipe < ActiveRecord::Base
             res['items'].append(hash_to_append)
         end
         return res
-
-
-
-        
     end
 
     

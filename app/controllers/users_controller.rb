@@ -23,11 +23,14 @@ class UsersController < ApplicationController
 	def show
 		set_vars_from_curr_user
 		if current_user.recipes.where(:type => "PlanRecipe").blank?
-			@preference_list = [@gender, @weight, @height, @age, @exercise, @goal]
-			@calories = self.class.calc_calories(@preference_list).round(0)
+			@calories = self.class.calc_calories([@gender, @weight, @height, @age, @exercise, @goal]).round(0)
 			@all_recipes = Recipe.find_in_api(@calories, @time, @dietary_preferences)
-			if @all_recipes.nil?
-				flash[:alert] = "API limit reached, please try again in one minute!"
+			if @all_recipes.nil? || @all_recipes.has_key?("hits")
+				if @all_recipes.nil?
+					flash[:alert] = "API limit reached, please try again in one minute!"
+				else
+					flash[:alert] = "We're sorry, the API did not return recipes for the data you specified"
+				end
 				redirect_to edit_path
 				return
 			end
@@ -38,12 +41,9 @@ class UsersController < ApplicationController
 			save_current_user
 		else
 			@calories = current_user.calories
-			breakfast_recipe = current_user.recipes.where(:type => "PlanRecipe")[0]
-			lunch_recipe = current_user.recipes.where(:type => "PlanRecipe")[1]
-			dinner_recipe = current_user.recipes.where(:type => "PlanRecipe")[2]
-			set_vars_from_recipe(breakfast_recipe, "breakfast")
-			set_vars_from_recipe(lunch_recipe, "lunch")
-			set_vars_from_recipe(dinner_recipe, "dinner")
+			set_vars_from_recipe(current_user.recipes.where(:type => "PlanRecipe")[0], "breakfast")
+			set_vars_from_recipe(current_user.recipes.where(:type => "PlanRecipe")[1], "lunch")
+			set_vars_from_recipe(current_user.recipes.where(:type => "PlanRecipe")[2], "dinner")
 		end
 	end
   
