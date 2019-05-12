@@ -1,0 +1,41 @@
+<%= render 'navbar' %>
+<body class="favorites-view">
+  <h2 class="text-center grocery-list-label">My Favorites</h2>
+  <div class="card-deck mp-cards">
+
+    <% @breakfast.each do |recipe| %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= recipe.title %></h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Calories: <%=@breakCals%> </li>
+            <li class="list-group-item">Preparation Time: <%=@breakTime%> mins</li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+    <% @lunch.each do |recipe| %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= recipe.title %></h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Calories: <%=@lunchCals%> </li>
+            <li class="list-group-item">Preparation Time: <%=@lunchTime%> mins</li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+    <% @dinner.each do |recipe| %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= recipe.title %></h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Calories: <%=@dinCals%> </li>
+            <li class="list-group-item">Preparation Time: <%=@dinTime%> mins</li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</body>
+
