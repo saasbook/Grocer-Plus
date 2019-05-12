@@ -290,7 +290,8 @@ describe UsersController, :type => :controller do
 				'title' => "Mushroom Risotto",
 				'calories' => 200,
 				'readyInMinutes' => 75,
-				'price' => 8
+        'price' => 8,
+        'links' => ["hi.com"]
 				}
 		test_recipe = UsersController.convert_to_recipe(test_hash, "Dinner")
 		test_recipe.title == "Mushroom Risotto"
