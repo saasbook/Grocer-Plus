@@ -13,7 +13,8 @@ class UsersController < ApplicationController
 	def show
 		set_vars_from_curr_user
 		if current_user.recipes.where(:type => "PlanRecipe").blank?
-			@calories = self.class.calc_calories(@gender, @weight, @height, @age, @exercise, @goal).round(0)
+			@preference_list = [@gender, @weight, @height, @age, @exercise, @goal]
+			@calories = self.class.calc_calories(@preference_list).round(0)
 			@all_recipes = Recipe.find_in_api(@calories, @budget, @time, @dietary_preferences)
 			@daily_recipes = self.class.do_daily_recipes(@all_recipes)
 			@day = "Monday"
@@ -121,20 +122,20 @@ class UsersController < ApplicationController
 		return daily_recipes
 	end
 
-	def self.calc_calories(gender, weight, height, age, exercise, goal)
+	def self.calc_calories(preference_list)
 		#These calculations require kg and cm.  Will need to add
 		#units to the form in the future.
 		#Formula found here:
 		#https://www.calculator.net/calorie-calculator.html
-		weight = weight * 0.453592
-	    if gender == 'Male'
-		    calories = 10*weight + 6.25*height - 5*age + 5
+		preference_list[1] = preference_list[1] * 0.453592
+	    if preference_list[0] == 'Male'
+		    calories = 10*preference_list[1] + 6.25*preference_list[2] - 5*preference_list[3] + 5
 		else
-			calories = 10*weight + 6.25*height - 5*age - 161
+			calories = 10*preference_list[1] + 6.25*preference_list[2] - 5*preference_list[3] - 161
 		end
-		if exercise == 'Light'
+		if preference_list[4] == 'Light'
 			calories *= 1.375
-		elsif exercise == 'Moderate'
+		elsif preference_list[4] == 'Moderate'
 			calories *= 1.55
 		else
 			calories *= 1.725
@@ -148,9 +149,9 @@ class UsersController < ApplicationController
 		#multiply by 1.9.
 		#https://www.livestrong.com/article/526442-the-activity-factor-for-calculating-calories-burned/
 
-		if goal == 'Gain'
+		if preference_list[5] == 'Gain'
 			calories += 500
-		elsif goal == 'Lose'
+		elsif preference_list[5] == 'Lose'
 			calories -= 500
 		end
 		return calories
