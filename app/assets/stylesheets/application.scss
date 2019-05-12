@@ -12,19 +12,9 @@
  */
 
 @import "bootstrap";
-@import "pages";
-@import "recipes";
-@import "navbar";
-@import "alerts";
-@import "new_user_registration";
-@import "edit_preferences";
-@import "new_user_session";
-@import "welcome_bar";
-@import "home";
-@import "show";
-@import "devise";
-@import "grocery_list";
-@import "favorited_recipes";
+@import "devise/*";
+@import "shared/*";
+@import "users/*";
 
 * {
     font-family: 'Roboto';
