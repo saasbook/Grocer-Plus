@@ -281,4 +281,111 @@ describe UsersController, :type => :controller do
 
     end
 
+    describe "Convert to recipe" do
+
+      it "should convert a hash to a recipe object" do
+      	test_hash = {'day'=> 1,
+				'slot' => 3,
+				'id' => 123456,
+				'title' => "Mushroom Risotto",
+				'calories' => 200,
+				'readyInMinutes' => 75,
+        'price' => 8,
+        'links' => ["hi.com"]
+				}
+		test_recipe = UsersController.convert_to_recipe(test_hash, "Dinner")
+		test_recipe.title == "Mushroom Risotto"
+		test_recipe.type == "PlanRecipe"
+		test_recipe.meal_type == "Dinner"
+		test_recipe.calories == 200
+		test_recipe.time == 75
+      end
+
+    end
+
+    describe "Do daily recipes" do
+	  it "should split all recipes by meal type" do
+	  	all_recipes = {'items' => 
+				[
+				{'day' => 1,
+			 	'slot' => 1,
+			 	'id' => 123456,
+			 	'title' => "Eggs Benedict",
+			 	'calories' => 200,
+			 	'readyInMinutes' => 45,
+				 'price' => 2
+				 },	
+				{'day' => 1,
+			 	'slot' => 2,
+			 	'id' => 123456,
+			 	'title' => "Sweet & Sour Soup",
+			 	'calories' => 340,
+			 	'readyInMinutes' => 50,
+				'price' => 3
+				},	
+				 {'day'=> 1,
+				 'slot' => 3,
+				 'id' => 123456,
+				 'title' => "Mushroom Risotto",
+				 'calories' => 200,
+				 'readyInMinutes' => 75,
+				 'price' => 8	
+				 },
+				 {'day'=> 2,
+				 'slot' => 1,
+				 'id' => 123456,
+				 'title' => "Waffles",
+				 'calories' => 200,
+				 'readyInMinutes' => 45,
+				 'price' => 8	
+				 },
+				 {'day'=> 2,
+				 'slot' => 2,
+				 'id' => 123456,
+				 'title' => "Salad",
+				 'calories' => 200,
+				 'readyInMinutes' => 45,
+				 'price' => 8	
+				 },
+				 {'day'=> 2,
+				 'slot' => 3,
+				 'id' => 123456,
+				 'title' => "Burrito",
+				 'calories' => 200,
+				 'readyInMinutes' => 45,
+				 'price' => 8	
+				 },
+				 {'day'=> 3,
+				 'slot' => 1,
+				 'id' => 123456,
+				 'title' => "Grapes",
+				 'calories' => 200,
+				 'readyInMinutes' => 45,
+				 'price' => 8
+				 },
+				 {'day'=> 3,
+				 'slot' => 2,
+				 'id' => 123456,
+				 'title' => "Cherries",
+				 'calories' => 200,
+				 'readyInMinutes' => 45,
+				 'price' => 8	
+				 },
+				 {'day'=> 3,
+				 'slot' => 3,
+				 'id' => 123456,
+				 'title' => "Milk",
+				 'calories' => 200,
+				 'readyInMinutes' => 45,
+				 'price' => 8	
+				 }
+			]
+		}
+		daily_recipes = UsersController.do_daily_recipes(all_recipes)
+		daily_recipes[1].length.should == 3
+		daily_recipes[2].length.should == 3
+		daily_recipes[3].length.should == 3
+	  end
+	end
+
   end
