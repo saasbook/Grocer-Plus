@@ -237,14 +237,16 @@ class UsersController < ApplicationController
 	end
 
 	def grocery_list
-		@breakfast = current_user.recipes.where(:type => "PlanRecipe", :meal_type => "Breakfast")
-		@lunch = current_user.recipes.where(:type => "PlanRecipe", :meal_type => "Lunch")
-		@dinner = current_user.recipes.where(:type => "PlanRecipe", :meal_type => "Dinner")
+		set_recipes("PlanRecipe")
 	end
 
 	def favorited_recipes
-		@breakfast = current_user.recipes.where(:type => "FavoritedRecipe", :meal_type => "Breakfast")
-		@lunch = current_user.recipes.where(:type => "FavoritedRecipe", :meal_type => "Lunch")
-		@dinner = current_user.recipes.where(:type => "FavoritedRecipe", :meal_type => "Dinner")
+		set_recipes("FavoritedRecipe")
+	end
+
+	def set_recipes(type)
+		@breakfast = current_user.recipes.where(:type => type, :meal_type => "Breakfast")
+		@lunch = current_user.recipes.where(:type => type, :meal_type => "Lunch")
+		@dinner = current_user.recipes.where(:type => type, :meal_type => "Dinner")
 	end
 end
