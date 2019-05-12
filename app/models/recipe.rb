@@ -14,7 +14,7 @@ class Recipe < ActiveRecord::Base
             return JSON.parse(res.body)
         end
     end
-    def self.find_in_api(calories, budget, time, dietary_preferences)
+    def self.find_in_api(calories, time, dietary_preferences)
         base_uri = 'https://api.edamam.com/search'
         meal_types = ['breakfast', 'lunch', 'dinner']
         res = {'items' => []}
@@ -29,7 +29,7 @@ class Recipe < ActiveRecord::Base
             hash_to_append['calories'] = (res_json_hash['hits'][0]['recipe']['calories'] / res_json_hash['hits'][0]['recipe']['yield']).round(0)
             hash_to_append['readyInMinutes'] = res_json_hash['hits'][0]['recipe']['totalTime'].round(0)
             hash_to_append['groceries'] = res_json_hash['hits'][0]['recipe']['ingredients']
-            hash_to_append['link'] = res_json_hash['hits'][0]['recipe']['shareAs']
+            hash_to_append['links'] = [res_json_hash['hits'][0]['recipe']['shareAs'], res_json_hash['hits'][0]['recipe']['url']]
             hash_to_append['slot'] = idx+1
             hash_to_append['day'] = 1
             res['items'].append(hash_to_append)

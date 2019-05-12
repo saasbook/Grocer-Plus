@@ -7,7 +7,8 @@
         <h5 class="card-title text-center"> Breakfasts </h5>
         <ul class="list-group list-group-flush">
           <% @breakfast.each do |recipe| %>
-            <li class="list-group-item"><%= recipe.title %> </li>
+            <li class="list-group-item"><%= link_to(recipe.title, recipe.instr_link) %> </li>
+            
           <% end %>
         </ul>
       </div>
@@ -17,7 +18,7 @@
         <h5 class="card-title text-center"> Lunches </h5>
         <ul class="list-group list-group-flush">
           <% @lunch.each do |recipe| %>
-            <li class="list-group-item"><%= recipe.title %> </li>
+            <li class="list-group-item"><%= link_to(recipe.title, recipe.instr_link) %> </li>
           <% end %>
         </ul>
       </div>
@@ -27,7 +28,7 @@
         <h5 class="card-title text-center"> Dinners </h5>
         <ul class="list-group list-group-flush">
           <% @dinner.each do |recipe| %>
-            <li class="list-group-item"><%= recipe.title %> </li>
+            <li class="list-group-item"><%= link_to(recipe.title, recipe.instr_link) %> </li>
           <% end %>
         </ul>
       </div>

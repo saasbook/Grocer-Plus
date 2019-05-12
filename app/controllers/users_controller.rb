@@ -1,4 +1,14 @@
 class UsersController < ApplicationController
+
+	before_action :require_login
+
+	def require_login
+		if current_user.nil?
+			redirect_to new_user_session_path
+			return
+		end
+	end
+
 	def set_vars_from_curr_user
 		@age = current_user.age
 	    @gender = current_user.gender
@@ -15,7 +25,7 @@ class UsersController < ApplicationController
 		if current_user.recipes.where(:type => "PlanRecipe").blank?
 			@preference_list = [@gender, @weight, @height, @age, @exercise, @goal]
 			@calories = self.class.calc_calories(@preference_list).round(0)
-			@all_recipes = Recipe.find_in_api(@calories, @budget, @time, @dietary_preferences)
+			@all_recipes = Recipe.find_in_api(@calories, @time, @dietary_preferences)
 			if @all_recipes.nil?
 				flash[:alert] = "API limit reached, please try again in one minute!"
 				redirect_to edit_path
@@ -36,18 +46,11 @@ class UsersController < ApplicationController
 			set_vars_from_recipe(dinner_recipe, "dinner")
 		end
 	end
-
+  
 	def save_current_user
 		current_user.calories = @calories
 		current_user.save!
 	end
-	# def check_api_rate_limit
-	# 	if @all_recipes.nil?
-	# 		flash[:alert] = "API limit reached, please try again in one minute!"
-	# 		redirect_to edit_path
-	# 		return
-	# 	end
-	# end
 
 	def save_vars_recipes_groceries(hash, meal_type)
 		if meal_type == "breakfast"
@@ -128,7 +131,8 @@ class UsersController < ApplicationController
 		new_recipe.calories = hash["calories"]
 		new_recipe.time = hash["readyInMinutes"]
 		new_recipe.image = hash["image"]
-		new_recipe.link = hash["link"]
+		new_recipe.link = hash["links"][0]
+		new_recipe.instr_link = hash["links"][1]
 		return new_recipe
 	end
 
@@ -200,6 +204,7 @@ class UsersController < ApplicationController
 		current_user.time = params[:time].to_i
 		current_user.gender = params[:gender]
 		current_user.exercise = params[:exercise]
+		current_user.goal = params[:goal]
 		current_user.dietary_preferences = ''
 		if params.key?("dietary_preferences") 
 			params["dietary_preferences"].each do |elem|
@@ -220,7 +225,7 @@ class UsersController < ApplicationController
 		:calories => params[:Calories], :time => params[:PrepTime])
 		if previously_favorited.blank?
 			current_user.recipes.create(:type => "FavoritedRecipe", :meal_type => params[:Type], :title => params[:Title], 
-				:calories => params[:Calories], :time => params[:PrepTime]
+				:calories => params[:Calories], :time => params[:PrepTime], :instr_link => params[:Instr_link]
 				)
 			current_user.save!
 		end
