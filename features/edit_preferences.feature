@@ -9,7 +9,7 @@ Feature: Edit user data and preferences
 		Given I am logged in with email "john.apple@gmail.com" and password "hello1"
 		And I am on the edit preferences page
 
-#Scenario: Input all data and preferences
+
 		And I fill in "Height" with "180"
 		And I fill in "Weight" with "80"
 		And I fill in "Age" with "20"
