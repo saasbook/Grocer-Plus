@@ -3,39 +3,41 @@
   <h2 class="text-center favorited-recipes-label">My Favorites</h2>
   <div class="card-deck mp-cards">
 
-    <% @breakfast.each do |recipe| %>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><%= recipe.title %></h5>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Calories: <%=@breakCals%> </li>
-            <li class="list-group-item">Preparation Time: <%=@breakTime%> mins</li>
-          </ul>
-        </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title text-center"> Breakfasts </h5>
+        <ul class="list-group list-group-flush">
+          <% @breakfast.each do |recipe| %>
+            <li class="list-group-item"><%= recipe.title %> </li>
+          <% end %>
+        </ul>
       </div>
-    <% end %>
-    <% @lunch.each do |recipe| %>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><%= recipe.title %></h5>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Calories: <%=@lunchCals%> </li>
-            <li class="list-group-item">Preparation Time: <%=@lunchTime%> mins</li>
-          </ul>
-        </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title text-center"> Lunches </h5>
+        <ul class="list-group list-group-flush">
+          <% @lunch.each do |recipe| %>
+            <li class="list-group-item"><%= recipe.title %> </li>
+          <% end %>
+        </ul>
       </div>
-    <% end %>
-    <% @dinner.each do |recipe| %>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><%= recipe.title %></h5>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Calories: <%=@dinCals%> </li>
-            <li class="list-group-item">Preparation Time: <%=@dinTime%> mins</li>
-          </ul>
-        </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title text-center"> Dinners </h5>
+        <ul class="list-group list-group-flush">
+          <% @dinner.each do |recipe| %>
+            <li class="list-group-item"><%= recipe.title %> </li>
+          <% end %>
+        </ul>
       </div>
-    <% end %>
+    </div>
+
+
   </div>
 </body>
 
