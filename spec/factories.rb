@@ -20,7 +20,6 @@ FactoryBot.define do
         age { 21 }
         gender { "male" }
         goal { "gain" }
-        budget { 100 }
         time { 30 }
         dietary_preferences { "vegetarian" }
         

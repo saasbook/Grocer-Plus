@@ -1,4 +1,14 @@
 class UsersController < ApplicationController
+
+	before_action :require_login
+
+	def require_login
+		if current_user.nil?
+			redirect_to new_user_session_path
+			return
+		end
+	end
+
 	def set_vars_from_curr_user
 		@age = current_user.age
 	    @gender = current_user.gender
@@ -15,7 +25,7 @@ class UsersController < ApplicationController
 		if current_user.recipes.where(:type => "PlanRecipe").blank?
 			@preference_list = [@gender, @weight, @height, @age, @exercise, @goal]
 			@calories = self.class.calc_calories(@preference_list).round(0)
-			@all_recipes = Recipe.find_in_api(@calories, @budget, @time, @dietary_preferences)
+			@all_recipes = Recipe.find_in_api(@calories, @time, @dietary_preferences)
 			if @all_recipes.nil?
 				flash[:alert] = "API limit reached, please try again in one minute!"
 				redirect_to edit_path
@@ -29,21 +39,24 @@ class UsersController < ApplicationController
 			@breakTitle = @breakHash["title"]
 			@breakCals = @breakHash["calories"]
 			@breakTime = @breakHash["readyInMinutes"]
-			@breakLink = @breakHash['link']
+			@breakLink = @breakHash['links'][0]
+			@break_instructions_link = @breakHash['links'][1]
 
 			@lunchHash = @daily_recipes[2][@day]
 			@lunchImg = @lunchHash["image"]
 			@lunchTitle = @lunchHash["title"]
 			@lunchCals = @lunchHash["calories"]
 			@lunchTime = @lunchHash["readyInMinutes"]
-			@lunchLink = @lunchHash['link']
+			@lunchLink = @lunchHash['links'][0]
+			@lunch_instructions_link = @lunchHash['links'][1]
 
 			@dinHash = @daily_recipes[3][@day]
 			@dinImg = @dinHash["image"]
 			@dinTitle = @dinHash["title"]
 			@dinCals = @dinHash["calories"]
 			@dinTime = @dinHash["readyInMinutes"]
-			@dinLink = @dinHash['link']
+			@dinLink = @dinHash['links'][0]
+			@din_instructions_link = @dinHash['links'][1]
 			
 			breakfast_recipe = self.class.convert_to_recipe(@breakHash, "Breakfast")
 			lunch_recipe = self.class.convert_to_recipe(@lunchHash, "Lunch")
@@ -83,18 +96,21 @@ class UsersController < ApplicationController
 			@breakTime = breakfast_recipe.time
 			@breakImg = breakfast_recipe.image
 			@breakLink = breakfast_recipe.link
+			@break_instructions_link = breakfast_recipe.instr_link
 
 			@lunchTitle = lunch_recipe.title
 			@lunchCals = lunch_recipe.calories
 			@lunchTime = lunch_recipe.time
 			@lunchImg = lunch_recipe.image
 			@lunchLink = lunch_recipe.link
+			@lunch_instructions_link = lunch_recipe.instr_link
 
 			@dinTitle = dinner_recipe.title
 			@dinCals = dinner_recipe.calories
 			@dinTime = dinner_recipe.time
 			@dinImg = dinner_recipe.image
 			@dinLink = dinner_recipe.link
+			@din_instructions_link = dinner_recipe.instr_link
 		end
 	end
 
@@ -106,7 +122,8 @@ class UsersController < ApplicationController
 		new_recipe.calories = hash["calories"]
 		new_recipe.time = hash["readyInMinutes"]
 		new_recipe.image = hash["image"]
-		new_recipe.link = hash["link"]
+		new_recipe.link = hash["links"][0]
+		new_recipe.instr_link = hash["links"][1]
 		return new_recipe
 	end
 
@@ -166,6 +183,7 @@ class UsersController < ApplicationController
 		current_user.time = params[:time].to_i
 		current_user.gender = params[:gender]
 		current_user.exercise = params[:exercise]
+		current_user.goal = params[:goal]
 		current_user.dietary_preferences = ''
 		if params.key?("dietary_preferences") 
 			params["dietary_preferences"].each do |elem|
@@ -186,7 +204,7 @@ class UsersController < ApplicationController
 		:calories => params[:Calories], :time => params[:PrepTime])
 		if previously_favorited.blank?
 			current_user.recipes.create(:type => "FavoritedRecipe", :meal_type => params[:Type], :title => params[:Title], 
-				:calories => params[:Calories], :time => params[:PrepTime]
+				:calories => params[:Calories], :time => params[:PrepTime], :instr_link => params[:Instr_link]
 				)
 			current_user.save!
 		end

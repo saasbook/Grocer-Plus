@@ -3,7 +3,8 @@ require 'rails_helper'
 describe UsersController, :type => :controller do
   s = {1=>{"Monday"=>{"day"=>1, "mealPlanId"=>0, "slot"=>1, "position"=>0, "type"=>"RECIPE", 
   "value"=>"{\"id\":651958,\"imageType\":\"jpg\",\"title\":\"Mini frittatas with quinoa\"}", "id"=>651958, 
-  "title"=>"Mini frittatas with quinoa", "calories"=>47, "readyInMinutes"=>45, 
+  "title"=>"Mini frittatas with quinoa", "calories"=>47, "readyInMinutes"=>45,
+  "links" => ["hi.com", "yo.com"], 
   "image"=>"https://spoonacular.com/recipeImages/651958-556x370.jpg",
   "groceries"=> [
         {
@@ -21,7 +22,8 @@ describe UsersController, :type => :controller do
         }}, 
   2=>{"Monday"=>{"day"=>1, "mealPlanId"=>0, "slot"=>2, "position"=>0, "type"=>"RECIPE", 
   "value"=>"{\"id\":659081,\"imageType\":\"jpg\",\"title\":\"Salmon Frittata\"}", "id"=>659081, 
-  "title"=>"Salmon Frittata", "calories"=>617, "readyInMinutes"=>45, 
+  "title"=>"Salmon Frittata", "calories"=>617, "readyInMinutes"=>45,
+  "links" => ["hi.com", "yo.com"], 
   "image"=>"https://spoonacular.com/recipeImages/659081-556x370.jpg",
   "groceries"=> [
         {
@@ -39,7 +41,8 @@ describe UsersController, :type => :controller do
         }}, 
   3=>{"Monday"=>{"day"=>1, "mealPlanId"=>0, "slot"=>3, "position"=>0, "type"=>"RECIPE", 
   "value"=>"{\"id\":646499,\"imageType\":\"jpg\",\"title\":\"Healthy Orange Chicken\"}", "id"=>646499, 
-  "title"=>"Healthy Orange Chicken", "calories"=>440, "readyInMinutes"=>45, 
+  "title"=>"Healthy Orange Chicken", "calories"=>440, "readyInMinutes"=>45,
+  "links" => ["hi.com", "yo.com"], 
   "image"=>"https://spoonacular.com/recipeImages/646499-556x370.jpg",
   "groceries"=> [
         {
