@@ -172,7 +172,7 @@ class UsersController < ApplicationController
 			@calories = self.class.calc_calories(@gender, @weight, @height, @age, @exercise, @goal).round(0)
 			@all_recipes = Recipe.find_in_api(@calories, @budget, @time, @dietary_preferences)
 			if @all_recipes.nil?
-				@api_error = "API request limit reached, please try again in one minute!"
+				flash[:alert] = "API limit reached, please try again in one minute!"
 				redirect_to edit_path
 				return
 			end
