@@ -1,0 +1,43 @@
+<%= render 'navbar' %>
+<body class="grocery-view">
+  <h2 class="text-center">Groceries</h2>
+  <% @breakfast.each do |recipe| %>
+    <div class="card">
+      <img height="200" width="300" class="card-img-top" src="<%= recipe.image %>"/>
+      <div class="card-body">
+        <h5 class="card-title"><%= recipe.title %></h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <% recipe.groceries.each do |grocery| %>
+          <li class="list-group-item"> <%= grocery.name %> </li>
+        <%end %>
+      </ul>
+    </div>
+  <% end %>
+  <% @lunch.each do |recipe| %>
+    <div class="card">
+      <img height="200" width="300" class="card-img-top" src="<%= recipe.image %>"/>
+      <div class="card-body">
+        <h5 class="card-title"><%= recipe.title %></h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <% recipe.groceries.each do |grocery| %>
+          <li class="list-group-item"> <%= grocery.name %> </li>
+        <%end %>
+      </ul>
+    </div>
+  <% end %>
+  <% @dinner.each do |recipe| %>
+    <div class="card">
+      <img height="200" width="300" class="card-img-top" src="<%= recipe.image %>"/>
+      <div class="card-body">
+        <h5 class="card-title"><%= recipe.title %></h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <% recipe.groceries.each do |grocery| %>
+          <li class="list-group-item"> <%= grocery.name %> </li>
+        <%end %>
+      </ul>
+    </div>
+  <% end %>
+</body>
