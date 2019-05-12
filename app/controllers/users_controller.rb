@@ -16,60 +16,14 @@ class UsersController < ApplicationController
 			@preference_list = [@gender, @weight, @height, @age, @exercise, @goal]
 			@calories = self.class.calc_calories(@preference_list).round(0)
 			@all_recipes = Recipe.find_in_api(@calories, @budget, @time, @dietary_preferences)
-			if @all_recipes.nil?
-				flash[:alert] = "API limit reached, please try again in one minute!"
-				redirect_to edit_path
-				return
-			end
+			check_api_rate_limit
 			@daily_recipes = self.class.do_daily_recipes(@all_recipes)
-			@day = "Monday"
-			
-			@breakHash = @daily_recipes[1][@day]
-			@breakImg = @breakHash["image"]
-			@breakTitle = @breakHash["title"]
-			@breakCals = @breakHash["calories"]
-			@breakTime = @breakHash["readyInMinutes"]
-			@breakLink = @breakHash['link']
-
-			@lunchHash = @daily_recipes[2][@day]
-			@lunchImg = @lunchHash["image"]
-			@lunchTitle = @lunchHash["title"]
-			@lunchCals = @lunchHash["calories"]
-			@lunchTime = @lunchHash["readyInMinutes"]
-			@lunchLink = @lunchHash['link']
-
-			@dinHash = @daily_recipes[3][@day]
-			@dinImg = @dinHash["image"]
-			@dinTitle = @dinHash["title"]
-			@dinCals = @dinHash["calories"]
-			@dinTime = @dinHash["readyInMinutes"]
-			@dinLink = @dinHash['link']
-			
-			breakfast_recipe = self.class.convert_to_recipe(@breakHash, "Breakfast")
-			lunch_recipe = self.class.convert_to_recipe(@lunchHash, "Lunch")
-			dinner_recipe = self.class.convert_to_recipe(@dinHash, "Dinner")
-
-			@breakHash["groceries"].each do |grocery|
-				new_grocery = Grocery.create(:name => grocery["text"], :weight_in_grams => grocery["weight"].to_f.round(2))
-				new_grocery.recipe = breakfast_recipe
-				new_grocery.save!
-			end
-
-			@lunchHash["groceries"].each do |grocery|
-				new_grocery = Grocery.create(:name => grocery["text"], :weight_in_grams => grocery["weight"].to_f.round(2))
-				new_grocery.recipe = lunch_recipe
-				new_grocery.save!
-			end
-
-			@dinHash["groceries"].each do |grocery|
-				new_grocery = Grocery.create(:name => grocery["text"], :weight_in_grams => grocery["weight"].to_f.round(2))
-				new_grocery.recipe = dinner_recipe
-				new_grocery.save!
-			end
-
-			current_user.recipes << breakfast_recipe
-			current_user.recipes << lunch_recipe
-			current_user.recipes << dinner_recipe
+			@breakHash = @daily_recipes[1]["Monday"]
+			save_vars_recipes_groceries(@breakHash, "breakfast")
+			@lunchHash = @daily_recipes[2]["Monday"]
+			save_vars_recipes_groceries(@lunchHash, "lunch")
+			@dinHash = @daily_recipes[3]["Monday"]
+			save_vars_recipes_groceries(@dinHash, "dinner")
 			current_user.calories = @calories
 			current_user.save!
 		else
@@ -77,19 +31,83 @@ class UsersController < ApplicationController
 			breakfast_recipe = current_user.recipes.where(:type => "PlanRecipe")[0]
 			lunch_recipe = current_user.recipes.where(:type => "PlanRecipe")[1]
 			dinner_recipe = current_user.recipes.where(:type => "PlanRecipe")[2]
+			set_vars_from_recipe(breakfast_recipe, "breakfast")
+			set_vars_from_recipe(lunch_recipe, "lunch")
+			set_vars_from_recipe(dinner_recipe, "dinner")
+		end
+	end
 
+	def check_api_rate_limit
+		if @all_recipes.nil?
+			flash[:alert] = "API limit reached, please try again in one minute!"
+			redirect_to edit_path
+			return
+		end
+	end
+
+	def save_vars_recipes_groceries(hash, meal_type)
+		if meal_type == "breakfast"
+			set_vars_for_meal_plan(hash, "breakfast")
+			breakfast_recipe = self.class.convert_to_recipe(hash, "Breakfast")
+			save_groceries(hash, breakfast_recipe)
+			current_user.recipes << breakfast_recipe
+		elsif meal_type == "lunch"
+			set_vars_for_meal_plan(hash, "lunch")
+			lunch_recipe = self.class.convert_to_recipe(hash, "Lunch")
+			save_groceries(hash, lunch_recipe)
+			current_user.recipes << lunch_recipe
+		elsif meal_type == "dinner"
+			set_vars_for_meal_plan(hash, "dinner")
+			dinner_recipe = self.class.convert_to_recipe(hash, "Dinner")
+			save_groceries(hash, dinner_recipe)
+			current_user.recipes << dinner_recipe
+		end
+	end
+
+	def set_vars_for_meal_plan(hash, meal_type)
+		if meal_type == "breakfast"
+			@breakImg = @breakHash["image"]
+			@breakTitle = @breakHash["title"]
+			@breakCals = @breakHash["calories"]
+			@breakTime = @breakHash["readyInMinutes"]
+			@breakLink = @breakHash['link']
+		elsif meal_type == "lunch"
+			@lunchImg = @lunchHash["image"]
+			@lunchTitle = @lunchHash["title"]
+			@lunchCals = @lunchHash["calories"]
+			@lunchTime = @lunchHash["readyInMinutes"]
+			@lunchLink = @lunchHash['link']
+		elsif meal_type == "dinner"
+			@dinImg = @dinHash["image"]
+			@dinTitle = @dinHash["title"]
+			@dinCals = @dinHash["calories"]
+			@dinTime = @dinHash["readyInMinutes"]
+			@dinLink = @dinHash['link']
+		end
+	end
+
+	def save_groceries(hash, recipe)
+		hash["groceries"].each do |grocery|
+			new_grocery = Grocery.create(:name => grocery["text"], :weight_in_grams => grocery["weight"].to_f.round(2))
+			new_grocery.recipe = recipe
+			new_grocery.save!
+		end
+	end
+
+	def set_vars_from_recipe(recipe, meal_type)
+		if meal_type == "breakfast"
 			@breakTitle = breakfast_recipe.title
 			@breakCals = breakfast_recipe.calories
 			@breakTime = breakfast_recipe.time
 			@breakImg = breakfast_recipe.image
 			@breakLink = breakfast_recipe.link
-
+		elsif meal_type == "lunch"
 			@lunchTitle = lunch_recipe.title
 			@lunchCals = lunch_recipe.calories
 			@lunchTime = lunch_recipe.time
 			@lunchImg = lunch_recipe.image
 			@lunchLink = lunch_recipe.link
-
+		elsif meal_type == "dinner"
 			@dinTitle = dinner_recipe.title
 			@dinCals = dinner_recipe.calories
 			@dinTime = dinner_recipe.time
