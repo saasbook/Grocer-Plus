@@ -1,43 +1,43 @@
 <%= render 'navbar' %>
 <body class="grocery-view">
-  <h2 class="text-center">Groceries</h2>
-  <% @breakfast.each do |recipe| %>
-    <div class="card">
-      <img height="200" width="300" class="card-img-top" src="<%= recipe.image %>"/>
-      <div class="card-body">
-        <h5 class="card-title"><%= recipe.title %></h5>
+  <h2 class="text-center grocery-list-label">My Grocery List</h2>
+  <div class="card-deck mp-cards">
+
+    <% @breakfast.each do |recipe| %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= recipe.title %></h5>
+          <ul class="list-group list-group-flush">
+            <% recipe.groceries.each do |grocery| %>
+              <li class="list-group-item"> <%= grocery.name %> </li>
+            <%end %>
+          </ul>
+        </div>
       </div>
-      <ul class="list-group list-group-flush">
-        <% recipe.groceries.each do |grocery| %>
-          <li class="list-group-item"> <%= grocery.name %> </li>
-        <%end %>
-      </ul>
-    </div>
-  <% end %>
-  <% @lunch.each do |recipe| %>
-    <div class="card">
-      <img height="200" width="300" class="card-img-top" src="<%= recipe.image %>"/>
-      <div class="card-body">
-        <h5 class="card-title"><%= recipe.title %></h5>
+    <% end %>
+    <% @lunch.each do |recipe| %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= recipe.title %></h5>
+          <ul class="list-group list-group-flush">
+            <% recipe.groceries.each do |grocery| %>
+              <li class="list-group-item"> <%= grocery.name %> </li>
+            <%end %>
+          </ul>
+        </div>
       </div>
-      <ul class="list-group list-group-flush">
-        <% recipe.groceries.each do |grocery| %>
-          <li class="list-group-item"> <%= grocery.name %> </li>
-        <%end %>
-      </ul>
-    </div>
-  <% end %>
-  <% @dinner.each do |recipe| %>
-    <div class="card">
-      <img height="200" width="300" class="card-img-top" src="<%= recipe.image %>"/>
-      <div class="card-body">
-        <h5 class="card-title"><%= recipe.title %></h5>
+    <% end %>
+    <% @dinner.each do |recipe| %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= recipe.title %></h5>
+          <ul class="list-group list-group-flush">
+            <% recipe.groceries.each do |grocery| %>
+              <li class="list-group-item"> <%= grocery.name %> </li>
+            <%end %>
+          </ul>
+        </div>
       </div>
-      <ul class="list-group list-group-flush">
-        <% recipe.groceries.each do |grocery| %>
-          <li class="list-group-item"> <%= grocery.name %> </li>
-        <%end %>
-      </ul>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </body>

@@ -1,6 +1,20 @@
 .grocery-view {
     overflow-x: hidden;
-    background-image: asset-url("grocery_food.jpg");
+    background-image: asset-url();
     background-repeat: no-repeat;
     background-size: 45% 115%;
+}
+
+.grocery-list-label {
+	padding-top: 30px;
+  	color: #333;
+  	font-size: 60px;
+  	font-family: 'Roboto';
+  	font-weight: 500;
+}
+
+.mp-cards {
+  padding-top: 20px;
+  padding-left: 125px;
+  padding-right: 125px;
 }
