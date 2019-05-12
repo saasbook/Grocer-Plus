@@ -9,7 +9,6 @@
     <h2 class="edit-label"> Tell us about yourself. </h2>
     <div class="edit-form" class="form-inline">
       <%= form_tag edit_path(:api => :true), :class => '' do %>
-
         <div class="form-group row">
           <div class="col-sm-2 col-form-label">
             <%= label_tag(:age, 'Age', class:"ed_lbl") %>
@@ -18,7 +17,6 @@
             <%= number_field_tag :age, 'age', min: 1, required: true, class:"form-control edin"%>
           </div>
         </div>
-
         <div class="form-group row">
           <div class="col-sm-2 col-form-label">
             <%= label_tag :gender, 'Gender', class:"ed_lbl" %>
@@ -30,7 +28,6 @@
             <%= label_tag :gender, 'Female', class:"femal" %>
           </div>
         </div>
-
         <div class="form-group row">
           <div class="col-sm-2 col-form-label">
             <%= label_tag(:weight, 'Weight (lbs)', class:"ed_lbl") %>
@@ -48,7 +45,6 @@
             <%= select_tag(:height, options_for_select(["53 (4'5)", "54 (4'6)", "55 (4'7)", "56 (4'8)", "57 (4'9)", "58 (4'10)", "59 (4'11)", "60 (5'0)","61 (5'1)", "62 (5'2)", "63 (5'3)", "64 (5'4)", "65 (5'5)", "66 (5'6)", "67 (5'7)", "68 (5'8)", "69 (5'9)", "70 (5'10)", "71 (5'11)", "72 (6'0)", "73 (6'1)", "74 (6'2)", "75 (6'3)", "76 (6'4)", "77 (6'5)", "78 (6'6)", "79 (6'7)", "80 (6'8)", "81 (6'9)", "82 (6'10)", "83 (6'11)", "84 (7'0)", "85 (7'1)", "86 (7'2)", "87 (7'3)", "88 (7'4)", "89 (7'5)"]), class:"btn btn-secondary dropdown-toggle edsel") %>
           </div>
         </div>
-
         <div class="form-group row">
           <div class="col-sm-2 col-form-label">    
             <%= label_tag(:exercise, 'Exercise Level', class:"ed_lbl") %>
@@ -57,7 +53,6 @@
             <%= select_tag(:exercise, options_for_select(["Light", "Moderate", "Heavy"]), class:"form-control edin", class:"btn btn-secondary dropdown-toggle edsel") %>
           </div>
         </div>
-
         <div class="form-group row">
           <div class="col-sm-2 col-form-label">   
             <%= label_tag(:goal, 'Goal', class:"ed_lbl") %>
@@ -66,7 +61,6 @@
             <%= select_tag(:goal, options_for_select(["Gain", "Maintain", "Lose"]), class:"btn btn-secondary dropdown-toggle edsel") %>
           </div>
         </div>
-
         <div class="form-group row">
           <div class="col-sm-2 col-form-label">  
             <%= label_tag(:time, 'Time available to cook per day', class:"ed_lbl") %>
@@ -75,7 +69,6 @@
             <%= number_field_tag(:time, 'time', min: 1, required: true, class:"form-control edin") %>
           </div>
         </div>
-
         <div class="form-group row">
           <div class="col-sm-2 col-form-label">      
             <%= label_tag(:cuisine, 'Cuisine Preferences', class:"ed_lbl") %>
@@ -84,21 +77,19 @@
             <%= text_field_tag(:cuisine, '', class:"form-control edin") %>
           </div>      
         </div>
-
         <div class="form-group row">
           <div class="col-sm-2 col-form-label">      
             <%= label_tag(:dietary_preferences, 'Dietary Preferences', class:"ed_lbl") %>
           </div>
           <div class="col-sm-10">
             <div class="checks">
-              <%= check_box_tag "dietary_preferences[]", 'vegetarian', false, class: 'form-check-input form-control edin' %>
+              <%= check_box_tag "dietary_preferences[]", 'vegetarian', false%>
               <%= label_tag(:dietary_preferences, 'Vegetarian', class:"vg_label_one") %>
-              <%= check_box_tag "dietary_preferences[]", 'vegan', false, class: 'form-check-input form-control edin' %>
+              <%= check_box_tag "dietary_preferences[]", 'vegan', false %>
               <%= label_tag(:dietary_preferences, 'Vegan', class:"vg_label_two") %>
             </div>
           </div>      
         </div>
-
         <div class="form-group row ed_actions">
         <%= submit_tag 'Save Changes', class:"btn btn-primary" %>
         </div>

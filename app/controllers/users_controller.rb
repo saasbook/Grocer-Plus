@@ -16,9 +16,14 @@ class UsersController < ApplicationController
 			@preference_list = [@gender, @weight, @height, @age, @exercise, @goal]
 			@calories = self.class.calc_calories(@preference_list).round(0)
 			@all_recipes = Recipe.find_in_api(@calories, @budget, @time, @dietary_preferences)
+			if @all_recipes.nil?
+				flash[:alert] = "API limit reached, please try again in one minute!"
+				redirect_to edit_path
+				return
+			end
 			@daily_recipes = self.class.do_daily_recipes(@all_recipes)
 			@day = "Monday"
-			# return recipes for Monday (eventually second index will be replaced with day variable)
+			
 			@breakHash = @daily_recipes[1][@day]
 			@breakImg = @breakHash["image"]
 			@breakTitle = @breakHash["title"]
