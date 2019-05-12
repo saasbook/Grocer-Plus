@@ -128,15 +128,6 @@ describe UsersController, :type => :controller do
   ]
 }
 
-    #it "calls the model method that performs spoonacular search" do
-    #    user = create(:user)
-    #    allow(controller).to receive(:current_user).and_return(user)
-    #    allow(UsersController).to receive(:calc_calories).and_return(2000)
-    #    expect(Recipe).to receive(:find_in_api).with(2000)
-    #    get 'show'
-    #end
-    #it 'selects the show template for rendering'
-    #it 'makes the api search results available to that template'
     describe "Calculate Calories" do
       it "Should calculate calories for men" do
         UsersController.calc_calories('Male', 80, 180, 25, 'Light', 'Maintain') == 2481.875
@@ -235,7 +226,7 @@ describe UsersController, :type => :controller do
         it "should commit displayed recipes to the database" do
           get 'show'
           user = User.where(:email => "john.apple@gmail.com").first
-          expect(user.recipes.size).to eq(1) # ID is same (from factory), so only commits 1 recipe
+          expect(user.recipes.size).to eq(1) 
         end
 
         it "should call API if user has no recipes in database" do
