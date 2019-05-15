@@ -7,8 +7,8 @@ http://grocer-plus.herokuapp.com/
 
 https://www.pivotaltracker.com/n/projects/2317091
 
-## Local Development
-This repo makes use of the Edamam API, which the requires your APP_ID and APP_KEY as environment variables from when you sign up with the API. 
+
+This repo makes use of the Edamam API, which requires your APP_ID and APP_KEY as environment variables from when you signed up with the API. 
 Clone this repo, then run:
 ```
 bundle install --without production
