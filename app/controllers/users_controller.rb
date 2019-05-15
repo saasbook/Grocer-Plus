@@ -115,18 +115,21 @@ class UsersController < ApplicationController
 			@breakTime = recipe.time
 			@breakImg = recipe.image
 			@breakLink = recipe.link
+			@break_instructions_link = recipe.instr_link
 		elsif meal_type == "lunch"
 			@lunchTitle = recipe.title
 			@lunchCals = recipe.calories
 			@lunchTime = recipe.time
 			@lunchImg = recipe.image
 			@lunchLink = recipe.link
+			@lunch_instructions_link = recipe.instr_link
 		elsif meal_type == "dinner"
 			@dinTitle = recipe.title
 			@dinCals = recipe.calories
 			@dinTime = recipe.time
 			@dinImg = recipe.image
 			@dinLink = recipe.link
+			@din_instructions_link = recipe.instr_link
 		end
 	end
 
