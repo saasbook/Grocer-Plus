@@ -281,6 +281,16 @@ describe UsersController, :type => :controller do
 
     end
 
+    describe "Update" do
+      it "should render the show view" do
+        @user = create(:user_with_recipes)
+        recipe = build(:plan_recipe)
+        allow(controller).to receive(:current_user).and_return(@user)
+        post 'update', :age => "22", :weight => "120", :height => "70", :time => "60", :gender => "Male", :exercise => "Light", :goal => "Gain", "dietary_preferences"=>["Vegetarian"]
+        expect(controller).to redirect_to(:show)
+      end
+    end
+
     describe "Convert to recipe" do
 
       it "should convert a hash to a recipe object" do
