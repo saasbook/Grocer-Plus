@@ -81,19 +81,22 @@ class UsersController < ApplicationController
 			@breakTitle = hash["title"]
 			@breakCals = hash["calories"]
 			@breakTime = hash["readyInMinutes"]
-			@breakLink = hash['link']
+			@breakLink = hash["links"][0]
+			@break_instructions_link = hash["links"][1]
 		elsif meal_type == "lunch"
 			@lunchImg = hash["image"]
 			@lunchTitle = hash["title"]
 			@lunchCals = hash["calories"]
 			@lunchTime = hash["readyInMinutes"]
-			@lunchLink = hash['link']
+			@lunchLink = hash['links'][0]
+			@lunch_instructions_link = hash["links"][1]
 		elsif meal_type == "dinner"
 			@dinImg = hash["image"]
 			@dinTitle = hash["title"]
 			@dinCals = hash["calories"]
 			@dinTime = hash["readyInMinutes"]
-			@dinLink = hash['link']
+			@dinLink = hash['links'][0]
+			@din_instructions_link = hash["links"][1]
 		end
 	end
 
@@ -219,6 +222,10 @@ class UsersController < ApplicationController
 		end
 		current_user.save!
 		if params.key?(:api)
+			plan_recipes = current_user.recipes.where(:type => "PlanRecipe")
+			plan_recipes.each do |recipe|
+				recipe.groceries.delete_all
+			end
 			current_user.recipes.where(:type => "PlanRecipe").delete_all
 		end
 		redirect_to show_path
