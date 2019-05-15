@@ -9,10 +9,11 @@ https://www.pivotaltracker.com/n/projects/2317091
 
 ## Local Development
 This repo makes use of the Edamam API, which the requires your APP_ID and APP_KEY as environment variables from when you sign up with the API. 
-Clone this repo, then:
+Clone this repo, then run:
 ```
 bundle install --without production
-rails server
 export APP_ID={YOUR APP ID}
 export APP_KEY={YOUR APP KEY}
+bin/rake db:migrate RAILS_ENV=development
+rails server
 ```
