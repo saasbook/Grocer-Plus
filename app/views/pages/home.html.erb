@@ -1,0 +1,11 @@
+<%= render "devise/shared/welcome_bar" %>
+<body class="home-view">
+	<div class="text-center home-content">
+		<h1 class="welcome-label">Welcome!</h1>
+		<p class="welcome-txt"> GrocerPlus is great! You should use us! </p>
+		<div class="home-buttons">
+		    <%= link_to 'Sign Up', new_user_registration_path, class:"btn btn-primary btn-xlarge home-si" %>
+		    <%= link_to 'Log In', new_user_session_path, class:"btn btn-primary btn-xlarge home-log" %>
+		</div>
+	</div>
+</body>

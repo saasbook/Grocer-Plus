@@ -1,0 +1,58 @@
+.login-view {
+    background-image: asset-url("signup_food.jpg");
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.login {
+    position: relative;
+    transform: perspective(1px) translateY(20%) translateX(280%);
+    width: 325px;
+    height: 400px;
+    text-align: center;
+    border-radius: 45px 45px 45px 45px;
+}
+
+.login_label {
+    padding-top: 15px;
+    color: #333;
+    font-size: 65px;
+    font-family: 'Roboto';
+    font-weight: 500;
+}
+
+.new_user {
+    font-family: 'Roboto';
+    font-weight: 500;
+    border-radius: 0px 0px 45px 45px;
+}
+
+.lo_field {
+    padding-top: 15px;
+    color: #333;
+
+}
+
+.lo_lbl {
+    font-size: 20px;
+    font-family: 'Roboto';
+    font-weight: 500;
+}
+
+.lo_actions {
+    padding-top: 15px;
+    padding-bottom:30px;
+}
+
+.btn, .btn-primary {
+    background-color: #228B22 !important ; 
+    border-color: #228B22 !important;
+}
+
+.btn:hover {
+    border-color: #006400 !important ;
+}

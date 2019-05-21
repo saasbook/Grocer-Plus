@@ -1,0 +1,23 @@
+.grocery-view {
+	background-image: asset-url("grocery_food.jpg");
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background-repeat: no-repeat;
+	max-width: 100%;
+	overflow-x: hidden;
+}
+
+.grocery-list-label {
+	padding-top: 30px;
+  	color: #333;
+  	font-size: 60px;
+  	font-family: 'Roboto';
+  	font-weight: 500;
+}
+
+.mp-cards {
+  padding-top: 20px;
+  padding-left: 125px;
+  padding-right: 125px;
+}

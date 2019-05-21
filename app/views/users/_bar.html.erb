@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Navbar</title>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  </head>
+  <body>
+    <div class="topnav">
+      <p class="grocer-plus-top"> GrocerPlus</p>
+    </div>
+    <div class="sidenav" id="mySidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a><%=link_to "Log Out", destroy_user_session_path, method: :delete%></a>
+    </div>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    <%= yield %>
+  </body>
+</html>

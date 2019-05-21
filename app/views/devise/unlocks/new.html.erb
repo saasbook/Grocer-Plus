@@ -1,0 +1,20 @@
+<body class="devise-view">
+	<h2 class="fyp_label">Resend unlock instructions</h2>
+
+	<%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+	  <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="dv-form-content">
+		  <div class="dv_field">
+		    <%= f.label :email, class:"dv_lbl" %><br />
+		    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", type:"email", placeholder:"Enter email"  %>
+		  </div>
+
+		  <div class="dv_actions">
+		    <%= f.submit "Resend unlock instructions", class:"btn btn-primary"  %>
+		  </div>
+	  </div>
+	<% end %>
+
+	<%= render "devise/shared/links" %>
+</body>

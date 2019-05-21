@@ -1,0 +1,22 @@
+<body class="devise-view">
+	<%= render "devise/shared/welcome_bar" %>
+  <div class="devise">
+	<h2 class="fyp_label">Forgot your password?</h2>
+	<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+
+		<div class="dv-form-content">
+		  <%= render "devise/shared/error_messages", resource: resource %>
+
+		  <div class="dv_field">
+		    <%= f.label :email, class:"dv_lbl" %><br />
+		    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", type:"email", placeholder:"Enter email" %>
+		  </div>
+
+		  <div class="dv_actions">
+		    <%= f.submit "Send me reset password instructions", class:"btn btn-primary" %>
+		  </div>
+		</div>
+	<% end %>
+	<%= render "devise/shared/links" %>
+  </div>
+</body>
